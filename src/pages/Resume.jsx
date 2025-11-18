@@ -13,7 +13,22 @@ export default function Resume() {
       <Section>
         <Container>
           <h1 className="heading-page">Resume</h1>
-          <p className="mt-2 body-default">Link a PDF or list experience here.</p>
+          <div className="mt-6">
+            <iframe
+              src="/chris_hayes_resume.pdf"
+              width="100%"
+              height="800px"
+              title="Chris Hayes Resume"
+              className="border border-gray-300 rounded-lg shadow-lg"
+            >
+              <p>
+                Your browser does not support iframes.
+                <a href="/chris_hayes_resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Click here to view the PDF directly.
+                </a>
+              </p>
+            </iframe>
+          </div>
         </Container>
       </Section>
     </>
