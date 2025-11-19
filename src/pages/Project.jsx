@@ -40,7 +40,7 @@ export default function Project() {
       />
       <Container>
         <Breadcrumb
-          items={[{ label: "Home", href: "/" }, { label: "Work", href: "/work" }, { label: project.title }]}
+          items={[{ label: "Home", href: "/" }, { label: "Portfolio", href: "/portfolio" }, { label: project.title }]}
         />
 
         <nav className="body-small subheading-muted">
@@ -65,16 +65,46 @@ export default function Project() {
           </div>
           <div>
             <h2 className="subheading-primary">Overview</h2>
-            <p className="mt-2 body-default">
-              Replace this with a short case study: problem, your role, tools, constraints, outcome.
-            </p>
+            <p className="mt-2 body-default">{project.overview || "No overview available for this project."}</p>
 
-            <h3 className="mt-6 font-semibold">Highlights</h3>
-            <ul className="mt-2 list-disc pl-5 body-default space-y-1">
-              <li>Goal / KPI impact</li>
-              <li>Key UX or dev contribution</li>
-              <li>Notable constraint or insight</li>
-            </ul>
+            {project.highlights && project.highlights.length > 0 && (
+              <>
+                <h3 className="mt-6 font-semibold">Highlights</h3>
+                <ul className="mt-2 list-disc pl-5 body-default space-y-1">
+                  {project.highlights.map((highlight, index) => (
+                    <li key={index}>{highlight}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {(project.role || project.tools || project.timeline || project.client) && (
+              <>
+                <h3 className="mt-6 font-semibold">Project Details</h3>
+                <div className="mt-2 body-default space-y-2">
+                  {project.role && (
+                    <div>
+                      <span className="font-medium">Role:</span> {project.role}
+                    </div>
+                  )}
+                  {project.tools && project.tools.length > 0 && (
+                    <div>
+                      <span className="font-medium">Tools:</span> {project.tools.join(", ")}
+                    </div>
+                  )}
+                  {project.timeline && (
+                    <div>
+                      <span className="font-medium">Timeline:</span> {project.timeline}
+                    </div>
+                  )}
+                  {project.client && (
+                    <div>
+                      <span className="font-medium">Client:</span> {project.client}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </Container>
