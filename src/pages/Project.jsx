@@ -6,6 +6,7 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import SEO from "../components/ui/SEO.jsx";
 import { projects } from "../data/projects.js";
 import { FaArrowLeft } from "react-icons/fa";
+import { fragments } from "../data/FragmentsData.jsx";
 
 export default function Project() {
   const { slug } = useParams(); // expects id like "p1", "p2"...
@@ -63,6 +64,7 @@ export default function Project() {
               loading="lazy"
             />
           </div>
+          {/* Project Details on Right */}
           <div>
             <h2 className="subheading-primary">Overview</h2>
             <p className="mt-2 body-default">{project.overview || "No overview available for this project."}</p>
@@ -106,6 +108,7 @@ export default function Project() {
               </>
             )}
           </div>
+          <div>{fragments.content}</div>
         </div>
       </Container>
     </Section>

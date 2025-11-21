@@ -10,6 +10,7 @@ import Project from "./pages/Project.jsx";
 import About from "./pages/About.jsx";
 import Resume from "./pages/Resume.jsx";
 import Contact from "./pages/Contact.jsx";
+import DataImportTest from "./pages/DataImportTest.jsx";
 
 import "./index.css";
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "resume", element: <Resume /> },
       { path: "contact", element: <Contact /> },
+      { path: "data-import-test", element: <DataImportTest /> },
     ],
   },
 ]);
