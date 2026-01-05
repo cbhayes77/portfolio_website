@@ -1,3 +1,5 @@
+// This file is only an example to show how to import .jsx-formatted rich content //
+
 import SEO from "../components/ui/SEO.jsx";
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
