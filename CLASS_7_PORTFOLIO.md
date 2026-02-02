@@ -1,7 +1,7 @@
 # Class 7: Building the Portfolio Page
 
-**Component:** `src/pages/Portfolio.jsx`  
-**Type:** Page Component  
+**Component:** `src/pages/Portfolio.jsx`
+**Type:** Page Component
 **Purpose:** Display all projects in a grid layout on a dedicated page
 
 ---
@@ -10,12 +10,12 @@
 
 The **Portfolio page** is a dedicated page that shows **all** of your projects in one place. It's different from the Home page's Projects section:
 
-| Home Page | Portfolio Page |
-|-----------|----------------|
-| Shows **3 projects** (preview) | Shows **ALL projects** (complete list) |
-| Has "View More Projects" button | No "View More" button needed |
-| Uses `<h2>` heading (section) | Uses `<h1>` heading (main page heading) |
-| Part of a larger page | Dedicated full page |
+| Home Page                       | Portfolio Page                          |
+| ------------------------------- | --------------------------------------- |
+| Shows **3 projects** (preview)  | Shows **ALL projects** (complete list)  |
+| Has "View More Projects" button | No "View More" button needed            |
+| Uses `<h2>` heading (section)   | Uses `<h1>` heading (main page heading) |
+| Part of a larger page           | Dedicated full page                     |
 
 ---
 
@@ -24,6 +24,7 @@ The **Portfolio page** is a dedicated page that shows **all** of your projects i
 Here's the exciting part: **we don't need to rebuild the projects grid from scratch!**
 
 We already have a `Projects` component (built in Class 4) that:
+
 - Displays a grid of project cards
 - Has customizable props (title, description, heading level, etc.)
 - Can show all projects or just a few
@@ -36,6 +37,7 @@ We can **reuse** this component with different props to create the Portfolio pag
 A **wrapper page** is a page component that primarily composes other components rather than building UI from scratch.
 
 **Benefits:**
+
 - ✅ Less code to write and maintain
 - ✅ Consistent UI across different pages
 - ✅ Changes to Projects component automatically apply everywhere
@@ -48,6 +50,7 @@ A **wrapper page** is a page component that primarily composes other components 
 Let's compare how we use the `Projects` component in different contexts:
 
 ### On Home Page (from Class 4)
+
 ```jsx
 <Projects
   title="Featured Projects"
@@ -57,11 +60,13 @@ Let's compare how we use the `Projects` component in different contexts:
   showViewMore={true}
 />
 ```
+
 - Shows **first 3 projects**
 - Has a **"View More Projects" button**
 - Uses `<h2>` (it's a section on a larger page)
 
 ### On Portfolio Page (what we'll build)
+
 ```jsx
 <Projects
   title="Portfolio"
@@ -71,6 +76,7 @@ Let's compare how we use the `Projects` component in different contexts:
   showViewMore={false}
 />
 ```
+
 - Shows **ALL projects**
 - **No "View More" button** (already showing everything)
 - Uses `<h1>` (it's the main page heading)
@@ -93,7 +99,7 @@ import SEO from "../components/ui/SEO.jsx";
 
 export default function Portfolio() {
   return (
-    
+
   );
 }
 ```
@@ -124,11 +130,7 @@ import Projects from "../components/sections/Projects.jsx";
 import SEO from "../components/ui/SEO.jsx";
 
 export default function Portfolio() {
-  return (
-    <>
-      
-    </>
-  );
+  return <></>;
 }
 ```
 
@@ -145,6 +147,7 @@ export default function Portfolio() {
    - A Fragment lets us group them without adding a wrapper `<div>`
 
 **Alternative without Fragment:**
+
 ```jsx
 // ❌ This won't work (two root elements)
 return (
@@ -187,7 +190,6 @@ export default function Portfolio() {
         description="Explore my work and projects showcasing my skills as a UX Designer and Frontend Developer."
         url="/portfolio"
       />
-      
     </>
   );
 }
@@ -213,6 +215,7 @@ export default function Portfolio() {
 
 **Customization:**
 Feel free to customize the description to match your personal brand:
+
 - "Browse my portfolio of UX/UI design projects and web development work."
 - "See my latest projects in web design, development, and user experience."
 - "Discover my portfolio showcasing creative solutions to real-world problems."
@@ -294,27 +297,25 @@ export default function Projects({
 }) {
   // Create heading based on headingLevel prop
   const Heading = headingLevel; // "h1" or "h2"
-  
+
   // Determine how many projects to show
   const projectsToShow = showViewMore ? projects.slice(0, 3) : projects;
-  
+
   return (
     <Section>
       <Container>
         <Heading id={headingId}>{title}</Heading>
         <p>{description}</p>
-        
+
         {/* Show 3 or ALL projects based on showViewMore */}
         <div className="grid">
-          {projectsToShow.map(project => (
+          {projectsToShow.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-        
+
         {/* Only show button if showViewMore is true */}
-        {showViewMore && (
-          <Button href="/portfolio">View More Projects</Button>
-        )}
+        {showViewMore && <Button href="/portfolio">View More Projects</Button>}
       </Container>
     </Section>
   );
@@ -322,6 +323,7 @@ export default function Projects({
 ```
 
 **See how it works?**
+
 - When `showViewMore={true}` (Home page): Shows 3 projects + button
 - When `showViewMore={false}` (Portfolio page): Shows all projects, no button
 - Same component, different behavior!
@@ -348,6 +350,7 @@ src/
 ```
 
 **The pattern:**
+
 - **Page components** (`pages/`) handle routing and page-level concerns
 - **Section components** (`components/sections/`) provide reusable content blocks
 - **UI components** (`components/ui/`) provide reusable interface elements
@@ -359,6 +362,7 @@ src/
 **After creating this file**, you won't see changes yet because we need to add the route in `main.jsx` (next guide).
 
 But you can verify:
+
 1. **No errors:** File should save without errors
 2. **Imports resolved:** VSCode should recognize the import paths
 3. **Props match:** Props passed to `Projects` should match its expected prop types
@@ -370,6 +374,7 @@ But you can verify:
 Let's see the visual difference:
 
 ### Home Page (Projects Section)
+
 ```
 ┌─────────────────────────────────────┐
 │      Featured Projects (h2)         │
@@ -383,6 +388,7 @@ Let's see the visual difference:
 ```
 
 ### Portfolio Page
+
 ```
 ┌─────────────────────────────────────┐
 │         Portfolio (h1)              │
@@ -427,26 +433,31 @@ Our Portfolio page follows SEO best practices:
 ## What You've Learned
 
 ✅ **Component Reuse:**
+
 - How to reuse section components as full pages
 - The "wrapper page" pattern
 - How props customize component behavior
 
 ✅ **React Concepts:**
+
 - React Fragments (`<>...</>`)
 - Why components need a single root element
 - Prop customization
 
 ✅ **Page Design Patterns:**
+
 - Difference between section components and page components
 - When to show all data vs. a preview
 - Conditional UI elements (View More button)
 
 ✅ **SEO Best Practices:**
+
 - One `<h1>` per page
 - Unique page titles and descriptions
 - Canonical URLs
 
 ✅ **Project Structure:**
+
 - Organization of pages vs. components
 - How components can be reused in multiple contexts
 - Import paths and file organization
@@ -458,6 +469,7 @@ Our Portfolio page follows SEO best practices:
 ### "Why not just copy/paste the Projects code?"
 
 **Answer:** Component reuse is better because:
+
 - **Less code:** Write once, use many times
 - **Consistency:** Both pages automatically match
 - **Maintainability:** Fix a bug once, it's fixed everywhere
@@ -482,6 +494,7 @@ If you copy/pasted the code, you'd have to update both files every time you make
 ```
 
 Or:
+
 ```jsx
 <Projects
   title="All Projects"
@@ -497,6 +510,7 @@ Or:
 ### "Why use a Fragment instead of a div?"
 
 **Answer:**
+
 - **Cleaner DOM:** No unnecessary wrapper elements in the HTML
 - **Better performance:** Slightly fewer nodes in the DOM tree
 - **Semantic HTML:** Only add elements when they have meaning
@@ -511,11 +525,7 @@ Fragments are React's way of grouping elements without adding extra HTML.
 
 ```jsx
 // Future enhancement (not covered in this class)
-<Projects
-  title="Web Design Projects"
-  filter="web-design"
-  showViewMore={false}
-/>
+<Projects title="Web Design Projects" filter="web-design" showViewMore={false} />
 ```
 
 The Projects component would then filter `projects.filter(p => p.category === filter)`.
@@ -531,6 +541,7 @@ For now, we're showing all projects, but this is a common enhancement students a
 In the next guide, we'll **add the route** in `main.jsx` to connect the `/portfolio` URL to this page component. Once that's done, you'll be able to click "Portfolio" in the navbar and see all your projects!
 
 **Coming up:**
+
 - Add Portfolio route in `main.jsx`
 - Test navigation from navbar
 - See all projects displayed in a grid
@@ -544,6 +555,7 @@ In the next guide, we'll **add the route** in `main.jsx` to connect the `/portfo
 **Problem:** Red underlines on import statements
 
 **Solution:**
+
 - Check file paths are correct
 - From `pages/Portfolio.jsx`, paths should be:
   - `"../components/sections/Projects.jsx"`
@@ -558,6 +570,7 @@ In the next guide, we'll **add the route** in `main.jsx` to connect the `/portfo
 **Problem:** Error with `<>` and `</>`
 
 **Solution:**
+
 - Make sure you're using a recent version of React (16.2+)
 - If using older React, use `<React.Fragment>` instead:
   ```jsx
@@ -576,6 +589,7 @@ In the next guide, we'll **add the route** in `main.jsx` to connect the `/portfo
 **Problem:** Projects component doesn't respond to props
 
 **Solution:**
+
 - Verify you built the Projects component correctly in Class 4
 - Check that Projects component accepts these props:
   - `title`, `description`, `headingLevel`, `headingId`, `showViewMore`
@@ -588,6 +602,7 @@ In the next guide, we'll **add the route** in `main.jsx` to connect the `/portfo
 **Problem:** Browser tab title doesn't change
 
 **Solution:**
+
 - Verify SEO component was built correctly (Class 2)
 - Check that `react-helmet-async` is installed
 - Make sure App.jsx wraps the app in `<HelmetProvider>`

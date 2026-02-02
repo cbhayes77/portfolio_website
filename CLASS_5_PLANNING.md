@@ -25,6 +25,7 @@ WHAT STUDENTS HAVE ALREADY BUILT (PREREQUISITES)
 BY END OF CLASS 4, STUDENTS HAVE:
 
 **UI Components:**
+
 - Button.jsx (Class 1)
 - Section.jsx (Class 1)
 - Container.jsx (Class 1)
@@ -32,24 +33,29 @@ BY END OF CLASS 4, STUDENTS HAVE:
 - ProjectCard.jsx (Class 4)
 
 **Layout Components:**
+
 - Navbar.jsx (Class 2)
 - Footer.jsx (Class 2)
 
 **Section Components:**
+
 - TechStack.jsx (Class 3)
 - Projects.jsx (Class 4)
 
 **Data Files:**
+
 - techstack.js (Class 3)
 - projects.js (Class 4)
 
 **Pages:**
+
 - Home.jsx with:
-  * Hero section (Class 1)
-  * TechStack section (Class 3)
-  * Projects section (Class 4)
+  - Hero section (Class 1)
+  - TechStack section (Class 3)
+  - Projects section (Class 4)
 
 **App Structure:**
+
 - App.jsx with routing (Class 2)
 - main.jsx (Class 1)
 
@@ -101,19 +107,21 @@ DETAILED COMPONENT BREAKDOWN
 Store testimonial data (quotes, authors, roles) in a reusable format
 
 **Data Structure:**
+
 ```javascript
 export const testimonials = [
   {
     id: "unique-id",
     quote: "The testimonial quote text",
     author: "Person Name",
-    role: "Their Job Title"
+    role: "Their Job Title",
   },
   // ... more testimonials
 ];
 ```
 
 **Key Teaching Points:**
+
 - Named exports with `export const`
 - Array of objects pattern
 - Unique IDs for React keys
@@ -121,6 +129,7 @@ export const testimonials = [
 - How this data flows to components
 
 **Student Customization:**
+
 - Replace with real testimonials (if they have them)
 - Or use placeholder testimonials for now
 - Can add more fields later (company, avatar, etc.)
@@ -136,11 +145,13 @@ Final code has 8 testimonials with this exact structure
 Display a single testimonial with proper semantic HTML
 
 **Props:**
+
 - quote (string) - The testimonial text
 - author (string) - Person's name
 - role (string) - Their job title/role
 
 **Key Teaching Points:**
+
 - Semantic HTML: `<figure>`, `<blockquote>`, `<figcaption>`
 - Proper quote formatting with quotation marks
 - Styling with custom class `card-testimonial` (from index.css)
@@ -148,11 +159,13 @@ Display a single testimonial with proper semantic HTML
 - Accessible markup for quotes
 
 **Complexity Level:** Simple
+
 - No state, no complex logic
 - Just presentational component
 - Good practice for semantic HTML
 
 **Visual Design:**
+
 - Card with background and padding (from card-testimonial class)
 - Quote in larger, prominent text
 - Author and role in smaller, lighter text
@@ -160,6 +173,7 @@ Display a single testimonial with proper semantic HTML
 
 **Codebase Match:**
 Exact component structure:
+
 ```jsx
 export default function TestimonialCard({ quote, author, role }) {
   return (
@@ -181,10 +195,12 @@ export default function TestimonialCard({ quote, author, role }) {
 Display a grid of testimonial cards with optional limit functionality
 
 **Props:**
+
 - headingLevel = "h2" (default)
 - limit (optional) - Number of testimonials to show
 
 **Key Teaching Points:**
+
 - Similar pattern to Projects.jsx (reinforces learning)
 - Array .slice() for limiting
 - Array .map() for rendering
@@ -194,11 +210,13 @@ Display a grid of testimonial cards with optional limit functionality
 - aria-labelledby for accessibility
 
 **Complexity Level:** Moderate
+
 - Builds on Projects.jsx pattern (students have seen this before)
 - Conditional logic with ternary operator
 - Component composition
 
 **Visual Layout:**
+
 ```
 +------------------------------------------+
 |           Testimonials                    |
@@ -210,6 +228,7 @@ Display a grid of testimonial cards with optional limit functionality
 ```
 
 **Differences from Projects.jsx:**
+
 - No "View More" button (simpler)
 - No custom title/description props (uses fixed text)
 - Simpler overall (good reinforcement without being identical)
@@ -230,6 +249,7 @@ Encourage visitors to take action (contact the student)
 None - completely self-contained
 
 **Key Teaching Points:**
+
 - Static section component (simplest type)
 - Custom background gradient
 - Custom padding with py-20
@@ -238,12 +258,14 @@ None - completely self-contained
 - Using Section with custom className
 
 **Complexity Level:** Very Simple
+
 - No props needed
 - No data mapping
 - Just structure and styling
 - Good confidence builder
 
 **Visual Design:**
+
 ```
 +------------------------------------------+
 |                                          |
@@ -256,6 +278,7 @@ None - completely self-contained
 ```
 
 **Codebase Match:**
+
 ```jsx
 export default function FinalCTA() {
   return (
@@ -284,17 +307,20 @@ export default function FinalCTA() {
 Add Testimonials and FinalCTA sections to complete the homepage
 
 **Changes Required:**
+
 1. Import Testimonials component
 2. Import FinalCTA component
 3. Add `<Testimonials limit={3} />` after Projects
 4. Add `<FinalCTA />` at the very end
 
 **Key Teaching Points:**
+
 - Building pages progressively
 - Section ordering matters for user flow
 - Using limit prop to show preview (3 testimonials)
 
 **Final Homepage Structure:**
+
 ```jsx
 <div>
   <SEO />
@@ -307,6 +333,7 @@ Add Testimonials and FinalCTA sections to complete the homepage
 ```
 
 **Why limit={3} for testimonials?**
+
 - Shows just enough social proof without overwhelming
 - Keeps homepage scrollable and focused
 - Can show all testimonials on a dedicated page later
@@ -352,6 +379,7 @@ KEY CONCEPTS TAUGHT IN CLASS 5
 ================================================================================
 
 **REINFORCED CONCEPTS (from previous classes):**
+
 - Component props and defaults
 - Array mapping with .map()
 - Array slicing with .slice()
@@ -361,6 +389,7 @@ KEY CONCEPTS TAUGHT IN CLASS 5
 - Semantic HTML
 
 **NEW CONCEPTS:**
+
 - Semantic quote markup (`<figure>`, `<blockquote>`, `<figcaption>`)
 - Static sections (FinalCTA has no props)
 - Background gradients with Tailwind
@@ -369,6 +398,7 @@ KEY CONCEPTS TAUGHT IN CLASS 5
 - Social proof in web design
 
 **DESIGN PRINCIPLES:**
+
 - Social proof (why testimonials matter)
 - Clear calls-to-action
 - Visual hierarchy in cards
@@ -393,6 +423,7 @@ By the end of Class 5, students will be able to:
 
 **COMPLETED PROJECT STATE:**
 Students will have a fully functional homepage with:
+
 - Hero section introducing them
 - Tech stack showcasing skills
 - Projects preview (6 projects)
@@ -406,6 +437,7 @@ COMPARISONS TO CLASS 4 (PROJECTS)
 ================================================================================
 
 **SIMILARITIES:**
+
 - Both have: Data file → Card component → Section component → Page update
 - Both use array mapping with .map()
 - Both use .slice() for limiting
@@ -413,11 +445,13 @@ COMPARISONS TO CLASS 4 (PROJECTS)
 - Both use semantic lists
 
 **DIFFERENCES:**
+
 - Testimonials is SIMPLER (no View More button, fewer props)
 - TestimonialCard is SIMPLER than ProjectCard (fewer props, simpler structure)
 - FinalCTA is completely NEW pattern (static section)
 
 **WHY THIS IS GOOD PEDAGOGY:**
+
 - Reinforces Projects pattern without being identical
 - Slightly simpler = confidence building
 - Pattern recognition ("Oh, this is like Projects!")
@@ -448,6 +482,7 @@ CUSTOMIZATION OPPORTUNITIES FOR STUDENTS
    - Change gradient colors
 
 **Advanced Customizations (future classes):**
+
 - Add star ratings to testimonials
 - Add testimonial carousel/slider
 - Add filtering by role/company
@@ -459,23 +494,24 @@ COMMON STUDENT QUESTIONS (ANTICIPATED)
 
 **Q: "I don't have real testimonials yet. What should I do?"**
 A: Use the placeholder testimonials for now. Later, you can:
-   - Ask classmates to write testimonials for you
-   - Use feedback from teachers or mentors
-   - Use quotes from people you've worked with
-   - Eventually replace with real client testimonials
+
+- Ask classmates to write testimonials for you
+- Use feedback from teachers or mentors
+- Use quotes from people you've worked with
+- Eventually replace with real client testimonials
 
 **Q: "Why only show 3 testimonials on the homepage?"**
-A: We want to show social proof without overwhelming visitors. Three is 
-   enough to build trust. Later, you can create a dedicated testimonials
-   page showing all of them.
+A: We want to show social proof without overwhelming visitors. Three is
+enough to build trust. Later, you can create a dedicated testimonials
+page showing all of them.
 
 **Q: "Can I add images to the testimonial cards?"**
 A: Yes! You'd need to add an avatar/image field to the data, and update
-   TestimonialCard to display it. Great future enhancement!
+TestimonialCard to display it. Great future enhancement!
 
 **Q: "The Contact link doesn't work yet."**
 A: That's okay! We'll build the Contact page in a future class. The link
-   won't work until then, but it won't cause errors.
+won't work until then, but it won't cause errors.
 
 **Q: "Can I change the grid to show 2 columns instead of 3?"**
 A: Absolutely! Change lg:grid-cols-3 to lg:grid-cols-2 in the className.
@@ -507,6 +543,7 @@ src/
 ```
 
 **DEPENDENCIES (already exist):**
+
 - Button.jsx (Class 1)
 - Section.jsx (Class 1)
 - Container.jsx (Class 1)
@@ -547,6 +584,7 @@ TESTING STRATEGY
    - Check that all links work (or are placeholders)
 
 **VISUAL TESTING:**
+
 - Mobile view (320px width)
 - Tablet view (768px width)
 - Desktop view (1280px width)
@@ -580,29 +618,34 @@ ALIGNMENT WITH INSTRUCTIONAL RULES
 **FOLLOWING THE RULES:**
 
 ✓ **Progressive Enhancement:**
-  - Builds on Class 4 patterns (Projects → Testimonials)
-  - Adds new concepts gradually (semantic quotes, static sections)
-  
+
+- Builds on Class 4 patterns (Projects → Testimonials)
+- Adds new concepts gradually (semantic quotes, static sections)
+
 ✓ **No Wasteful Patterns:**
-  - Teaches correct semantic HTML from the start
-  - Uses proper quote markup (not just <div> and <p>)
-  - Static section taught as static (not built complex then simplified)
+
+- Teaches correct semantic HTML from the start
+- Uses proper quote markup (not just <div> and <p>)
+- Static section taught as static (not built complex then simplified)
 
 ✓ **Codebase Alignment:**
-  - All final code matches actual codebase exactly
-  - Imports are correct
-  - Tailwind classes match
-  - Component structure identical
+
+- All final code matches actual codebase exactly
+- Imports are correct
+- Tailwind classes match
+- Component structure identical
 
 ✓ **Pedagogical Sound:**
-  - Reinforces previous learning (map, slice, grids)
-  - Introduces new concepts appropriately (semantic quotes)
-  - Provides variety (static section) to maintain engagement
+
+- Reinforces previous learning (map, slice, grids)
+- Introduces new concepts appropriately (semantic quotes)
+- Provides variety (static section) to maintain engagement
 
 ✓ **One Concept Per Step:**
-  - Each step teaches one main idea
-  - Building blocks approach
-  - Clear progression
+
+- Each step teaches one main idea
+- Building blocks approach
+- Clear progression
 
 ================================================================================
 GUIDE CREATION CHECKLIST
@@ -649,6 +692,7 @@ Once instructor approves this plan, create guides in this order:
 5. CLASS_5_HOME_UPDATE.md
 
 **ESTIMATED CREATION TIME:**
+
 - Total guide creation: 2-3 hours
 - Including verification, testing, review
 

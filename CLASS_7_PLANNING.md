@@ -69,9 +69,11 @@ This progression reinforces the value of component reuse and modular design.
 **Purpose:** Provides visual navigation hierarchy showing the user's current location in the site.
 
 **Props:**
+
 - `items` (array): Array of breadcrumb items, each with `label` and optional `href`
 
 **Key Concepts:**
+
 - Array mapping to render navigation items
 - Conditional rendering (Link vs. span for current page)
 - React Icons integration (FaChevronRight)
@@ -79,6 +81,7 @@ This progression reinforces the value of component reuse and modular design.
 - Styling with Tailwind (hover states, focus states)
 
 **Dependencies:**
+
 - `react-router-dom` (Link)
 - `react-icons/fa` (FaChevronRight)
 
@@ -91,12 +94,14 @@ This progression reinforces the value of component reuse and modular design.
 **Purpose:** Displays all projects in a grid layout on a dedicated page.
 
 **Key Concepts:**
+
 - Component reuse (Projects section component)
 - Props customization for different contexts
 - SEO component integration
 - Fragment wrapper pattern (`<>...</>`)
 
 **Props Passed to Projects Component:**
+
 - `title="Portfolio"` - Page heading
 - `description="Click any card to view details."` - Subheading
 - `headingLevel="h1"` - Semantic heading for the page
@@ -104,6 +109,7 @@ This progression reinforces the value of component reuse and modular design.
 - `showViewMore={false}` - Hide "View More" button (showing all projects)
 
 **Dependencies:**
+
 - `Projects` section component (already built)
 - `SEO` component (already built)
 
@@ -116,11 +122,13 @@ This progression reinforces the value of component reuse and modular design.
 **Purpose:** Add the Portfolio page to the application's routing configuration.
 
 **Key Concepts:**
+
 - React Router configuration
 - Route paths and element mapping
 - Nested routes under App layout
 
 **Route Added:**
+
 ```jsx
 { path: "portfolio", element: <Portfolio /> }
 ```
@@ -132,11 +140,13 @@ This progression reinforces the value of component reuse and modular design.
 ### Breadcrumb Component
 
 **Introduction (2-3 min):**
+
 - Explain breadcrumb navigation and its purpose
 - Show real-world examples (e-commerce sites, documentation)
 - Discuss when breadcrumbs improve UX (deep navigation hierarchies)
 
 **Build Process (15 min):**
+
 - **STAGE 1:** Component structure and props
 - **STAGE 2:** Array mapping and item rendering
 - **STAGE 3:** Conditional rendering (Link vs. span)
@@ -144,6 +154,7 @@ This progression reinforces the value of component reuse and modular design.
 - **STAGE 5:** Icon integration
 
 **Testing:**
+
 - Students will test breadcrumbs on the Project detail page (Class 8)
 - For now, explain the component and its future use
 
@@ -152,17 +163,20 @@ This progression reinforces the value of component reuse and modular design.
 ### Portfolio Page
 
 **Introduction (2-3 min):**
+
 - Explain the difference between Home page (preview) and Portfolio page (full list)
 - Discuss component reuse as a best practice
 - Show how props customize component behavior
 
 **Build Process (10 min):**
+
 - **STAGE 1:** Page imports
 - **STAGE 2:** Component structure with Fragment
 - **STAGE 3:** SEO component setup
 - **STAGE 4:** Projects component with custom props
 
 **Key Teaching Points:**
+
 - **Component Reuse:** The same Projects component works in different contexts
 - **Props Control Behavior:** `showViewMore={false}` changes component output
 - **Semantic HTML:** Using `h1` on a full page vs. `h2` on Home
@@ -173,15 +187,18 @@ This progression reinforces the value of component reuse and modular design.
 ### Route Setup
 
 **Introduction (1-2 min):**
+
 - Review React Router from Class 2
 - Explain how routes connect URLs to pages
 
 **Build Process (5 min):**
+
 - Import Portfolio component
 - Add route to router configuration
 - Test navigation from Navbar
 
 **Testing:**
+
 - Click "Portfolio" in navigation
 - Verify page displays all projects
 - Check browser address bar shows `/portfolio`
@@ -192,16 +209,19 @@ This progression reinforces the value of component reuse and modular design.
 ## Connection to Previous Classes
 
 ### From Class 2: Navbar & Routing
+
 - Students already have a "Portfolio" link in the Navbar
 - This class makes that link functional
 - Reinforces React Router concepts
 
 ### From Class 4: Projects Section
+
 - Reuses the entire Projects section component
 - Students see the value of building reusable components
 - Props allow customization for different contexts
 
 ### From Class 2: SEO Component
+
 - Every page uses SEO for metadata
 - Reinforces the pattern established in Home and other pages
 
@@ -211,13 +231,10 @@ This progression reinforces the value of component reuse and modular design.
 
 **Breadcrumb Preparation:**
 The Breadcrumb component built in this class will be used extensively in Class 8 for the individual Project detail pages. Students will see:
+
 ```jsx
 <Breadcrumb
-  items={[
-    { label: "Home", href: "/" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: project.title }
-  ]}
+  items={[{ label: "Home", href: "/" }, { label: "Portfolio", href: "/portfolio" }, { label: project.title }]}
 />
 ```
 
@@ -230,6 +247,7 @@ This forward-thinking approach helps students understand that components are oft
 ### "Why build a whole page that just uses one component?"
 
 **Answer:** This is a great pattern called a "wrapper page" or "layout page." It:
+
 - Separates page-level concerns (routing, SEO) from section logic
 - Allows the Projects section to work in multiple contexts (Home preview, Portfolio full list)
 - Keeps components focused and reusable
@@ -240,6 +258,7 @@ This forward-thinking approach helps students understand that components are oft
 ### "Why do we need breadcrumbs?"
 
 **Answer:** Breadcrumbs improve user experience by:
+
 - Showing users where they are in the site hierarchy
 - Providing quick navigation to parent pages
 - Reducing the number of clicks to get back to previous pages
@@ -251,6 +270,7 @@ This forward-thinking approach helps students understand that components are oft
 ### "Can I customize the breadcrumb styling?"
 
 **Answer:** Absolutely! The component uses Tailwind classes, so you can:
+
 - Change colors, sizes, spacing
 - Modify hover and focus states
 - Adjust the separator icon
@@ -283,6 +303,7 @@ After completing Class 7, students should be able to:
 ## Summary
 
 Class 7 is a shorter, consolidation class that demonstrates the power of component reuse. Students will:
+
 - Build a useful navigation UI component (Breadcrumb)
 - Create a full page using existing section components
 - Reinforce routing concepts from Class 2

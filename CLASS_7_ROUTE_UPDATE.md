@@ -1,7 +1,7 @@
 # Class 7: Adding the Portfolio Route
 
-**File:** `src/main.jsx`  
-**Type:** Configuration Update  
+**File:** `src/main.jsx`
+**Type:** Configuration Update
 **Purpose:** Connect the `/portfolio` URL to the Portfolio page component
 
 ---
@@ -13,11 +13,13 @@
 ### How React Router Works
 
 React Router watches the browser's address bar. When the URL changes:
+
 1. It looks at the route configuration (in `main.jsx`)
 2. Finds the matching route
 3. Renders the corresponding component
 
 **Example:**
+
 - Visit `http://localhost:5173/` → Shows `Home` component
 - Visit `http://localhost:5173/about` → Shows `About` component
 - Visit `http://localhost:5173/portfolio` → Shows `Portfolio` component (what we're adding!)
@@ -58,11 +60,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
 **What we need to do:**
+
 1. Import the `Portfolio` component
 2. Add a new route for `/portfolio`
 
@@ -75,12 +78,13 @@ Notice the structure of the route configuration:
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/",           // Parent route
-    element: <App />,    // App layout (navbar, footer)
-    children: [          // Child routes
-      { index: true, element: <Home /> },        // /
-      { path: "about", element: <About /> },     // /about
-      { path: "resume", element: <Resume /> },   // /resume
+    path: "/", // Parent route
+    element: <App />, // App layout (navbar, footer)
+    children: [
+      // Child routes
+      { index: true, element: <Home /> }, // /
+      { path: "about", element: <About /> }, // /about
+      { path: "resume", element: <Resume /> }, // /resume
       { path: "contact", element: <Contact /> }, // /contact
     ],
   },
@@ -88,12 +92,14 @@ const router = createBrowserRouter([
 ```
 
 **How it works:**
+
 - **Parent route** (`path: "/"`) renders the `App` component
 - `App` component has `Navbar`, `Footer`, and an `<Outlet />` (from Class 1)
 - **Child routes** render inside the `<Outlet />`
 - All pages share the same navbar and footer!
 
 **Visual representation:**
+
 ```
 ┌────────────────────────────────────┐
 │          Navbar (App)              │
@@ -118,6 +124,7 @@ First, let's import the `Portfolio` component we just created.
 **📁 Open file:** `src/main.jsx`
 
 **Find this section (near the top):**
+
 ```jsx
 // Portfolio pages
 import Home from "./pages/Home.jsx";
@@ -127,6 +134,7 @@ import Contact from "./pages/Contact.jsx";
 ```
 
 **Add the Portfolio import:**
+
 ```jsx
 // Portfolio pages
 import Home from "./pages/Home.jsx";
@@ -137,6 +145,7 @@ import Contact from "./pages/Contact.jsx";
 ```
 
 **What's happening:**
+
 - We import the `Portfolio` component from `pages/Portfolio.jsx`
 - Placed after `Home` (because it's related to Home's projects preview)
 - We can now use `<Portfolio />` in our route configuration
@@ -148,6 +157,7 @@ import Contact from "./pages/Contact.jsx";
 Now let's add the route to the configuration.
 
 **Find the `children` array in the router configuration:**
+
 ```jsx
 const router = createBrowserRouter([
   {
@@ -164,6 +174,7 @@ const router = createBrowserRouter([
 ```
 
 **Add the portfolio route after the Home route:**
+
 ```jsx
 const router = createBrowserRouter([
   {
@@ -243,11 +254,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
 **Changes made:**
+
 1. ✅ Imported `Portfolio` component
 2. ✅ Added portfolio route with comment
 3. ✅ Placed route logically after Home
@@ -294,11 +306,13 @@ Let's trace what happens when a user clicks "Portfolio" in the navbar:
 ### Step 2: Navigate to Portfolio
 
 **Option 1: Click the navbar link**
+
 1. Go to your homepage (`http://localhost:5173`)
 2. Click "Portfolio" in the navbar
 3. You should see the Portfolio page with all projects
 
 **Option 2: Type the URL directly**
+
 1. Type `http://localhost:5173/portfolio` in the address bar
 2. Press Enter
 3. You should see the Portfolio page
@@ -306,6 +320,7 @@ Let's trace what happens when a user clicks "Portfolio" in the navbar:
 ### Step 3: Verify the Page
 
 ✅ **Check that:**
+
 - All projects are displayed (not just 3)
 - No "View More Projects" button appears
 - The heading says "Portfolio"
@@ -316,6 +331,7 @@ Let's trace what happens when a user clicks "Portfolio" in the navbar:
 ### Step 4: Test Navigation
 
 ✅ **Test going back and forth:**
+
 1. Click "Home" in navbar → Should go back to homepage
 2. Click "Portfolio" → Should return to portfolio page
 3. Use browser back/forward buttons → Should work correctly
@@ -338,6 +354,7 @@ In our configuration, child routes use **relative paths**:
 ```
 
 Both work, but relative paths are preferred because:
+
 - Cleaner and more concise
 - Automatically combine with parent path
 - More maintainable if parent path changes
@@ -367,17 +384,18 @@ In the next class, we'll add a **dynamic route** for individual project pages:
 ```jsx
 children: [
   { index: true, element: <Home /> },
-  
+
   // portfolio routes
   { path: "portfolio", element: <Portfolio /> },
   { path: "portfolio/:slug", element: <Project /> }, // ← Class 8
 
   { path: "about", element: <About /> },
   // ...
-]
+];
 ```
 
 The `:slug` part is a **route parameter** - it matches any value:
+
 - `/portfolio/p1` → Renders `<Project />` with `slug = "p1"`
 - `/portfolio/p2` → Renders `<Project />` with `slug = "p2"`
 - `/portfolio/my-awesome-project` → Renders `<Project />` with `slug = "my-awesome-project"`
@@ -389,32 +407,35 @@ We'll learn how to read this parameter using the `useParams()` hook!
 ## Common Routing Patterns
 
 ### 1. Flat Routes (what we're using)
+
 ```jsx
 children: [
   { path: "portfolio", element: <Portfolio /> },
   { path: "about", element: <About /> },
   { path: "contact", element: <Contact /> },
-]
+];
 ```
 
 **URLs:** `/portfolio`, `/about`, `/contact`
 
 ### 2. Nested Path Segments
+
 ```jsx
 children: [
   { path: "portfolio/projects", element: <Portfolio /> },
   { path: "portfolio/case-studies", element: <CaseStudies /> },
-]
+];
 ```
 
 **URLs:** `/portfolio/projects`, `/portfolio/case-studies`
 
 ### 3. Dynamic Routes (Class 8)
+
 ```jsx
 children: [
   { path: "portfolio/:slug", element: <Project /> },
   { path: "blog/:postId", element: <BlogPost /> },
-]
+];
 ```
 
 **URLs:** `/portfolio/anything`, `/blog/123`
@@ -424,22 +445,26 @@ children: [
 ## What You've Learned
 
 ✅ **React Router Concepts:**
+
 - How routes map URLs to components
 - Nested routes and parent-child relationships
 - Client-side routing (no page reloads)
 - Route configuration structure
 
 ✅ **Code Organization:**
+
 - Import statements for page components
 - Logical ordering of routes
 - Using comments to organize related routes
 
 ✅ **Testing:**
+
 - Navigating between pages
 - Verifying route behavior
 - Checking browser state (URL, tab title)
 
 ✅ **File Structure:**
+
 - How `main.jsx` acts as the routing configuration
 - Connection between navbar links and routes
 - Where new routes should be added
@@ -453,6 +478,7 @@ children: [
 **Problem:** Navigating to `/portfolio` shows nothing
 
 **Solution:**
+
 - Check that you imported Portfolio: `import Portfolio from "./pages/Portfolio.jsx"`
 - Verify the route exists: `{ path: "portfolio", element: <Portfolio /> }`
 - Make sure Portfolio.jsx has no errors (check browser console)
@@ -465,6 +491,7 @@ children: [
 **Problem:** `Cannot find module './pages/Portfolio.jsx'`
 
 **Solution:**
+
 - Verify you created the file in the previous guide
 - Check the file path is correct: `src/pages/Portfolio.jsx`
 - Make sure the file is named exactly `Portfolio.jsx` (case-sensitive!)
@@ -477,6 +504,7 @@ children: [
 **Problem:** Clicking Portfolio link doesn't work
 
 **Solution:**
+
 - Check Navbar has the correct link: `<NavLink to="/portfolio">Portfolio</NavLink>`
 - Verify path in route config: `{ path: "portfolio", element: <Portfolio /> }`
 - Make sure paths match (both should be "portfolio")
@@ -489,6 +517,7 @@ children: [
 **Problem:** `/portfolio` loads but shows the Home page
 
 **Solution:**
+
 - Check you're using the right component: `element: <Portfolio />`
 - Make sure you imported the correct component
 - Verify you didn't accidentally map it to `<Home />`
@@ -500,6 +529,7 @@ children: [
 **Problem:** Page works when clicking links, but refreshing `/portfolio` gives a 404
 
 **Solution:**
+
 - This is normal in development! Vite handles it automatically.
 - If deploying to production, you'll need to configure your server to redirect all routes to `index.html`
 - Vite's dev server already does this for you
@@ -511,6 +541,7 @@ children: [
 **Problem:** Both Home and Portfolio seem to render
 
 **Solution:**
+
 - Check that routes are in the `children` array, not separate
 - Verify you have only one `<Outlet />` in App.jsx
 - Make sure paths are unique (no duplicate `path: "portfolio"`)
@@ -522,6 +553,7 @@ children: [
 Here's what we accomplished:
 
 ### Before (Class 6)
+
 ```
 Routes:
 - / → Home
@@ -531,6 +563,7 @@ Routes:
 ```
 
 ### After (Class 7)
+
 ```
 Routes:
 - / → Home
@@ -541,6 +574,7 @@ Routes:
 ```
 
 ### Coming in Class 8
+
 ```
 Routes:
 - / → Home
@@ -558,17 +592,20 @@ Routes:
 🎉 **Congratulations!** You've completed Class 7!
 
 Your portfolio website now has:
+
 - ✅ A reusable Breadcrumb component
 - ✅ A dedicated Portfolio page showing all projects
 - ✅ A `/portfolio` route connected to the page
 
 **Try it out:**
+
 1. Navigate to `/portfolio` in your browser
 2. See all your projects in a grid
 3. Notice there's no "View More" button
 4. Check that the browser tab title says "Portfolio | Your Name"
 
 **In Class 8**, you'll build:
+
 - Individual project detail pages (`/portfolio/p1`, `/portfolio/p2`, etc.)
 - Dynamic routing with `useParams()`
 - Expanded project data with full descriptions

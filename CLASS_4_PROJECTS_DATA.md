@@ -2,8 +2,8 @@
 CLASS 4: PROJECTS.JS STEP-BY-STEP GUIDE - PROJECT DATA FILE
 ================================================================================
 
-OVERVIEW FOR INSTRUCTOR
------------------------
+## OVERVIEW FOR INSTRUCTOR
+
 This guide walks students through creating the projects data file. This builds
 on the data file pattern learned in Class 3 (techstack.js), but introduces
 more complex data structures with multiple properties per project.
@@ -13,6 +13,7 @@ Students should create a new file: src/data/projects.js
 NOTE: The data folder should already exist from Class 3 (src/data/)
 
 CONCEPTS TAUGHT:
+
 - Complex data structures
 - Multiple properties per object
 - Placeholder content strategy
@@ -20,17 +21,20 @@ CONCEPTS TAUGHT:
 - Relationship between data and components
 
 WHAT WE'RE BUILDING IN CLASS 4:
+
 - Projects array with 3-4 sample projects
 - Each project has: id, title, blurb, image, href
 - Placeholder images from Unsplash/Picsum
 - Realistic placeholder descriptions
 
 WHAT WE'LL ADD LATER:
+
 - Class 8: Detailed fields (overview, highlights, role, tools, timeline, client)
 - Class 8: This data will power both cards AND detail pages
 
 HOMEWORK:
 Students should gather:
+
 - Screenshots or images of 3-4 projects
 - Project titles
 - Brief descriptions (1-2 sentences)
@@ -44,19 +48,18 @@ INSTRUCTOR SAYS:
 "We're going to create our second data file. Remember how we made techstack.js
 in Class 3? This follows the same pattern, but for projects instead of tech."
 
-STUDENTS CREATE FILE:
----------------------
+## STUDENTS CREATE FILE:
+
 src/data/projects.js
 
-STUDENTS TYPE:
---------------
+## STUDENTS TYPE:
+
 export const projects = [
-  
+
 ];
 
+## EXPLAIN:
 
-EXPLAIN:
---------
 - export const - Named export (same as techstack.js)
 - projects - Array name (lowercase, plural)
 - Will hold all project objects
@@ -65,15 +68,14 @@ EXPLAIN:
 ASK STUDENTS:
 "Why do we use 'const' if we're going to add items to the array?"
 (Answer: const means the variable can't be reassigned, but array contents
-         can still be modified. We can push/pop items, just can't do 
-         projects = [something else])
+can still be modified. We can push/pop items, just can't do
+projects = [something else])
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 export const projects = [
-  
-];
 
+];
 
 ================================================================================
 STEP 2: UNDERSTAND PROJECT DATA STRUCTURE
@@ -83,9 +85,10 @@ INSTRUCTOR SAYS:
 "Before we add data, let's understand what each project needs. This is more
 complex than our tech stack data."
 
-INSTRUCTOR EXPLAINS ON BOARD/SCREEN:
-------------------------------------
+## INSTRUCTOR EXPLAINS ON BOARD/SCREEN:
+
 Each project object needs:
+
 - id: Unique identifier (no spaces, lowercase)
 - title: Project name
 - blurb: Short description (1-2 sentences for card)
@@ -94,15 +97,15 @@ Each project object needs:
 
 EXAMPLE STRUCTURE:
 {
-  id: "ecommerce_platform",
-  title: "E-Commerce Platform",
-  blurb: "A modern online shopping experience with cart and checkout.",
-  image: "https://picsum.photos/300?random=1",
-  href: "/portfolio/ecommerce_platform"
+id: "ecommerce_platform",
+title: "E-Commerce Platform",
+blurb: "A modern online shopping experience with cart and checkout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/ecommerce_platform"
 }
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - id: Used for React keys and URL slugs
 - title: What users see
 - blurb: Brief description (displays on cards)
@@ -112,11 +115,12 @@ EXPLAIN:
 ASK STUDENTS:
 "Why is blurb separate from a full description?"
 (Answer: Cards show brief text, detail pages show full description. Different
-         contexts need different content lengths.)
+contexts need different content lengths.)
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 Show how a project card would use this data:
+
 - Image in the card
 - Title as heading
 - Blurb as description
@@ -143,8 +147,8 @@ PLACEHOLDER IMAGE OPTIONS:
    - Real photos
    - Can specify topics: ?website, ?app, ?design
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - We use 300px width for card thumbnails
 - ?random=NUMBER ensures different images
 - Later: Students will replace with real screenshots
@@ -162,21 +166,20 @@ INSTRUCTOR SAYS:
 "Let's add our first project. This will be a placeholder for now, but it shows
 the structure you'll use for your real projects."
 
-STUDENTS ADD INSIDE THE ARRAY:
--------------------------------
+## STUDENTS ADD INSIDE THE ARRAY:
+
 export const projects = [
-  {
-    id: "portfolio_website",
-    title: "Portfolio Website",
-    blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-    image: "https://picsum.photos/300?random=1",
-    href: "/portfolio/portfolio_website",
-  },
+{
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
+},
 ];
 
+## EXPLAIN:
 
-EXPLAIN:
---------
 - id: "portfolio_website" - Lowercase, underscores instead of spaces
 - title: "Portfolio Website" - Proper capitalization for display
 - blurb: One sentence, under 100 characters for card layout
@@ -188,18 +191,17 @@ ASK STUDENTS:
 "What would happen if the blurb was 5 sentences long?"
 (Answer: It would overflow the card or get cut off. Keep it brief for cards.)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
-export const projects = [
-  {
-    id: "portfolio_website",
-    title: "Portfolio Website",
-    blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-    image: "https://picsum.photos/300?random=1",
-    href: "/portfolio/portfolio_website",
-  },
-];
+## CURRENT CODE SHOULD LOOK LIKE:
 
+export const projects = [
+{
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
+},
+];
 
 ================================================================================
 STEP 5: ADD SECOND PROJECT
@@ -209,56 +211,54 @@ INSTRUCTOR SAYS:
 "Let's add a second project. Notice the pattern - same structure, different
 data."
 
-STUDENTS ADD AFTER FIRST PROJECT:
-----------------------------------
+## STUDENTS ADD AFTER FIRST PROJECT:
+
 {
-  id: "portfolio_website",
-  title: "Portfolio Website",
-  blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-  image: "https://picsum.photos/300?random=1",
-  href: "/portfolio/portfolio_website",
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
 },
 {
-  id: "ecommerce_app",
-  title: "E-Commerce App",
-  blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
-  image: "https://picsum.photos/300?random=2",
-  href: "/portfolio/ecommerce_app",
+id: "ecommerce_app",
+title: "E-Commerce App",
+blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
+image: "https://picsum.photos/300?random=2",
+href: "/portfolio/ecommerce_app",
 },
 
+## EXPLAIN:
 
-EXPLAIN:
---------
 - Different id, title, blurb
 - image uses random=2 (different placeholder image)
 - href uses the id (keeps URLs consistent)
 - Comma between objects
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 1. Point out the consistent structure
 2. Show how changing random=2 to random=3 would give different image
 3. Explain the id/href relationship
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
-export const projects = [
-  {
-    id: "portfolio_website",
-    title: "Portfolio Website",
-    blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-    image: "https://picsum.photos/300?random=1",
-    href: "/portfolio/portfolio_website",
-  },
-  {
-    id: "ecommerce_app",
-    title: "E-Commerce App",
-    blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
-    image: "https://picsum.photos/300?random=2",
-    href: "/portfolio/ecommerce_app",
-  },
-];
+## CURRENT CODE SHOULD LOOK LIKE:
 
+export const projects = [
+{
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
+},
+{
+id: "ecommerce_app",
+title: "E-Commerce App",
+blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
+image: "https://picsum.photos/300?random=2",
+href: "/portfolio/ecommerce_app",
+},
+];
 
 ================================================================================
 STEP 6: ADD THIRD PROJECT
@@ -268,57 +268,55 @@ INSTRUCTOR SAYS:
 "Let's add one more project. Three is a good number for learning - enough to
 see the pattern, small enough to manage."
 
-STUDENTS ADD AFTER SECOND PROJECT:
------------------------------------
+## STUDENTS ADD AFTER SECOND PROJECT:
+
 {
-  id: "ecommerce_app",
-  title: "E-Commerce App",
-  blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
-  image: "https://picsum.photos/300?random=2",
-  href: "/portfolio/ecommerce_app",
+id: "ecommerce_app",
+title: "E-Commerce App",
+blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
+image: "https://picsum.photos/300?random=2",
+href: "/portfolio/ecommerce_app",
 },
 {
-  id: "mobile_health_app",
-  title: "Mobile Health App",
-  blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
-  image: "https://picsum.photos/300?random=3",
-  href: "/portfolio/mobile_health_app",
+id: "mobile_health_app",
+title: "Mobile Health App",
+blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
+image: "https://picsum.photos/300?random=3",
+href: "/portfolio/mobile_health_app",
 },
 
+## EXPLAIN:
 
-EXPLAIN:
---------
 - Third project follows same pattern
 - random=3 for third unique image
 - Blurb is descriptive but concise
 - id follows naming convention (lowercase, underscores)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
-export const projects = [
-  {
-    id: "portfolio_website",
-    title: "Portfolio Website",
-    blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-    image: "https://picsum.photos/300?random=1",
-    href: "/portfolio/portfolio_website",
-  },
-  {
-    id: "ecommerce_app",
-    title: "E-Commerce App",
-    blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
-    image: "https://picsum.photos/300?random=2",
-    href: "/portfolio/ecommerce_app",
-  },
-  {
-    id: "mobile_health_app",
-    title: "Mobile Health App",
-    blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
-    image: "https://picsum.photos/300?random=3",
-    href: "/portfolio/mobile_health_app",
-  },
-];
+## CURRENT CODE SHOULD LOOK LIKE:
 
+export const projects = [
+{
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
+},
+{
+id: "ecommerce_app",
+title: "E-Commerce App",
+blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
+image: "https://picsum.photos/300?random=2",
+href: "/portfolio/ecommerce_app",
+},
+{
+id: "mobile_health_app",
+title: "Mobile Health App",
+blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
+image: "https://picsum.photos/300?random=3",
+href: "/portfolio/mobile_health_app",
+},
+];
 
 ================================================================================
 STEP 7: ADD OPTIONAL FOURTH PROJECT
@@ -328,63 +326,61 @@ INSTRUCTOR SAYS:
 "Let's add one more project to have four total. This gives us a nice grid
 layout on the page."
 
-STUDENTS ADD AFTER THIRD PROJECT:
-----------------------------------
+## STUDENTS ADD AFTER THIRD PROJECT:
+
 {
-  id: "mobile_health_app",
-  title: "Mobile Health App",
-  blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
-  image: "https://picsum.photos/300?random=3",
-  href: "/portfolio/mobile_health_app",
+id: "mobile_health_app",
+title: "Mobile Health App",
+blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
+image: "https://picsum.photos/300?random=3",
+href: "/portfolio/mobile_health_app",
 },
 {
-  id: "task_management_tool",
-  title: "Task Management Tool",
-  blurb: "Collaborative productivity app for teams to organize projects and track progress.",
-  image: "https://picsum.photos/300?random=4",
-  href: "/portfolio/task_management_tool",
+id: "task_management_tool",
+title: "Task Management Tool",
+blurb: "Collaborative productivity app for teams to organize projects and track progress.",
+image: "https://picsum.photos/300?random=4",
+href: "/portfolio/task_management_tool",
 },
 
+## EXPLAIN:
 
-EXPLAIN:
---------
 - Four projects creates a 2x2 grid on larger screens
 - Still follows the pattern consistently
 - Each id is unique and descriptive
 
-CURRENT CODE SHOULD LOOK LIKE (FINAL):
----------------------------------------
-export const projects = [
-  {
-    id: "portfolio_website",
-    title: "Portfolio Website",
-    blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
-    image: "https://picsum.photos/300?random=1",
-    href: "/portfolio/portfolio_website",
-  },
-  {
-    id: "ecommerce_app",
-    title: "E-Commerce App",
-    blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
-    image: "https://picsum.photos/300?random=2",
-    href: "/portfolio/ecommerce_app",
-  },
-  {
-    id: "mobile_health_app",
-    title: "Mobile Health App",
-    blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
-    image: "https://picsum.photos/300?random=3",
-    href: "/portfolio/mobile_health_app",
-  },
-  {
-    id: "task_management_tool",
-    title: "Task Management Tool",
-    blurb: "Collaborative productivity app for teams to organize projects and track progress.",
-    image: "https://picsum.photos/300?random=4",
-    href: "/portfolio/task_management_tool",
-  },
-];
+## CURRENT CODE SHOULD LOOK LIKE (FINAL):
 
+export const projects = [
+{
+id: "portfolio_website",
+title: "Portfolio Website",
+blurb: "A modern portfolio showcasing design and development skills with responsive layout.",
+image: "https://picsum.photos/300?random=1",
+href: "/portfolio/portfolio_website",
+},
+{
+id: "ecommerce_app",
+title: "E-Commerce App",
+blurb: "Online shopping platform with product catalog, cart, and secure checkout process.",
+image: "https://picsum.photos/300?random=2",
+href: "/portfolio/ecommerce_app",
+},
+{
+id: "mobile_health_app",
+title: "Mobile Health App",
+blurb: "Wellness tracking application helping users monitor fitness goals and health metrics.",
+image: "https://picsum.photos/300?random=3",
+href: "/portfolio/mobile_health_app",
+},
+{
+id: "task_management_tool",
+title: "Task Management Tool",
+blurb: "Collaborative productivity app for teams to organize projects and track progress.",
+image: "https://picsum.photos/300?random=4",
+href: "/portfolio/task_management_tool",
+},
+];
 
 ================================================================================
 UNDERSTANDING DATA RELATIONSHIPS
@@ -393,23 +389,25 @@ UNDERSTANDING DATA RELATIONSHIPS
 INSTRUCTOR EXPLAINS:
 "Let's understand how this data will be used across our portfolio site."
 
-DATA FLOW:
-----------
+## DATA FLOW:
+
 projects.js → ProjectCard component → Projects section → Home page
-           ↘ Project detail page (Class 8)
+↘ Project detail page (Class 8)
 
 CURRENT USAGE (Class 4):
+
 - ProjectCard displays: image, title, blurb
 - Projects section maps over array
 - Shows 3-4 cards in a grid
 
 FUTURE USAGE (Class 8):
+
 - Project detail page uses id from URL
 - Shows full project information
 - We'll add more fields then (overview, highlights, role, tools, etc.)
 
-WHY START SIMPLE:
------------------
+## WHY START SIMPLE:
+
 - Learn card layout first
 - Master .map() with simple data
 - Class 8: Add complexity when ready
@@ -450,32 +448,33 @@ COMMON STUDENT QUESTIONS
 
 Q: "Can I use my own project titles now?"
 A: Yes! Replace "Portfolio Website", etc. with your actual project names.
-   Keep blurbs brief though.
+Keep blurbs brief though.
 
 Q: "What if I don't have 4 projects yet?"
 A: Start with 3. You can add more later. The component works with any number.
 
 Q: "Can I use real images instead of Picsum?"
 A: Yes, but you'll need to host them or put them in your assets folder. For
-   now, Picsum is easier. We'll replace them for homework.
+now, Picsum is easier. We'll replace them for homework.
 
 Q: "Why does href start with /portfolio/?"
 A: That's the URL pattern for project detail pages. We'll create those in
-   Class 8 using dynamic routing.
+Class 8 using dynamic routing.
 
 Q: "What makes a good blurb?"
 A: 1-2 sentences, under 100 characters. Describes what the project is or does.
-   Think of it like a tweet - brief and informative.
+Think of it like a tweet - brief and informative.
 
 Q: "Do all projects need to have the same number of properties?"
 A: For now, yes - all 5 properties. In Class 8 we'll add more, but they're
-   optional. The 5 we have now are required for cards.
+optional. The 5 we have now are required for cards.
 
 ================================================================================
 WHAT'S NEXT
 ================================================================================
 
 Next, we'll build:
+
 1. ProjectCard.jsx - Component that displays one project
 2. Projects.jsx - Section that maps over projects and displays cards
 3. Update Home.jsx - Add Projects section to homepage
@@ -483,6 +482,7 @@ Next, we'll build:
 You'll see how this data comes to life as visual cards!
 
 In Class 8, we'll:
+
 - Add detailed project fields (overview, highlights, role, tools, etc.)
 - Create Project detail pages
 - Use dynamic routing with these IDs
@@ -518,7 +518,7 @@ HOMEWORK ASSIGNMENT
 
 **TIP:** Choose your best 3-4 projects. Quality over quantity!
 
-**OPTIONAL:** 
+**OPTIONAL:**
 If you have live project links, save them too. We'll add those in Class 8.
 
 ================================================================================
@@ -527,6 +527,7 @@ TROUBLESHOOTING
 
 ERROR: "Unexpected token" or "Unexpected string"
 FIX:
+
 - Check for missing commas between objects
 - Check that all strings are in quotes
 - Verify curly braces {} are balanced
@@ -534,18 +535,21 @@ FIX:
 
 SYNTAX HIGHLIGHTING LOOKS WRONG:
 FIX:
+
 - Ensure file extension is .js (not .txt)
 - VS Code should show JavaScript icon
 - Check that quotes match (all single or all double)
 
 CAN'T REMEMBER THE STRUCTURE:
 FIX:
+
 - Look at the first project object
 - Copy and paste, then change values
 - Each object needs all 5 properties
 
 IMAGES NOT LOADING LATER:
 FIX:
+
 - Picsum URLs need internet connection
 - Check random number is different for each project
 - If using your own images, verify file paths
@@ -572,16 +576,19 @@ CUSTOMIZATION IDEAS FOR STUDENTS
 ================================================================================
 
 **Now (during class):**
+
 - Change project titles to your real projects
 - Write your own blurbs (keep them brief!)
 - Choose different placeholder images (change random numbers)
 
 **For Homework:**
+
 - Replace placeholder content with real project info
 - Add your actual project screenshots
 - Write compelling blurbs that showcase the projects
 
 **Later (Class 8):**
+
 - Add detailed fields (overview, highlights, role, tools, timeline, client)
 - Add links to live projects or GitHub repos
 - Add tags/categories for filtering
@@ -595,10 +602,10 @@ PREVIEW: HOW THIS DATA WILL BE USED
 INSTRUCTOR SHOWS:
 "Let me show you how this data will look when rendered..."
 
-PREVIEW CODE (DON'T TYPE YET):
-------------------------------
+## PREVIEW CODE (DON'T TYPE YET):
+
 {projects.map((project) => (
-  <ProjectCard
+<ProjectCard
     key={project.id}
     image={project.image}
     title={project.title}
@@ -608,6 +615,7 @@ PREVIEW CODE (DON'T TYPE YET):
 ))}
 
 THIS MEANS:
+
 - Loop through each project in the array
 - Create a ProjectCard for each one
 - Pass the data as props

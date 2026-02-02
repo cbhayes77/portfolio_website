@@ -68,22 +68,24 @@ This progression helps students understand the relationship between data, UI, an
 **File:** `src/data/projects.js`
 
 **What Changes:**
+
 - Expand first 4 projects with detailed information
 - Keep remaining projects (p5-p10) as simple placeholders
 - Add new fields: `overview`, `highlights`, `role`, `tools`, `timeline`, `client`
 
 **New Fields:**
 
-| Field | Type | Description | Example |
-|-------|------|-------------|---------|
-| `overview` | string | Detailed project description | "This project addressed the challenge of..." |
-| `highlights` | array | Key achievements/results | ["Increased engagement by 45%", ...] |
-| `role` | string | Student's role in project | "UX Designer & Frontend Developer" |
-| `tools` | array | Technologies/tools used | ["Figma", "React", "TypeScript"] |
-| `timeline` | string | Project duration | "3 months" |
-| `client` | string | Client or organization | "Tech Startup" |
+| Field        | Type   | Description                  | Example                                      |
+| ------------ | ------ | ---------------------------- | -------------------------------------------- |
+| `overview`   | string | Detailed project description | "This project addressed the challenge of..." |
+| `highlights` | array  | Key achievements/results     | ["Increased engagement by 45%", ...]         |
+| `role`       | string | Student's role in project    | "UX Designer & Frontend Developer"           |
+| `tools`      | array  | Technologies/tools used      | ["Figma", "React", "TypeScript"]             |
+| `timeline`   | string | Project duration             | "3 months"                                   |
+| `client`     | string | Client or organization       | "Tech Startup"                               |
 
 **Key Teaching Points:**
+
 - Not all projects need all fields (some are optional)
 - Arrays allow for lists of items (highlights, tools)
 - Strings work for most text content
@@ -98,6 +100,7 @@ This progression helps students understand the relationship between data, UI, an
 **Purpose:** Display full details for a single project based on URL parameter.
 
 **Key Features:**
+
 1. **Dynamic data loading** using `useParams()`
 2. **404 handling** for invalid project IDs
 3. **Breadcrumb navigation** showing hierarchy
@@ -107,12 +110,13 @@ This progression helps students understand the relationship between data, UI, an
 
 **React Hooks Used:**
 
-| Hook | Purpose | Example |
-|------|---------|---------|
-| `useParams()` | Get URL parameter | `const { slug } = useParams()` |
-| `useNavigate()` | Programmatic navigation | `navigate(-1)` (go back) |
+| Hook            | Purpose                 | Example                        |
+| --------------- | ----------------------- | ------------------------------ |
+| `useParams()`   | Get URL parameter       | `const { slug } = useParams()` |
+| `useNavigate()` | Programmatic navigation | `navigate(-1)` (go back)       |
 
 **Layout Structure:**
+
 ```
 ┌─────────────────────────────────────┐
 │ Breadcrumb: Home > Portfolio > P1  │
@@ -133,6 +137,7 @@ This progression helps students understand the relationship between data, UI, an
 ```
 
 **Key Concepts:**
+
 - **Array.find()**: Locate specific project by ID
 - **Conditional rendering**: Show/hide sections based on data
 - **Early return**: Handle 404 before main render
@@ -145,16 +150,19 @@ This progression helps students understand the relationship between data, UI, an
 **File:** `src/main.jsx`
 
 **What's Added:**
+
 ```jsx
 { path: "portfolio/:slug", element: <Project /> }
 ```
 
 **Route Parameter:**
+
 - `:slug` is a **route parameter** (dynamic part of URL)
 - Matches any value: `/portfolio/p1`, `/portfolio/p2`, etc.
 - Accessible via `useParams()` in the component
 
 **URL Patterns:**
+
 - `/portfolio/p1` → Shows project with `id: "p1"`
 - `/portfolio/p2` → Shows project with `id: "p2"`
 - `/portfolio/invalid` → Shows 404 error (project not found)
@@ -166,17 +174,20 @@ This progression helps students understand the relationship between data, UI, an
 ### Part 1: Expanding Projects Data
 
 **Introduction (3-5 min):**
+
 - Discuss the difference between preview data (cards) and detail data (full page)
 - Show real-world examples (blog posts, e-commerce products)
 - Explain why we're only updating 4 projects (time-saving, focus on learning)
 
 **Build Process (20 min):**
+
 - Update first project with all fields
 - Update remaining 3 projects (students can copy/modify)
 - Discuss each field's purpose and content guidelines
 - Emphasize that this is placeholder content (they'll customize later)
 
 **Key Teaching Points:**
+
 - **Data structure design**: Planning fields before building UI
 - **Array vs. string**: When to use each data type
 - **Optional fields**: How some projects might not have all info
@@ -187,6 +198,7 @@ This progression helps students understand the relationship between data, UI, an
 ### Part 2: Building the Project Detail Page
 
 **Introduction (3-5 min):**
+
 - Explain dynamic routing concept
 - Show how URL changes but component stays the same
 - Preview what students will build
@@ -194,36 +206,42 @@ This progression helps students understand the relationship between data, UI, an
 **Build Process (25 min):**
 
 **STAGE 1: Imports and hooks (5 min)**
+
 - Import React Router hooks
 - Import UI components (Section, Container, Button, Breadcrumb, SEO)
 - Import data (projects array)
 - Import icons
 
 **STAGE 2: Get URL parameter and find project (5 min)**
+
 - Use `useParams()` to get slug from URL
 - Use `useNavigate()` for navigation
 - Use `Array.find()` to locate project
 - Explain the relationship between URL and data
 
 **STAGE 3: 404 handling (5 min)**
+
 - Check if project exists
 - Early return with error message
 - "Go Back" button using navigate(-1)
 - Discuss user experience for errors
 
 **STAGE 4: Main content structure (5 min)**
+
 - SEO component with dynamic data
 - Breadcrumb with project title
 - Go Back button
 - Header with title and blurb
 
 **STAGE 5: Project details grid (5 min)**
+
 - Two-column layout (image + details)
 - Overview section
 - Conditional rendering for highlights
 - Conditional rendering for project details
 
 **Testing:**
+
 - Navigate to `/portfolio/p1`, `/portfolio/p2`, etc.
 - Test invalid URLs (`/portfolio/invalid`)
 - Test "Go Back" button
@@ -234,16 +252,19 @@ This progression helps students understand the relationship between data, UI, an
 ### Part 3: Adding the Dynamic Route
 
 **Introduction (2 min):**
+
 - Explain route parameters (`:slug`)
 - Show how it matches any value
 - Connect to useParams() usage in component
 
 **Build Process (5 min):**
+
 - Import Project component
 - Add route with `:slug` parameter
 - Explain placement (after portfolio list route)
 
 **Testing:**
+
 - Click project cards from home or portfolio page
 - Verify detail pages load correctly
 - Test direct URL entry
@@ -254,16 +275,19 @@ This progression helps students understand the relationship between data, UI, an
 ## Connection to Previous Classes
 
 ### From Class 4: Projects Data & Cards
+
 - Students built the projects.js file (simple version)
 - Now they're expanding it with detailed fields
 - ProjectCard links already point to `/portfolio/{id}`
 
 ### From Class 7: Breadcrumb Component
+
 - Students built the Breadcrumb component
 - Now they see it in action on detail pages
 - Reinforces the value of building reusable components
 
 ### From Class 2: Routing Basics
+
 - Students set up React Router
 - Now they're using advanced features (params, navigate)
 - Building on foundational knowledge
@@ -277,16 +301,19 @@ This progression helps students understand the relationship between data, UI, an
 A **route parameter** is a dynamic part of a URL that can match different values.
 
 **Example:**
+
 ```jsx
 { path: "portfolio/:slug", element: <Project /> }
 ```
 
 **Matches:**
+
 - `/portfolio/p1` (slug = "p1")
 - `/portfolio/p2` (slug = "p2")
 - `/portfolio/my-awesome-project` (slug = "my-awesome-project")
 
 **Doesn't match:**
+
 - `/portfolio` (no slug)
 - `/portfolio/p1/edit` (extra segment)
 
@@ -297,6 +324,7 @@ A **route parameter** is a dynamic part of a URL that can match different values
 `useParams()` is a React Router hook that returns an object containing all route parameters.
 
 **Example:**
+
 ```jsx
 // URL: /portfolio/p1
 const { slug } = useParams();
@@ -304,6 +332,7 @@ console.log(slug); // "p1"
 ```
 
 **Use cases:**
+
 - Loading specific data based on URL
 - Dynamic page titles
 - Breadcrumb generation
@@ -316,6 +345,7 @@ console.log(slug); // "p1"
 `useNavigate()` is a React Router hook that allows programmatic navigation.
 
 **Example:**
+
 ```jsx
 const navigate = useNavigate();
 
@@ -323,13 +353,14 @@ const navigate = useNavigate();
 navigate(-1);
 
 // Go to specific route
-navigate('/portfolio');
+navigate("/portfolio");
 
 // Go forward
 navigate(1);
 ```
 
 **Use cases:**
+
 - "Go Back" buttons
 - Redirects after form submission
 - Navigation after login
@@ -342,6 +373,7 @@ navigate(1);
 `Array.find()` is a JavaScript method that returns the first element matching a condition.
 
 **Example:**
+
 ```jsx
 const projects = [
   { id: "p1", title: "Project 1" },
@@ -354,6 +386,7 @@ console.log(project); // { id: "p2", title: "Project 2" }
 ```
 
 **Use cases:**
+
 - Finding a specific item by ID
 - Locating an object with specific properties
 - Checking if an item exists
@@ -365,6 +398,7 @@ console.log(project); // { id: "p2", title: "Project 2" }
 ### "Why use :slug instead of :id?"
 
 **Answer:**
+
 - "slug" is a common term in web development for URL-friendly identifiers
 - Could also use `:id` or `:projectId` - the name doesn't matter functionally
 - Slug often implies a human-readable URL (like "my-awesome-project" instead of "12345")
@@ -375,6 +409,7 @@ console.log(project); // { id: "p2", title: "Project 2" }
 ### "What happens if I visit /portfolio/999?"
 
 **Answer:**
+
 - `projects.find()` returns `undefined` (no project with id "999")
 - The `if (!project)` check catches this
 - We render a 404 error message with a "Go Back" button
@@ -386,6 +421,7 @@ console.log(project); // { id: "p2", title: "Project 2" }
 
 **Answer:**
 Absolutely! Example:
+
 ```jsx
 { path: "portfolio/:category/:slug", element: <Project /> }
 
@@ -401,6 +437,7 @@ We're keeping it simple with one parameter for now, but this is a common pattern
 ### "Why only update 4 projects?"
 
 **Answer:**
+
 - **Time management**: Typing 10 detailed project descriptions takes too long for class
 - **Learning focus**: The concept is the same regardless of quantity
 - **Placeholder strategy**: Keep others simple so structure exists, students can fill in later
@@ -413,6 +450,7 @@ We're keeping it simple with one parameter for now, but this is a common pattern
 ### Optional vs. Required Fields
 
 **Required fields** (every project must have):
+
 - `id` - Unique identifier
 - `title` - Project name
 - `blurb` - Short description
@@ -420,6 +458,7 @@ We're keeping it simple with one parameter for now, but this is a common pattern
 - `href` - Link to detail page
 
 **Optional fields** (nice to have, but not required):
+
 - `overview` - Detailed description
 - `highlights` - Key achievements
 - `role` - Your involvement
@@ -428,6 +467,7 @@ We're keeping it simple with one parameter for now, but this is a common pattern
 - `client` - Who it was for
 
 **Why make fields optional?**
+
 - Some projects might be personal (no client)
 - Some might be ongoing (no timeline)
 - Some might be older (you don't remember all tools)
@@ -481,6 +521,7 @@ This order ensures students have data ready before building the UI, and the UI r
 ## Summary
 
 Class 8 is a transformative lesson that teaches:
+
 - **Dynamic routing** and how URLs drive content
 - **React Router hooks** for advanced navigation
 - **Error handling** for better user experience
@@ -496,6 +537,7 @@ By the end, students will have a fully functional project portfolio where each p
 ## Next Class Preview
 
 In **Class 9**, students will build the About page with:
+
 - Complex data structures (bio, values, experience, education, interests)
 - Timeline layouts for experience
 - Multi-section page composition

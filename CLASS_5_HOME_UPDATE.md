@@ -2,8 +2,8 @@
 CLASS 5: HOME.JSX UPDATE - ADD TESTIMONIALS AND FINAL CTA
 ================================================================================
 
-OVERVIEW FOR INSTRUCTOR
------------------------
+## OVERVIEW FOR INSTRUCTOR
+
 This guide teaches students how to add the final two sections to their Home
 page: Testimonials and FinalCTA. This completes the main homepage, giving
 students a full, professional portfolio landing page!
@@ -11,17 +11,20 @@ students a full, professional portfolio landing page!
 Students will update the existing file: src/pages/Home.jsx
 
 NOTE: Students must have already completed:
+
 - Home.jsx with Hero, TechStack, and Projects sections (Classes 1-4)
 - Testimonials.jsx section component (Class 5)
 - FinalCTA.jsx section component (Class 5)
 
 CONCEPTS TAUGHT:
+
 - Adding multiple sections to a page
 - Complete page composition
 - Section ordering for user flow
 - Building a professional portfolio homepage
 
 WHAT WE'RE COMPLETING IN CLASS 5:
+
 - Add Testimonials section (showing 3 testimonials)
 - Add FinalCTA section at the end
 - Complete the main homepage structure
@@ -37,20 +40,20 @@ INSTRUCTOR SAYS:
 First, we need to import it at the top of the file with our other section
 imports."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 Find the import statements and add this after the Projects import:
 
 import Testimonials from "../components/sections/Testimonials.jsx";
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - Import Testimonials section component from the sections folder
 - Path: ../components/sections/ (up one level from pages, then into components/sections)
 - We're building up our collection of sections to compose the page!
 
-CURRENT IMPORTS SHOULD LOOK LIKE:
-----------------------------------
+## CURRENT IMPORTS SHOULD LOOK LIKE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
@@ -69,20 +72,20 @@ INSTRUCTOR SAYS:
 encourage visitors to get in touch. This will be the last section on our
 homepage."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the Testimonials import:
 
 import FinalCTA from "../components/sections/FinalCTA.jsx";
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - Import FinalCTA section component
 - This will be the final section on the homepage
 - Strategic placement: after showing all our work, we ask visitors to contact us
 
-CURRENT IMPORTS SHOULD LOOK LIKE:
-----------------------------------
+## CURRENT IMPORTS SHOULD LOOK LIKE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
@@ -102,15 +105,15 @@ INSTRUCTOR SAYS:
 show just three testimonials - enough to build trust without overwhelming
 visitors. The full testimonials can be shown on a dedicated page later."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 Find the line with <Projects limit={6} /> and add right after it:
 
       <Projects limit={6} />
       <Testimonials limit={3} />
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <Testimonials limit={3} /> - Display only the first 3 testimonials
 - Shows social proof after displaying projects
 - Limited to 3 to keep homepage focused and scrollable
@@ -122,8 +125,8 @@ ASK STUDENTS:
 to build trust, but not so many that the page gets too long. Later we can
 create a dedicated testimonials page showing all of them.)
 
-CURRENT PAGE STRUCTURE SHOULD LOOK LIKE:
------------------------------------------
+## CURRENT PAGE STRUCTURE SHOULD LOOK LIKE:
+
     <div>
       <SEO ... />
       <Section>
@@ -144,15 +147,15 @@ INSTRUCTOR SAYS:
 This is strategically placed AFTER we've shown our skills, projects, and
 testimonials - now we invite visitors to take action and contact us!"
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the Testimonials line:
 
       <Testimonials limit={3} />
       <FinalCTA />
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <FinalCTA /> - No props needed (static component)
 - Placed at the end of the homepage (last section before footer)
 - Perfect user flow:
@@ -162,9 +165,10 @@ EXPLAIN:
   4. Testimonials - "Here's what people say about me"
   5. FinalCTA - "Ready to work together? Contact me!"
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 "Think about the user journey:
+
 - They land on your homepage
 - Learn about you and your skills
 - See your impressive projects
@@ -172,8 +176,8 @@ DEMONSTRATE:
 - Feel convinced and ready to reach out
 - Perfect timing for the CTA!"
 
-CURRENT PAGE STRUCTURE SHOULD LOOK LIKE:
------------------------------------------
+## CURRENT PAGE STRUCTURE SHOULD LOOK LIKE:
+
     <div>
       <SEO ... />
       <Section>
@@ -195,14 +199,14 @@ INSTRUCTOR SAYS:
 you now have a full, professional portfolio homepage with all the essential
 sections. Let's test it!"
 
-MAKE SURE DEV SERVER IS RUNNING:
----------------------------------
+## MAKE SURE DEV SERVER IS RUNNING:
+
 If not already running:
 
 npm run dev
 
-WHAT STUDENTS SHOULD SEE:
---------------------------
+## WHAT STUDENTS SHOULD SEE:
+
 Navigate to http://localhost:5173/ and verify all sections appear in order:
 
 1. **Hero Section**
@@ -230,8 +234,8 @@ Navigate to http://localhost:5173/ and verify all sections appear in order:
    - "Contact me" button
    - Subtle gradient background
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 1. Scroll through the entire page - smooth flow between sections
 2. Resize browser window - all sections should be responsive
 3. Hover over cards and buttons - hover effects should work
@@ -273,30 +277,32 @@ COMMON STUDENT QUESTIONS
 
 Q: "Can I change the order of the sections?"
 A: You can, but the current order follows best practices:
-   - Hero (introduction) → Skills → Work → Testimonials → CTA
-   This creates a compelling narrative. Changing the order might disrupt
-   the user journey.
+
+- Hero (introduction) → Skills → Work → Testimonials → CTA
+  This creates a compelling narrative. Changing the order might disrupt
+  the user journey.
 
 Q: "Can I show more or fewer testimonials?"
 A: Absolutely! Change limit={3} to any number. limit={6} would show 6
-   testimonials in a 2x3 grid on desktop.
+testimonials in a 2x3 grid on desktop.
 
 Q: "What if I want to show ALL testimonials on the homepage?"
 A: Remove the limit prop entirely: <Testimonials />
-   This will display all 8 testimonials from the data file.
+This will display all 8 testimonials from the data file.
 
 Q: "Can I add more sections?"
 A: Yes! You could add sections for:
-   - Services you offer
-   - Your blog posts
-   - Awards or certifications
-   - Team members (if applicable)
-   Just import the component and add it to the JSX!
+
+- Services you offer
+- Your blog posts
+- Awards or certifications
+- Team members (if applicable)
+  Just import the component and add it to the JSX!
 
 Q: "The Contact link doesn't work. Is that okay?"
 A: Yes, that's expected! We haven't built the Contact page yet. The link
-   won't cause errors - it just won't go anywhere until we create that page
-   in a future class.
+won't cause errors - it just won't go anywhere until we create that page
+in a future class.
 
 ================================================================================
 WHAT'S NEXT
@@ -305,6 +311,7 @@ WHAT'S NEXT
 Congratulations! Your homepage is complete. In future classes, we'll:
 
 **Next Immediate Steps:**
+
 - Build the About page (Class 6)
 - Build the Portfolio page showing ALL projects (Class 7)
 - Build individual Project detail pages (Class 8)
@@ -312,6 +319,7 @@ Congratulations! Your homepage is complete. In future classes, we'll:
 - Build the Contact page (Class 10)
 
 **Additional Enhancements:**
+
 - Add animations and transitions
 - Add a mobile menu for navigation
 - Add form functionality to Contact page
@@ -328,18 +336,21 @@ TROUBLESHOOTING
 
 ERROR: "Testimonials is not defined"
 FIX:
+
 - Add import: import Testimonials from "../components/sections/Testimonials.jsx";
 - Check spelling and capitalization
 - Verify path starts with ../ (up one level from pages)
 
 ERROR: "FinalCTA is not defined"
 FIX:
+
 - Add import: import FinalCTA from "../components/sections/FinalCTA.jsx";
 - Check the file exists in src/components/sections/
 - Verify exact capitalization: FinalCTA (not FinalCta or Finalcta)
 
 SYMPTOM: Sections don't appear on the page
 FIX:
+
 - Check that components are added inside the main <div> in return statement
 - Verify all opening and closing tags match
 - Check browser console for errors
@@ -347,6 +358,7 @@ FIX:
 
 SYMPTOM: Page looks broken or sections overlap
 FIX:
+
 - Check that each section component has proper opening/closing tags
 - Verify no missing JSX closing tags (/>)
 - Inspect element in browser to see structure
@@ -354,6 +366,7 @@ FIX:
 
 SYMPTOM: "View More" or "Contact me" buttons don't work
 FIX:
+
 - This is expected! We haven't built those pages yet
 - The buttons are linking to /portfolio and /contact which don't exist yet
 - No errors will occur - they just won't navigate anywhere
@@ -368,11 +381,11 @@ Before moving on, verify:
 □ No errors in terminal or browser console
 □ Homepage loads at http://localhost:5173/
 □ All 5 sections display in correct order:
-  □ Hero section
-  □ TechStack section
-  □ Projects section (6 projects)
-  □ Testimonials section (3 testimonials)
-  □ FinalCTA section
+□ Hero section
+□ TechStack section
+□ Projects section (6 projects)
+□ Testimonials section (3 testimonials)
+□ FinalCTA section
 □ Page is scrollable and sections flow smoothly
 □ All sections are responsive (test by resizing browser)
 □ Hover effects work on cards and buttons
@@ -499,28 +512,33 @@ INSTRUCTOR SAYS:
 accomplished over the past 5 classes:"
 
 **CLASS 1:** Foundation
+
 - Basic UI components (Button, Section, Container)
 - Homepage with hero section
 - React Router setup
 
 **CLASS 2:** Navigation & Layout
+
 - Navbar with links
 - Footer
 - SEO component
 - Complete app shell
 
 **CLASS 3:** First Dynamic Section
+
 - Tech stack data file
 - Tech stack component
 - Data-driven display
 
 **CLASS 4:** Projects Showcase
+
 - Projects data file
 - ProjectCard component
 - Projects section
 - Complex props and limiting
 
 **CLASS 5:** Social Proof & CTA
+
 - Testimonials data file
 - TestimonialCard component
 - Testimonials section
@@ -528,6 +546,7 @@ accomplished over the past 5 classes:"
 - **COMPLETE HOMEPAGE!**
 
 **What You've Learned:**
+
 - React component patterns
 - Data-driven development
 - Responsive design
@@ -541,6 +560,7 @@ accomplished over the past 5 classes:"
 
 **What You Have:**
 A complete, professional, responsive, accessible portfolio homepage that:
+
 - Introduces you
 - Showcases your skills
 - Displays your projects

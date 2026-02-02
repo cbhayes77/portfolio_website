@@ -1,7 +1,7 @@
 # Class 8: Adding the Dynamic Route
 
-**File:** `src/main.jsx`  
-**Type:** Configuration Update  
+**File:** `src/main.jsx`
+**Type:** Configuration Update
 **Purpose:** Add a dynamic route parameter to handle individual project pages
 
 ---
@@ -17,6 +17,7 @@ In Class 7, you added a **static route** for the Portfolio page:
 This route matches **exactly one URL**: `/portfolio`
 
 Now we need a route that matches **many URLs**:
+
 - `/portfolio/p1`
 - `/portfolio/p2`
 - `/portfolio/p3`
@@ -59,16 +60,17 @@ A route parameter starts with a colon (`:`):
 
 The parameter matches **any value** in that position:
 
-| URL | Matches? | Parameter Value |
-|-----|----------|-----------------|
-| `/portfolio/p1` | ✅ Yes | `slug = "p1"` |
-| `/portfolio/p2` | ✅ Yes | `slug = "p2"` |
-| `/portfolio/my-project` | ✅ Yes | `slug = "my-project"` |
-| `/portfolio/123` | ✅ Yes | `slug = "123"` |
-| `/portfolio` | ❌ No | (no parameter) |
-| `/portfolio/p1/edit` | ❌ No | (extra segment) |
+| URL                     | Matches? | Parameter Value       |
+| ----------------------- | -------- | --------------------- |
+| `/portfolio/p1`         | ✅ Yes   | `slug = "p1"`         |
+| `/portfolio/p2`         | ✅ Yes   | `slug = "p2"`         |
+| `/portfolio/my-project` | ✅ Yes   | `slug = "my-project"` |
+| `/portfolio/123`        | ✅ Yes   | `slug = "123"`        |
+| `/portfolio`            | ❌ No    | (no parameter)        |
+| `/portfolio/p1/edit`    | ❌ No    | (extra segment)       |
 
 **Key points:**
+
 - The parameter name can be anything (`:slug`, `:id`, `:projectId`, etc.)
 - It matches **exactly one segment** between slashes
 - The component accesses it with `useParams()`
@@ -87,16 +89,18 @@ You can name the parameter anything:
 ```
 
 **Why we're using `:slug`:**
+
 - "Slug" is a common web development term for URL-friendly identifiers
 - Originally from newspaper publishing (short name for a story)
 - Implies the value is meant to be human-readable
 
 **In our component:**
+
 ```jsx
 // If route is "portfolio/:slug"
 const { slug } = useParams();
 
-// If route is "portfolio/:id"  
+// If route is "portfolio/:id"
 const { id } = useParams();
 
 // If route is "portfolio/:projectId"
@@ -152,7 +156,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
@@ -175,6 +179,7 @@ import Contact from "./pages/Contact.jsx";
 ```
 
 **What's happening:**
+
 - Added `import Project from "./pages/Project.jsx";`
 - Placed after `Portfolio` (they're related)
 - Now we can use `<Project />` in our route configuration
@@ -220,6 +225,7 @@ const router = createBrowserRouter([
    - More specific → less specific
 
 **Why order matters:**
+
 ```jsx
 // ✅ CORRECT: Static before dynamic
 { path: "portfolio", element: <Portfolio /> },        // Matches /portfolio
@@ -277,11 +283,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
 **Changes made:**
+
 1. ✅ Imported `Project` component
 2. ✅ Added dynamic route `portfolio/:slug`
 3. ✅ Placed it correctly (after static portfolio route)
@@ -351,12 +358,12 @@ React Router checks routes **from top to bottom** and uses the **first match**:
 
 ```jsx
 children: [
-  { index: true, element: <Home /> },              // 1. Checked first
-  { path: "portfolio", element: <Portfolio /> },   // 2. Checked second
+  { index: true, element: <Home /> }, // 1. Checked first
+  { path: "portfolio", element: <Portfolio /> }, // 2. Checked second
   { path: "portfolio/:slug", element: <Project /> }, // 3. Checked third
-  { path: "about", element: <About /> },           // 4. Checked fourth
+  { path: "about", element: <About /> }, // 4. Checked fourth
   // ...
-]
+];
 ```
 
 **Best practice:** Order routes from most specific to least specific.
@@ -374,6 +381,7 @@ children: [
 ```
 
 In our case:
+
 - `/portfolio` (static) comes before `/portfolio/:slug` (dynamic)
 - This ensures `/portfolio` matches the Portfolio list, not the Project detail
 
@@ -393,12 +401,14 @@ In our case:
 ### Step 2: Test Navigation from Cards
 
 **Option 1: From Home page**
+
 1. Go to `http://localhost:5173`
 2. Scroll to "Featured Projects" section
 3. Click any project card
 4. You should see the project detail page!
 
 **Option 2: From Portfolio page**
+
 1. Go to `http://localhost:5173/portfolio`
 2. Click any project card
 3. You should see the project detail page!
@@ -435,35 +445,43 @@ In our case:
 For projects with full data (p1-p4), check:
 
 ✅ **Breadcrumb navigation**
+
 - Shows: Home > Portfolio > Project Name
 - "Home" and "Portfolio" are clickable
 - Project name is not clickable (current page)
 
 ✅ **Go Back button**
+
 - Clicking returns to previous page
 - Works whether you came from Home or Portfolio
 
 ✅ **Project header**
+
 - Title is large and prominent
 - Blurb appears below title
 
 ✅ **Two-column layout** (on desktop)
+
 - Image on left
 - Details on right
 
 ✅ **Overview section**
+
 - "Overview" heading
 - Detailed description paragraph
 
 ✅ **Highlights section**
-- "Highlights" heading  
+
+- "Highlights" heading
 - Bullet list of achievements
 
 ✅ **Project Details section**
+
 - "Project Details" heading
 - Role, Tools, Timeline, Client (if present)
 
 ✅ **SEO**
+
 - Browser tab title shows project name
 - Check page source for meta tags
 
@@ -472,11 +490,13 @@ For projects with full data (p1-p4), check:
 ### Step 5: Test Responsive Behavior
 
 **On mobile (or narrow browser window):**
+
 - Two-column grid stacks vertically
 - Image appears above details
 - All content remains accessible
 
 **How to test:**
+
 1. Open browser DevTools (F12 or Cmd+Option+I)
 2. Click device toolbar icon (Cmd+Shift+M)
 3. Select a mobile device (e.g., iPhone 12)
@@ -490,21 +510,23 @@ For projects with full data (p1-p4), check:
 Here's the full journey from click to display:
 
 ### 1. User Interaction
+
 ```jsx
 // In ProjectCard.jsx (from Class 4)
-<Link to={`/portfolio/${project.id}`}>
-  // ...card content...
-</Link>
+<Link to={`/portfolio/${project.id}`}>// ...card content...</Link>
 ```
+
 - User clicks card for project with `id: "p1"`
 - Link navigates to `/portfolio/p1`
 
 ---
 
 ### 2. Routing (main.jsx)
+
 ```jsx
 { path: "portfolio/:slug", element: <Project /> }
 ```
+
 - React Router matches this route
 - Captures `slug = "p1"`
 - Renders `<Project />` component
@@ -512,10 +534,12 @@ Here's the full journey from click to display:
 ---
 
 ### 3. Component Logic (Project.jsx)
+
 ```jsx
-const { slug } = useParams();               // Gets "p1" from URL
-const project = projects.find(p => p.id === slug); // Finds project with id "p1"
+const { slug } = useParams(); // Gets "p1" from URL
+const project = projects.find((p) => p.id === slug); // Finds project with id "p1"
 ```
+
 - Gets parameter from URL
 - Searches projects array
 - Finds matching project object
@@ -523,12 +547,14 @@ const project = projects.find(p => p.id === slug); // Finds project with id "p1"
 ---
 
 ### 4. Rendering
+
 ```jsx
 <h1>{project.title}</h1>
 <p>{project.blurb}</p>
 <p>{project.overview}</p>
 // ... etc
 ```
+
 - Uses project data to render page
 - All content is dynamic based on which project was clicked
 
@@ -555,20 +581,24 @@ const { category, slug } = useParams();
 ## What You've Learned
 
 ✅ **Dynamic Routing:**
+
 - Route parameters with `:parameterName`
 - One route matching multiple URLs
 - Parameter naming conventions
 
 ✅ **Route Configuration:**
+
 - Adding dynamic routes to router
 - Route ordering (static before dynamic)
 - How React Router matches routes
 
 ✅ **Complete Data Flow:**
+
 - URL → Route → Component → Data → Display
 - How all pieces connect together
 
 ✅ **Testing:**
+
 - Multiple ways to navigate to pages
 - Verifying different scenarios
 - Testing error cases
@@ -584,11 +614,15 @@ The colon (`:`) tells React Router: "this is a variable, not a literal path segm
 
 ```jsx
 // With colon = parameter (matches any value)
-{ path: "portfolio/:slug" }
+{
+  path: "portfolio/:slug";
+}
 // Matches: /portfolio/p1, /portfolio/p2, /portfolio/anything
 
 // Without colon = literal (matches exact string)
-{ path: "portfolio/slug" }
+{
+  path: "portfolio/slug";
+}
 // Matches: ONLY /portfolio/slug (literally the word "slug")
 ```
 
@@ -603,7 +637,9 @@ Yes! Add a question mark (`?`):
 
 ```jsx
 // Optional parameter
-{ path: "portfolio/:slug?" }
+{
+  path: "portfolio/:slug?";
+}
 
 // Matches BOTH:
 // /portfolio (slug = undefined)
@@ -641,11 +677,11 @@ Parameters are always **strings**, but they can contain numbers:
 ```jsx
 // URL: /portfolio/123
 const { slug } = useParams();
-console.log(slug);           // "123" (string, not number)
-console.log(typeof slug);    // "string"
+console.log(slug); // "123" (string, not number)
+console.log(typeof slug); // "string"
 
 // To use as number:
-const id = Number(slug);     // 123 (number)
+const id = Number(slug); // 123 (number)
 ```
 
 For our project IDs like "p1", "p2", we keep them as strings for comparison.
@@ -659,6 +695,7 @@ For our project IDs like "p1", "p2", we keep them as strings for comparison.
 **Problem:** Route not registered or card links broken
 
 **Solution:**
+
 - Verify route exists: `{ path: "portfolio/:slug", element: <Project /> }`
 - Check card links (from Class 4): `<Link to={project.href}>`
 - Verify `project.href` in data matches pattern `/portfolio/{id}`
@@ -671,6 +708,7 @@ For our project IDs like "p1", "p2", we keep them as strings for comparison.
 **Problem:** Dynamic route not matching
 
 **Solution:**
+
 - Check route path: should be `"portfolio/:slug"` (with colon)
 - Verify Project component is imported
 - Make sure dynamic route comes AFTER static portfolio route
@@ -683,6 +721,7 @@ For our project IDs like "p1", "p2", we keep them as strings for comparison.
 **Problem:** Parameter name mismatch or data lookup issue
 
 **Solution:**
+
 - Verify parameter name matches:
   - Route: `path: "portfolio/:slug"`
   - Component: `const { slug } = useParams()`
@@ -696,6 +735,7 @@ For our project IDs like "p1", "p2", we keep them as strings for comparison.
 **Problem:** Using `<a>` tags instead of React Router `<Link>`
 
 **Solution:**
+
 - Project cards should use: `<Link to={...}>` (from react-router-dom)
 - NOT: `<a href={...}>` (causes page reload)
 - This should already be correct from Class 4
@@ -707,6 +747,7 @@ For our project IDs like "p1", "p2", we keep them as strings for comparison.
 **Problem:** Navigation not tracked in history
 
 **Solution:**
+
 - React Router should handle this automatically
 - Verify you're using `<Link>` components, not `<a>` tags
 - Check that `RouterProvider` wraps app (from Class 2)
@@ -756,6 +797,7 @@ const router = createBrowserRouter([
 🎉 **Congratulations!** You've completed Class 8!
 
 Your portfolio now has:
+
 - ✅ Detailed project data (overview, highlights, role, etc.)
 - ✅ Individual project detail pages
 - ✅ Dynamic routing (one component, many URLs)
@@ -765,6 +807,7 @@ Your portfolio now has:
 - ✅ SEO for each project page
 
 **Try it out:**
+
 1. Click any project card from Home or Portfolio pages
 2. See full project details with all information
 3. Use breadcrumbs to navigate up the hierarchy
@@ -772,6 +815,7 @@ Your portfolio now has:
 5. Try visiting `/portfolio/invalid` to see error handling
 
 **In Class 9**, you'll build the About page, which will include:
+
 - Complex data structures (bio, values, experience, education)
 - Timeline layouts
 - Multi-section page composition

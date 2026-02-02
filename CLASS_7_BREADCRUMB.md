@@ -1,7 +1,7 @@
 # Class 7: Building the Breadcrumb Component
 
-**Component:** `src/components/ui/Breadcrumb.jsx`  
-**Type:** UI Component  
+**Component:** `src/components/ui/Breadcrumb.jsx`
+**Type:** UI Component
 **Purpose:** Provide visual navigation hierarchy showing the user's current location in the site
 
 ---
@@ -13,6 +13,7 @@ A **breadcrumb** is a navigation element that shows users their current location
 ### Real-World Examples
 
 You've seen breadcrumbs on many websites:
+
 - **Amazon:** Home > Electronics > Computers > Laptops > MacBook Pro
 - **Documentation sites:** Docs > Getting Started > Installation
 - **Your portfolio:** Home > Portfolio > Project Name
@@ -29,11 +30,13 @@ You've seen breadcrumbs on many websites:
 ## When to Use Breadcrumbs
 
 ✅ **Use breadcrumbs when:**
+
 - Your site has 3+ levels of hierarchy
 - Users might enter deep pages from search results
 - You want to reduce clicks to navigate up
 
 ❌ **Don't use breadcrumbs when:**
+
 - Your site only has 1-2 levels (like a simple landing page)
 - Navigation is already simple and clear
 
@@ -53,23 +56,25 @@ This helps visitors understand they're viewing a specific project within the por
 
 ### Props
 
-| Prop | Type | Description | Example |
-|------|------|-------------|---------|
+| Prop    | Type  | Description                 | Example   |
+| ------- | ----- | --------------------------- | --------- |
 | `items` | Array | Array of breadcrumb objects | See below |
 
 ### Item Object Structure
 
 Each item in the `items` array has:
+
 - `label` (string, required): Text to display
 - `href` (string, optional): Link destination (omit for current page)
 
 **Example:**
+
 ```jsx
 <Breadcrumb
   items={[
     { label: "Home", href: "/" },
     { label: "Portfolio", href: "/portfolio" },
-    { label: "Project Name" } // No href = current page
+    { label: "Project Name" }, // No href = current page
   ]}
 />
 ```
@@ -90,7 +95,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 export default function Breadcrumb({ items }) {
   return (
-    
+
   );
 }
 ```
@@ -123,9 +128,7 @@ import { FaChevronRight } from "react-icons/fa";
 export default function Breadcrumb({ items }) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex items-center space-x-2 text-sm text-white/70">
-        
-      </ol>
+      <ol className="flex items-center space-x-2 text-sm text-white/70"></ol>
     </nav>
   );
 }
@@ -163,9 +166,7 @@ export default function Breadcrumb({ items }) {
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol className="flex items-center space-x-2 text-sm text-white/70">
         {items.map((item, index) => (
-          <li key={index} className="flex items-center">
-            
-          </li>
+          <li key={index} className="flex items-center"></li>
         ))}
       </ol>
     </nav>
@@ -205,7 +206,6 @@ export default function Breadcrumb({ items }) {
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && <FaChevronRight className="w-3 h-3 mx-2 text-white/40" />}
-            
           </li>
         ))}
       </ol>
@@ -227,9 +227,13 @@ export default function Breadcrumb({ items }) {
    - `text-white/40` makes the icon more subtle (40% opacity)
 
 **Conditional Rendering Breakdown:**
+
 ```jsx
-{index > 0 && <FaChevronRight />}
+{
+  index > 0 && <FaChevronRight />;
+}
 ```
+
 - JavaScript logical AND (`&&`)
 - If `index > 0` is true, render the icon
 - If `index > 0` is false (first item), render nothing
@@ -281,6 +285,7 @@ export default function Breadcrumb({ items }) {
    - Items without `href` represent the current page (not clickable)
 
 2. **Link (for parent pages):**
+
    ```jsx
    <Link
      to={item.href}
@@ -289,6 +294,7 @@ export default function Breadcrumb({ items }) {
      {item.label}
    </Link>
    ```
+
    - `to={item.href}` navigates to the parent page
    - `text-white/70` muted text color (70% opacity)
    - `hover:text-white` brightens on hover
@@ -303,6 +309,7 @@ export default function Breadcrumb({ items }) {
      {item.label}
    </span>
    ```
+
    - `text-white` brighter text (100% opacity) to show it's the current page
    - `aria-current="page"` tells screen readers this is the current page
    - Not clickable (no link)
@@ -315,11 +322,7 @@ Let's trace how the component works with example data:
 
 ```jsx
 <Breadcrumb
-  items={[
-    { label: "Home", href: "/" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "My Project" }
-  ]}
+  items={[{ label: "Home", href: "/" }, { label: "Portfolio", href: "/portfolio" }, { label: "My Project" }]}
 />
 ```
 
@@ -341,6 +344,7 @@ Let's trace how the component works with example data:
    - Output: `> My Project` (not clickable, brighter text)
 
 **Final visual result:**
+
 ```
 Home > Portfolio > My Project
 ```
@@ -385,15 +389,19 @@ Our breadcrumb component includes several accessibility best practices:
 Let's look at the key Tailwind classes:
 
 ### Navigation Container
+
 ```jsx
-className="mb-6"
+className = "mb-6";
 ```
+
 - `mb-6` → `margin-bottom: 1.5rem` (24px spacing below breadcrumbs)
 
 ### List
+
 ```jsx
-className="flex items-center space-x-2 text-sm text-white/70"
+className = "flex items-center space-x-2 text-sm text-white/70";
 ```
+
 - `flex` → Flexbox layout (horizontal)
 - `items-center` → Vertically center items
 - `space-x-2` → 8px horizontal spacing between children
@@ -401,17 +409,22 @@ className="flex items-center space-x-2 text-sm text-white/70"
 - `text-white/70` → White text at 70% opacity
 
 ### Chevron Icon
+
 ```jsx
-className="w-3 h-3 mx-2 text-white/40"
+className = "w-3 h-3 mx-2 text-white/40";
 ```
+
 - `w-3 h-3` → 12px × 12px icon size
 - `mx-2` → 8px horizontal margin on both sides
 - `text-white/40` → White at 40% opacity (very subtle)
 
 ### Link (Clickable Breadcrumb)
+
 ```jsx
-className="text-white/70 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2 focus:ring-offset-black rounded px-1"
+className =
+  "text-white/70 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2 focus:ring-offset-black rounded px-1";
 ```
+
 - `text-white/70` → Default muted text
 - `hover:text-white` → Brightens on hover
 - `transition` → Smooth color transitions
@@ -423,9 +436,11 @@ className="text-white/70 hover:text-white transition focus:outline-none focus:ri
 - `px-1` → Small horizontal padding (4px)
 
 ### Span (Current Page)
+
 ```jsx
-className="text-white"
+className = "text-white";
 ```
+
 - `text-white` → Full opacity (brighter to show it's current)
 
 ---
@@ -443,7 +458,7 @@ Breadcrumbs can have any number of levels:
     { label: "Portfolio", href: "/portfolio" },
     { label: "Web Projects", href: "/portfolio/web" },
     { label: "E-commerce Sites", href: "/portfolio/web/ecommerce" },
-    { label: "Online Store Project" }
+    { label: "Online Store Project" },
   ]}
 />
 ```
@@ -459,9 +474,9 @@ const project = { title: "My Awesome Project" };
   items={[
     { label: "Home", href: "/" },
     { label: "Portfolio", href: "/portfolio" },
-    { label: project.title } // Dynamic project name
+    { label: project.title }, // Dynamic project name
   ]}
-/>
+/>;
 ```
 
 ---
@@ -469,24 +484,29 @@ const project = { title: "My Awesome Project" };
 ## What You've Learned
 
 ✅ **Navigation Patterns:**
+
 - How breadcrumbs improve user experience
 - When to use breadcrumbs vs. other navigation
 
 ✅ **React Concepts:**
+
 - Array mapping with `.map()`
 - Conditional rendering with ternary operators
 - Props destructuring (`{ items }`)
 
 ✅ **Accessibility:**
+
 - Semantic HTML (`<nav>`, `<ol>`)
 - ARIA attributes (`aria-label`, `aria-current`)
 - Keyboard focus states
 
 ✅ **React Router:**
+
 - Using `Link` for client-side navigation
 - Dynamic routing preparation
 
 ✅ **Tailwind CSS:**
+
 - Flexbox layouts
 - Opacity utilities
 - Focus ring customization
@@ -501,6 +521,7 @@ const project = { title: "My Awesome Project" };
 In the next guide, we'll build the **Portfolio page** which reuses the Projects section component. Then in **Class 8**, we'll use this Breadcrumb component on individual Project detail pages.
 
 **Coming up:**
+
 - Portfolio page (wrapper page pattern)
 - Route setup in main.jsx
 - Seeing breadcrumbs in action (Class 8)
@@ -514,6 +535,7 @@ In the next guide, we'll build the **Portfolio page** which reuses the Projects 
 **Problem:** Chevron icon doesn't appear
 
 **Solution:**
+
 - Verify `react-icons` is installed: `npm install react-icons`
 - Check import statement: `import { FaChevronRight } from "react-icons/fa"`
 - Ensure icon classes are correct: `className="w-3 h-3 mx-2 text-white/40"`
@@ -525,6 +547,7 @@ In the next guide, we'll build the **Portfolio page** which reuses the Projects 
 **Problem:** Clicking breadcrumb links doesn't navigate
 
 **Solution:**
+
 - Verify React Router is set up correctly (should be from Class 2)
 - Check that `react-router-dom` is installed
 - Ensure `to={item.href}` prop is present on `<Link>`
@@ -537,6 +560,7 @@ In the next guide, we'll build the **Portfolio page** which reuses the Projects 
 **Problem:** The current page breadcrumb is a link instead of plain text
 
 **Solution:**
+
 - Check that the current page item doesn't have an `href` property
 - Verify ternary operator: `{item.href ? <Link> : <span>}`
 - The last item should NOT have `href`
@@ -548,6 +572,7 @@ In the next guide, we'll build the **Portfolio page** which reuses the Projects 
 **Problem:** Text opacity doesn't look right
 
 **Solution:**
+
 - Adjust opacity values:
   - Links: `text-white/70` (70% opacity)
   - Current page: `text-white` (100% opacity)
@@ -561,6 +586,7 @@ In the next guide, we'll build the **Portfolio page** which reuses the Projects 
 **Problem:** Can't see focus ring when tabbing through breadcrumbs
 
 **Solution:**
+
 - Check focus classes: `focus:ring-2 focus:ring-white/40`
 - Try increasing ring width: `focus:ring-4`
 - Try brighter color: `focus:ring-white/60`

@@ -2,8 +2,8 @@
 CLASS 5: FINALCTA.JSX STEP-BY-STEP GUIDE - CALL-TO-ACTION SECTION
 ================================================================================
 
-OVERVIEW FOR INSTRUCTOR
------------------------
+## OVERVIEW FOR INSTRUCTOR
+
 This guide teaches students how to create a FinalCTA (Call-to-Action) section
 component - a simple, static section that encourages visitors to contact them.
 This is the simplest section component we've built, making it a great
@@ -13,11 +13,13 @@ complex logic.
 Students should create a new file: src/components/sections/FinalCTA.jsx
 
 NOTE: Students must have already completed:
+
 - Container.jsx (Class 1)
 - Section.jsx (Class 1)
 - Button.jsx (Class 1)
 
 CONCEPTS TAUGHT:
+
 - Static section components (no props needed)
 - Custom Section styling with className
 - Call-to-action design patterns
@@ -26,6 +28,7 @@ CONCEPTS TAUGHT:
 - Text centering and layout
 
 WHAT WE'RE BUILDING IN CLASS 5:
+
 - A simple, compelling call-to-action section
 - Encouraging message with contact button
 - Custom styling with gradient background
@@ -41,26 +44,26 @@ visitors to get in touch! This is the simplest section we've built: no props,
 no data, no mapping - just a compelling message and a button. Sometimes simple
 is exactly what you need!"
 
-STUDENTS CREATE FILE:
-----------------------
+## STUDENTS CREATE FILE:
+
 Create: src/components/sections/FinalCTA.jsx
 
-STUDENTS TYPE:
---------------
+## STUDENTS TYPE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <div>
-      {/* CTA content will go here */}
-    </div>
-  );
+return (
+<div>
+{/_ CTA content will go here _/}
+</div>
+);
 }
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - Import Container, Section, and Button - All components we've already built
 - export default function FinalCTA() - Standard component export
 - No props needed! This is a completely static component
@@ -71,18 +74,18 @@ ASK STUDENTS:
 (Answer: It always displays the same content - same heading, same description,
 same button. There's nothing to customize, so no props are needed!)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <div>
-      {/* CTA content will go here */}
-    </div>
-  );
+return (
+<div>
+{/_ CTA content will go here _/}
+</div>
+);
 }
 
 ================================================================================
@@ -94,49 +97,49 @@ INSTRUCTOR SAYS:
 a gradient background and extra padding to make this section really stand out.
 We'll also add aria-labelledby for accessibility."
 
-STUDENTS MODIFY:
-----------------
+## STUDENTS MODIFY:
+
 Replace the <div> with Section:
 
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        {/* CTA content will go here */}
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+{/_ CTA content will go here _/}
+</Container>
+</Section>
+);
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <Section aria-labelledby="cta-heading"> - Links to heading for accessibility
 - className with custom styles:
-  * bg-gradient-to-b - Gradient background from top to bottom
-  * from-white/5 - Start with white at 5% opacity (very subtle)
-  * to-transparent - Fade to transparent at bottom
-  * text-center - Center all text in this section
-  * py-20 - Padding top and bottom (20 units) - generous spacing!
+  - bg-gradient-to-b - Gradient background from top to bottom
+  - from-white/5 - Start with white at 5% opacity (very subtle)
+  - to-transparent - Fade to transparent at bottom
+  - text-center - Center all text in this section
+  - py-20 - Padding top and bottom (20 units) - generous spacing!
 - These classes override Section's defaults while keeping its benefits
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 "The gradient creates a subtle visual separation - the section has a very
 light background at the top that fades to nothing at the bottom. It's elegant
 and draws attention without being loud!"
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        {/* CTA content will go here */}
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+{/_ CTA content will go here _/}
+</Container>
+</Section>
+);
 }
 
 ================================================================================
@@ -148,38 +151,38 @@ INSTRUCTOR SAYS:
 engaging - it acknowledges that visitors have looked at your work and invites
 them to take the next step. We'll use a custom heading class for styling."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 Replace the comment with:
 
         <h2 id="cta-heading" className="heading-cta">
           Like what you see?
         </h2>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <h2> - Semantic heading (we use h2 since this isn't the main page heading)
 - id="cta-heading" - Matches aria-labelledby on Section
 - className="heading-cta" - Custom class from index.css for CTA headings
 - "Like what you see?" - Engaging, conversational tone
 - The text is already centered because of text-center on the Section
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        <h2 id="cta-heading" className="heading-cta">
-          Like what you see?
-        </h2>
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+<h2 id="cta-heading" className="heading-cta">
+Like what you see?
+</h2>
+</Container>
+</Section>
+);
 }
 
 ================================================================================
@@ -190,40 +193,40 @@ INSTRUCTOR SAYS:
 "Let's add a short description that reinforces the action we want visitors to
 take. Keep it simple and direct - we want them to contact us!"
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the h2:
 
         <p className="mt-3 body-default max-w-prose mx-auto">Contact me and let's chat.</p>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <p> - Paragraph element
 - className styling:
-  * mt-3 - Margin-top for spacing from heading
-  * body-default - Custom class from index.css for body text
-  * max-w-prose - Limits width for readability (approximately 65 characters)
-  * mx-auto - Margin left and right auto (centers the element)
+  - mt-3 - Margin-top for spacing from heading
+  - body-default - Custom class from index.css for body text
+  - max-w-prose - Limits width for readability (approximately 65 characters)
+  - mx-auto - Margin left and right auto (centers the element)
 - "Contact me and let's chat." - Friendly, casual, inviting
 - Already centered because of text-center on Section
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        <h2 id="cta-heading" className="heading-cta">
-          Like what you see?
-        </h2>
-        <p className="mt-3 body-default max-w-prose mx-auto">Contact me and let's chat.</p>
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+<h2 id="cta-heading" className="heading-cta">
+Like what you see?
+</h2>
+<p className="mt-3 body-default max-w-prose mx-auto">Contact me and let's chat.</p>
+</Container>
+</Section>
+);
 }
 
 ================================================================================
@@ -235,8 +238,8 @@ INSTRUCTOR SAYS:
 the contact page. We'll wrap it in a div for proper spacing and centering,
 and use the primary variant to make it prominent."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the paragraph:
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -245,8 +248,8 @@ After the paragraph:
           </Button>
         </div>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <div className="mt-8 flex flex-wrap justify-center gap-4"> - Button container:
   * mt-8 - Margin-top for spacing from description
   * flex - Flexbox layout
@@ -262,28 +265,28 @@ ASK STUDENTS:
 (Answer: We're navigating to a different page (/contact), so we need a link
 (<a>) not a button. Buttons are for actions, links are for navigation.)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Button from "../ui/Button.jsx";
 
 export default function FinalCTA() {
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        <h2 id="cta-heading" className="heading-cta">
-          Like what you see?
-        </h2>
-        <p className="mt-3 body-default max-w-prose mx-auto">Contact me and let's chat.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button as="a" href="/contact" variant="primary">
-            Contact me
-          </Button>
-        </div>
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+<h2 id="cta-heading" className="heading-cta">
+Like what you see?
+</h2>
+<p className="mt-3 body-default max-w-prose mx-auto">Contact me and let's chat.</p>
+<div className="mt-8 flex flex-wrap justify-center gap-4">
+<Button as="a" href="/contact" variant="primary">
+Contact me
+</Button>
+</div>
+</Container>
+</Section>
+);
 }
 
 ================================================================================
@@ -304,7 +307,7 @@ KEY CONCEPTS COVERED
 
 - Static components (no props needed)
 - Custom Section styling with className
-- Tailwind gradient backgrounds (bg-gradient-to-b, from-*, to-*)
+- Tailwind gradient backgrounds (bg-gradient-to-b, from-_, to-_)
 - Custom padding (py-20)
 - Text centering (text-center, mx-auto)
 - Custom CSS classes (heading-cta, body-default)
@@ -319,25 +322,25 @@ COMMON STUDENT QUESTIONS
 
 Q: "Why is this component so simple compared to Projects and Testimonials?"
 A: Not every component needs to be complex! CTAs are often simple by design -
-   clear message, single action. This shows that components can be as simple
-   or complex as they need to be.
+clear message, single action. This shows that components can be as simple
+or complex as they need to be.
 
 Q: "Can I add props to customize the heading and description?"
 A: Absolutely! You could add title and description props if you want to reuse
-   this component with different messages. But for a single-use CTA, static
-   content is perfectly fine.
+this component with different messages. But for a single-use CTA, static
+content is perfectly fine.
 
 Q: "What does py-20 do exactly?"
 A: py-20 adds padding-top and padding-bottom of 5rem (80px). The 'y' means
-   vertical (top and bottom). This gives the section lots of breathing room.
+vertical (top and bottom). This gives the section lots of breathing room.
 
 Q: "The Contact page doesn't exist yet. Will this cause an error?"
 A: No! The link won't work until you create the Contact page, but it won't
-   cause errors. The button will just link to a 404 page.
+cause errors. The button will just link to a 404 page.
 
 Q: "Can I add more buttons, like 'View Resume'?"
 A: Yes! Just add another Button component inside the same div. The gap-4 and
-   flex-wrap will handle spacing and wrapping automatically.
+flex-wrap will handle spacing and wrapping automatically.
 
 ================================================================================
 WHAT'S NEXT
@@ -360,12 +363,14 @@ TROUBLESHOOTING
 
 ERROR: "Cannot find module '../ui/Button.jsx'"
 FIX:
+
 - Verify Button.jsx exists in src/components/ui/
 - Check the import path starts with ../ (up one level from sections)
 - Ensure file extension .jsx is included
 
 SYMPTOM: Gradient background doesn't show
 FIX:
+
 - Check Tailwind classes: bg-gradient-to-b from-white/5 to-transparent
 - Verify these classes are on the Section, not Container
 - Clear browser cache and hard reload
@@ -373,18 +378,21 @@ FIX:
 
 SYMPTOM: Section has no padding or looks cramped
 FIX:
+
 - Check py-20 class is on Section
 - Verify Tailwind is loaded (other spacing should work elsewhere)
 - Try increasing to py-32 to see if padding changes
 
 SYMPTOM: Text isn't centered
 FIX:
+
 - Verify text-center is on Section element
 - Check mx-auto is on the paragraph
 - Inspect element in DevTools to see applied styles
 
 SYMPTOM: Button doesn't look right
 FIX:
+
 - Check variant="primary" is on Button
 - Verify Button.jsx has primary variant styles
 - Make sure as="a" is included for proper link styling
@@ -411,8 +419,8 @@ CUSTOMIZATION IDEAS
 INSTRUCTOR SAYS:
 "Here are ways to customize this component later:"
 
-IDEA 1: DIFFERENT MESSAGES
----------------------------
+## IDEA 1: DIFFERENT MESSAGES
+
 Change the text to match your personality:
 
 <h2>Ready to work together?</h2>
@@ -423,8 +431,8 @@ OR:
 <h2>Got a project in mind?</h2>
 <p>I'd love to hear about it!</p>
 
-IDEA 2: ADD SECONDARY BUTTON
------------------------------
+## IDEA 2: ADD SECONDARY BUTTON
+
 Add a "View Resume" button alongside Contact:
 
 <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -436,33 +444,33 @@ Add a "View Resume" button alongside Contact:
   </Button>
 </div>
 
-IDEA 3: ADD PROPS FOR REUSABILITY
-----------------------------------
+## IDEA 3: ADD PROPS FOR REUSABILITY
+
 Make it customizable:
 
-export default function FinalCTA({ 
-  title = "Like what you see?",
-  description = "Contact me and let's chat.",
-  buttonText = "Contact me",
-  buttonHref = "/contact"
+export default function FinalCTA({
+title = "Like what you see?",
+description = "Contact me and let's chat.",
+buttonText = "Contact me",
+buttonHref = "/contact"
 }) {
-  return (
-    <Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
-      <Container>
-        <h2 id="cta-heading" className="heading-cta">{title}</h2>
-        <p className="mt-3 body-default max-w-prose mx-auto">{description}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button as="a" href={buttonHref} variant="primary">
-            {buttonText}
-          </Button>
-        </div>
-      </Container>
-    </Section>
-  );
+return (
+<Section aria-labelledby="cta-heading" className="bg-gradient-to-b from-white/5 to-transparent text-center py-20">
+<Container>
+<h2 id="cta-heading" className="heading-cta">{title}</h2>
+<p className="mt-3 body-default max-w-prose mx-auto">{description}</p>
+<div className="mt-8 flex flex-wrap justify-center gap-4">
+<Button as="a" href={buttonHref} variant="primary">
+{buttonText}
+</Button>
+</div>
+</Container>
+</Section>
+);
 }
 
-IDEA 4: DIFFERENT GRADIENT COLORS
-----------------------------------
+## IDEA 4: DIFFERENT GRADIENT COLORS
+
 Try different gradient colors:
 
 className="bg-gradient-to-b from-blue-500/10 to-transparent text-center py-20"

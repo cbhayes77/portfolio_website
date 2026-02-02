@@ -2,8 +2,8 @@
 CLASS 6: ABOUT.JSX STEP-BY-STEP GUIDE - COMPLETE PAGE COMPONENT
 ================================================================================
 
-OVERVIEW FOR INSTRUCTOR
------------------------
+## OVERVIEW FOR INSTRUCTOR
+
 This guide teaches students how to build a complete About page with multiple
 sections, each using different layout patterns. This is the first time students
 build a complete content-rich page in one component, demonstrating how to
@@ -12,6 +12,7 @@ organize complex pages with varied layouts.
 Students should create a new file: src/pages/About.jsx
 
 NOTE: Students must have already completed:
+
 - Container.jsx (Class 1)
 - Section.jsx (Class 1)
 - Button.jsx (Class 1)
@@ -20,6 +21,7 @@ NOTE: Students must have already completed:
 - App.jsx already has /about route configured (Class 2)
 
 CONCEPTS TAUGHT:
+
 - Building complete page components (not just sections)
 - Working with nested data structures
 - Timeline components with semantic HTML
@@ -31,6 +33,7 @@ CONCEPTS TAUGHT:
 - Accessibility best practices (sr-only, aria-label, role attributes)
 
 WHAT WE'RE BUILDING IN CLASS 6:
+
 - Complete About page with 6 distinct sections
 - Bio section (centered text layout)
 - Values section (2x2 grid of cards)
@@ -54,12 +57,12 @@ separate section components, this page is unique to you - your story, your
 experience. So we'll build it as one page component with multiple inline
 sections. Let's start by creating the file and importing everything we need."
 
-STUDENTS CREATE FILE:
-----------------------
+## STUDENTS CREATE FILE:
+
 Create: src/pages/About.jsx
 
-STUDENTS TYPE:
---------------
+## STUDENTS TYPE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
@@ -67,23 +70,23 @@ import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
 
 export default function About() {
-  return (
-    <div>
-      {/* About page sections will go here */}
-    </div>
-  );
+return (
+<div>
+{/_ About page sections will go here _/}
+</div>
+);
 }
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - Import Section, Container, SEO, Button - All UI components we've already built
 - Import { aboutData } - Named import from our data file
 - Path: ../data/ (up one level from pages, then into data)
 - Using <div> wrapper (will change to <> fragment soon)
 - This will be a longer file than usual - one page with multiple sections!
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
@@ -91,14 +94,15 @@ import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
 
 export default function About() {
-  return (
-    <div>
-      {/* About page sections will go here */}
-    </div>
-  );
+return (
+<div>
+{/_ About page sections will go here _/}
+</div>
+);
 }
 
 ================================================================================
+
 ## STEP 1.2: ADD SEO COMPONENT AND CHANGE TO FRAGMENT
 
 INSTRUCTOR SAYS:
@@ -106,13 +110,13 @@ INSTRUCTOR SAYS:
 a div to a React Fragment. Fragments let us return multiple elements without
 adding an extra div to the DOM."
 
-STUDENTS MODIFY:
-----------------
+## STUDENTS MODIFY:
+
 Update the return statement:
 
-  return (
-    <>
-      <SEO
+return (
+<>
+<SEO
         title="About"
         description="Learn more about my background, skills, and experience as a UX Designer and Frontend Developer."
         url="/about"
@@ -120,10 +124,11 @@ Update the return statement:
 
       {/* Bio section will go here */}
     </>
-  );
 
-EXPLAIN:
---------
+);
+
+## EXPLAIN:
+
 - <> and </> - React Fragment (returns multiple elements without wrapper div)
 - <SEO> - Sets page title, meta description, and canonical URL
 - title="About" - Browser tab will show "About | Your Site"
@@ -131,8 +136,8 @@ EXPLAIN:
 - url="/about" - Canonical URL for SEO
 - Students should customize the description to match their background!
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
@@ -140,9 +145,9 @@ import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
 
 export default function About() {
-  return (
-    <>
-      <SEO
+return (
+<>
+<SEO
         title="About"
         description="Learn more about my background, skills, and experience as a UX Designer and Frontend Developer."
         url="/about"
@@ -150,10 +155,12 @@ export default function About() {
 
       {/* Bio section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 1.3: ADD BIO/HERO SECTION WITH CENTERED TEXT LAYOUT
 
 INSTRUCTOR SAYS:
@@ -162,8 +169,8 @@ with your heading and three paragraphs from the data file. We'll display intro,
 background, and current paragraphs. Notice how we use max-w-4xl to keep the
 text readable - long lines are hard to read!"
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the SEO component, replace the comment:
 
       {/* Hero/Intro Section */}
@@ -182,9 +189,9 @@ After the SEO component, replace the comment:
 
       {/* Values section will go here */}
 
-EXPLAIN:
---------
-- {/* Hero/Intro Section */} - Comment to organize our code (helps navigation)
+## EXPLAIN:
+
+- {/_ Hero/Intro Section _/} - Comment to organize our code (helps navigation)
 - <Section> and <Container> - Our standard page section pattern
 - max-w-4xl mx-auto - Max width of 4xl (56rem/896px), centered
 - <h1 className="heading-page"> - Page-level heading (custom class from index.css)
@@ -200,8 +207,8 @@ ASK STUDENTS:
 (Answer: Creates visual hierarchy - the intro is most important, so we make it
 more prominent to draw the reader's eye first.)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 import Section from "../components/ui/Section.jsx";
 import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
@@ -209,9 +216,9 @@ import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
 
 export default function About() {
-  return (
-    <>
-      <SEO
+return (
+<>
+<SEO
         title="About"
         description="Learn more about my background, skills, and experience as a UX Designer and Frontend Developer."
         url="/about"
@@ -233,23 +240,25 @@ export default function About() {
 
       {/* Values section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 1.4: TEST THE BIO SECTION
 
 INSTRUCTOR SAYS:
 "Let's save and test what we have so far! Navigate to /about in your browser."
 
-MAKE SURE DEV SERVER IS RUNNING:
----------------------------------
+## MAKE SURE DEV SERVER IS RUNNING:
+
 If not running, in terminal:
 
 npm run dev
 
-WHAT STUDENTS SHOULD SEE:
---------------------------
+## WHAT STUDENTS SHOULD SEE:
+
 Navigate to: http://localhost:5173/about
 
 - Page loads with "About" in browser tab title
@@ -259,8 +268,8 @@ Navigate to: http://localhost:5173/about
 - Proper spacing between paragraphs
 - Intro paragraph is slightly larger
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 1. Check browser tab - should say "About | Your Site Name"
 2. Inspect the h1 in DevTools - should have heading-page class
 3. Resize browser - text should stay centered and readable
@@ -282,8 +291,8 @@ INSTRUCTOR SAYS:
 We'll display 4 value cards in a grid that's 1 column on mobile, 2 columns on
 tablet and up. Let's start with the section structure and heading."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the bio section (before the closing </>):
 
       {/* Values Section */}
@@ -298,15 +307,15 @@ After the bio section (before the closing </>):
 
       {/* Experience section will go here */}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - max-w-6xl - Wider than bio section (6xl = 72rem/1152px) for grid layout
 - heading-section - Custom class for section headings
 - text-center - Centers the heading
 - mb-12 - Margin-bottom for space before grid
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous code continues, then:)
 
       {/* Values Section */}
@@ -321,10 +330,12 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* Experience section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 2.2: ADD VALUES GRID WITH CARD MAPPING
 
 INSTRUCTOR SAYS:
@@ -333,9 +344,9 @@ card will show an icon, title, and description. We're using <article> for
 semantic HTML - each value is a self-contained piece of content. Notice the
 hover effect - cards scale up slightly when you hover over them!"
 
-STUDENTS ADD:
--------------
-Replace the {/* Values grid will go here */} comment:
+## STUDENTS ADD:
+
+Replace the {/_ Values grid will go here _/} comment:
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
               {aboutData.values.map((value) => (
@@ -353,8 +364,8 @@ Replace the {/* Values grid will go here */} comment:
               ))}
             </div>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - grid grid-cols-1 md:grid-cols-2 - 1 column mobile, 2 columns tablet+
 - gap-6 - Spacing between grid items
 - role="list" - Tells screen readers this is a list (even though styled as grid)
@@ -378,8 +389,8 @@ ASK STUDENTS:
 (Answer: The icon is decorative - the title and description provide all the
 meaning. Screen readers don't need to announce the emoji.)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* Values Section */}
@@ -408,7 +419,8 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* Experience section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
@@ -423,8 +435,8 @@ vertical timeline with dots and a connecting line. We use an <ol> (ordered list)
 because the experience is chronological - order matters! Let's start with the
 section structure."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the values section:
 
       {/* Experience Timeline */}
@@ -441,14 +453,14 @@ After the values section:
 
       {/* Education section will go here */}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <ol> - Ordered list (semantic HTML for ordered content)
 - space-y-8 - Vertical spacing between timeline items
 - aria-label="Professional experience timeline" - Describes the list for screen readers
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* Experience Timeline */}
@@ -465,10 +477,12 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* Education section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 3.2: ADD TIMELINE MAPPING WITH DOTS AND BORDER
 
 INSTRUCTOR SAYS:
@@ -477,9 +491,9 @@ dot on the left, a vertical line connecting them, and the job details. The line
 is created with a left border, and the dot is positioned absolutely. This is a
 complex layout - pay attention to the positioning!"
 
-STUDENTS ADD:
--------------
-Replace {/* Timeline items will go here */}:
+## STUDENTS ADD:
+
+Replace {/_ Timeline items will go here _/}:
 
               {aboutData.experience.map((job) => (
                 <li key={job.id} className="relative pl-8 border-l-2 border-white/20 pb-8 last:pb-0">
@@ -495,8 +509,8 @@ Replace {/* Timeline items will go here */}:
                 </li>
               ))}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - aboutData.experience.map((job) => ...) - Loop through experience array
 - <li key={job.id}> - List item for each job
 - relative - Positioning context for the absolute dot
@@ -512,8 +526,8 @@ EXPLAIN:
 - border-4 border-black - Thick black border around white dot
 - aria-hidden="true" - Dot is decorative
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* Experience Timeline */}
@@ -542,10 +556,12 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* Education section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 3.3: ADD JOB DETAILS (ROLE, COMPANY, DURATION, DESCRIPTION)
 
 INSTRUCTOR SAYS:
@@ -554,9 +570,9 @@ and description. We use semantic HTML - <header> for the heading info, <time>
 for dates. Notice the screen reader text for 'at' - visual users see the
 bullet (•) but screen readers hear 'at' for clarity."
 
-STUDENTS ADD:
--------------
-Replace {/* Job details will go here */}:
+## STUDENTS ADD:
+
+Replace {/_ Job details will go here _/}:
 
                     <header className="mb-2">
                       <h3 className="subheading-primary">{job.role}</h3>
@@ -570,8 +586,8 @@ Replace {/* Job details will go here */}:
 
                     {/* Achievements will go here */}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - <header> - Semantic HTML for the heading section of the article
 - <h3 className="subheading-primary"> - Job role as subheading
 - <span className="sr-only">at</span> - "Screen reader only" text
@@ -586,8 +602,8 @@ ASK STUDENTS:
 (Answer: Screen readers need context. Visual users see "Company • 2020-2023"
 and understand it. Screen readers need "at Company" to make sense.)
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (In the timeline mapping, article now contains:)
 
                   <article>
@@ -605,6 +621,7 @@ CURRENT CODE SHOULD LOOK LIKE:
                   </article>
 
 ================================================================================
+
 ## STEP 3.4: ADD ACHIEVEMENTS WITH CONDITIONAL RENDERING AND NESTED MAPPING
 
 INSTRUCTOR SAYS:
@@ -613,9 +630,9 @@ conditional rendering to only show this section if achievements exist. Then
 we'll map over the achievements array to create a bulleted list. This is nested
 mapping - mapping within mapping!"
 
-STUDENTS ADD:
--------------
-Replace {/* Achievements will go here */}:
+## STUDENTS ADD:
+
+Replace {/_ Achievements will go here _/}:
 
                     {job.achievements && job.achievements.length > 0 && (
                       <>
@@ -628,8 +645,8 @@ Replace {/* Achievements will go here */}:
                       </>
                     )}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - {job.achievements && job.achievements.length > 0 && ( ... )} - Conditional rendering
 - Checks: Does achievements exist? AND does it have items?
 - If both true, render the achievements section
@@ -643,13 +660,13 @@ EXPLAIN:
 - idx - Index (since achievements are just strings, no id)
 - key={idx} - Use index as key (acceptable here since list won't reorder)
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 "This is conditional rendering! If a job doesn't have achievements, this whole
 section is skipped. The && operator works like 'if this then show that'."
 
-CURRENT CODE FOR COMPLETE EXPERIENCE SECTION:
-----------------------------------------------
+## CURRENT CODE FOR COMPLETE EXPERIENCE SECTION:
+
       {/* Experience Timeline */}
       <Section>
         <Container>
@@ -706,8 +723,8 @@ INSTRUCTOR SAYS:
 degrees and certifications in a 3-column grid on desktop, 2 columns on tablet,
 and 1 column on mobile. Each card shows degree, institution, year, and details."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the experience section:
 
       {/* Education Section */}
@@ -737,12 +754,12 @@ After the experience section:
 
       {/* Interests section will go here */}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - grid-cols-1 md:grid-cols-2 lg:grid-cols-3 - Responsive grid:
-  * Mobile: 1 column
-  * Tablet (md): 2 columns
-  * Desktop (lg): 3 columns
+  - Mobile: 1 column
+  - Tablet (md): 2 columns
+  - Desktop (lg): 3 columns
 - aboutData.education.map((edu) => ...) - Map over education array
 - rounded-xl - Rounded corners (slightly less than values cards)
 - focus-within:ring-2 - Focus ring for accessibility
@@ -751,8 +768,8 @@ EXPLAIN:
 - text-white/60 - Even more subtle for year
 - <time>{edu.year}</time> - Semantic HTML for year
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* Education Section */}
@@ -782,7 +799,8 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* Interests section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
@@ -796,8 +814,8 @@ INSTRUCTOR SAYS:
 rich and shows who you are beyond work. We'll start with the section heading
 and intro text, then add the image cards."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the education section:
 
       {/* Interests Section with Images */}
@@ -814,16 +832,16 @@ After the education section:
 
       {/* CTA section will go here */}
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - "Beyond the Code" - Engaging heading for interests
 - max-w-2xl mx-auto - Narrow, centered intro text
 - text-center - Center the intro paragraph
 - {aboutData.bio.personal} - Personal bio from data (about hobbies)
 - mb-12 - More space before grid
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* Interests Section with Images */}
@@ -840,10 +858,12 @@ CURRENT CODE SHOULD LOOK LIKE:
 
       {/* CTA section will go here */}
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 5.2: ADD IMAGE CARDS WITH OVERLAYS AND HOVER EFFECTS
 
 INSTRUCTOR SAYS:
@@ -852,9 +872,9 @@ an icon positioned over the image, and text content below. The images lazy-load
 for performance, and there's a cool hover effect where the image zooms slightly.
 This is one of the most visually rich components we've built!"
 
-STUDENTS ADD:
--------------
-Replace {/* Interests grid will go here */}:
+## STUDENTS ADD:
+
+Replace {/_ Interests grid will go here _/}:
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
               {aboutData.interests.map((interest) => (
@@ -894,8 +914,8 @@ Replace {/* Interests grid will go here */}:
               ))}
             </div>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 - Responsive 3-column grid
 - className="group" - Group class for group-hover effects
 - overflow-hidden - Clips the zoomed image on hover
@@ -907,9 +927,9 @@ EXPLAIN:
 - loading="lazy" - Lazy load images (performance optimization!)
 - absolute inset-0 - Overlay covers entire image
 - bg-gradient-to-t from-black/80 via-black/20 to-transparent - Gradient overlay:
-  * from-black/80 - Black at 80% opacity at bottom
-  * via-black/20 - Black at 20% in middle
-  * to-transparent - Transparent at top
+  - from-black/80 - Black at 80% opacity at bottom
+  - via-black/20 - Black at 20% in middle
+  - to-transparent - Transparent at top
 - absolute bottom-4 left-4 - Position icon at bottom-left
 - role="img" aria-label={interest.name} - Makes icon accessible
 
@@ -918,15 +938,15 @@ ASK STUDENTS:
 (Answer: The browser only loads images as they come into view, not all at once.
 This makes the page load faster!)
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 1. Hover over a card - image should zoom slightly
 2. Notice gradient overlay - darker at bottom, transparent at top
 3. Icon positioned over the image
 4. Open DevTools Network tab - images load as you scroll (lazy loading)
 
-CURRENT CODE FOR COMPLETE INTERESTS SECTION:
----------------------------------------------
+## CURRENT CODE FOR COMPLETE INTERESTS SECTION:
+
       {/* Interests Section with Images */}
       <Section>
         <Container>
@@ -988,8 +1008,8 @@ INSTRUCTOR SAYS:
 visitors to take the next step - either contact you or view your work. It's a
 centered card with a heading, description, and two buttons pulled from our data."
 
-STUDENTS ADD:
--------------
+## STUDENTS ADD:
+
 After the interests section (before the closing </>):
 
       {/* CTA Section */}
@@ -1010,8 +1030,8 @@ After the interests section (before the closing </>):
         </Container>
       </Section>
 
-EXPLAIN:
---------
+## EXPLAIN:
+
 - max-w-3xl mx-auto text-center - Centered, medium-width card
 - card-base rounded-2xl p-12 - Card styling with generous padding
 - {aboutData.cta.heading} - Heading from CTA object
@@ -1025,8 +1045,8 @@ EXPLAIN:
 - variant="secondary" size="lg" - Large secondary button
 - {aboutData.cta.primaryAction.text} - Button text from data
 
-CURRENT CODE SHOULD LOOK LIKE:
--------------------------------
+## CURRENT CODE SHOULD LOOK LIKE:
+
 (Previous sections, then:)
 
       {/* CTA Section */}
@@ -1047,18 +1067,20 @@ CURRENT CODE SHOULD LOOK LIKE:
         </Container>
       </Section>
     </>
-  );
+
+);
 }
 
 ================================================================================
+
 ## STEP 6.2: TEST THE COMPLETE ABOUT PAGE
 
 INSTRUCTOR SAYS:
 "Save your file! Let's test the complete About page and see all six sections
 working together. This is your professional story, beautifully presented!"
 
-WHAT STUDENTS SHOULD SEE:
---------------------------
+## WHAT STUDENTS SHOULD SEE:
+
 Navigate to: http://localhost:5173/about
 
 The complete page should have:
@@ -1098,8 +1120,8 @@ The complete page should have:
    - Two buttons (primary and secondary)
    - Buttons stack on mobile, side-by-side on desktop
 
-DEMONSTRATE:
-------------
+## DEMONSTRATE:
+
 1. Scroll through entire page - smooth section flow
 2. Resize browser window - verify all responsive breakpoints
 3. Hover over value cards - scale effect
@@ -1109,8 +1131,8 @@ DEMONSTRATE:
 7. Check browser console - no errors
 8. Test on mobile width (320px) - all grids should collapse to 1 column
 
-CELEBRATE:
-----------
+## CELEBRATE:
+
 "You've just built a complete, professional About page! This page tells your
 story with multiple layout patterns, semantic HTML, accessibility features,
 and beautiful visual effects. This is seriously impressive work!"
@@ -1141,6 +1163,7 @@ KEY CONCEPTS COVERED
 ================================================================================
 
 **New Concepts:**
+
 - Timeline components with semantic HTML
 - Absolute positioning for timeline dots
 - Conditional rendering with && operator
@@ -1153,6 +1176,7 @@ KEY CONCEPTS COVERED
 - Fragment return (<> </>)
 
 **Reinforced Concepts:**
+
 - Array .map() for rendering lists
 - Responsive grids (1→2→3 columns)
 - Section + Container pattern
@@ -1164,6 +1188,7 @@ KEY CONCEPTS COVERED
 - Custom CSS classes (card-base, heading-section, etc.)
 
 **Layout Patterns:**
+
 - Centered single column (bio)
 - 2-column grid (values)
 - Vertical timeline (experience)
@@ -1177,37 +1202,37 @@ COMMON STUDENT QUESTIONS
 
 Q: "Why is this one page component instead of separate section components?"
 A: The About page is unique to you - your specific story. Unlike Projects or
-   Testimonials (which might appear on multiple pages), your bio and experience
-   are specific to this page. It's simpler to keep it all together. If you
-   wanted to reuse a section (like your bio elsewhere), you could extract it
-   into a separate component.
+Testimonials (which might appear on multiple pages), your bio and experience
+are specific to this page. It's simpler to keep it all together. If you
+wanted to reuse a section (like your bio elsewhere), you could extract it
+into a separate component.
 
 Q: "The timeline dots aren't aligned. What's wrong?"
 A: Check the left positioning value: left-[-9px]. This should center the dot
-   on the border. If it's off, adjust the negative value. The dot is 16px wide
-   (w-4), so -8px or -9px should center it on a 2px border.
+on the border. If it's off, adjust the negative value. The dot is 16px wide
+(w-4), so -8px or -9px should center it on a 2px border.
 
 Q: "Images aren't loading. Why?"
 A: We're using Unsplash URLs which require internet. If you're offline, images
-   won't load. You can replace with local images or use a placeholder color
-   instead.
+won't load. You can replace with local images or use a placeholder color
+instead.
 
 Q: "Can I add my own photo to the bio section?"
 A: Yes! You could add an image similar to the homepage hero. Just add it above
-   or beside the bio text with appropriate styling.
+or beside the bio text with appropriate styling.
 
 Q: "What if I don't have achievements for some jobs?"
 A: That's what the conditional rendering is for! If a job doesn't have
-   achievements (or has an empty array), that whole section won't render.
-   You can leave achievements empty or remove the property from that job.
+achievements (or has an empty array), that whole section won't render.
+You can leave achievements empty or remove the property from that job.
 
 Q: "Can I change the number of columns in the grids?"
 A: Absolutely! Change lg:grid-cols-3 to lg:grid-cols-2 for 2 columns, or
-   lg:grid-cols-4 for 4 columns. Experiment with what looks best!
+lg:grid-cols-4 for 4 columns. Experiment with what looks best!
 
 Q: "Why is the intro paragraph larger than the others?"
 A: text-lg on the intro creates visual hierarchy - it's the hook that draws
-   readers in. The larger size emphasizes its importance.
+readers in. The larger size emphasizes its importance.
 
 ================================================================================
 WHAT'S NEXT
@@ -1221,6 +1246,7 @@ Congratulations! You now have a complete About page. In future classes, we'll bu
 **Class 10:** Contact page with form
 
 Your portfolio site is really taking shape! You have:
+
 - ✅ Complete homepage (Classes 1-5)
 - ✅ Complete About page (Class 6)
 - 🔄 Portfolio, Project, Resume, Contact pages (coming soon)
@@ -1231,6 +1257,7 @@ TROUBLESHOOTING
 
 ERROR: "Cannot find module '../data/about.js'"
 FIX:
+
 - Verify about.js exists in src/data/
 - Check import path: import { aboutData } from "../data/about.js"
 - Ensure .js extension is included
@@ -1238,24 +1265,28 @@ FIX:
 
 ERROR: "Cannot read property 'bio' of undefined"
 FIX:
+
 - aboutData is not being imported correctly
 - Check the import statement has curly braces: { aboutData }
 - Verify about.js has: export const aboutData (not export default)
 
 SYMPTOM: Page shows [object Object] instead of text
 FIX:
+
 - You're trying to display an object instead of a property
 - Should be: {aboutData.bio.intro} not {aboutData.bio}
 - Each property must be accessed specifically
 
 SYMPTOM: Timeline dots don't align with the line
 FIX:
+
 - Check absolute positioning: left-[-9px]
 - Adjust the negative value to center the dot
 - Dot width is w-4 (16px), border is 2px, so -8px or -9px should work
 
 SYMPTOM: Images don't display
 FIX:
+
 - Check internet connection (Unsplash requires network)
 - Verify image URLs in about.js are correct
 - Open browser DevTools Network tab to see if images are loading
@@ -1263,18 +1294,21 @@ FIX:
 
 SYMPTOM: Achievements don't show or cause errors
 FIX:
+
 - Check conditional: {job.achievements && job.achievements.length > 0 && ...}
 - Verify achievements in about.js is an array: achievements: [ ]
 - Make sure nested map has key: key={idx}
 
 SYMPTOM: Grid layout doesn't respond correctly
 FIX:
+
 - Check Tailwind classes: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
 - Verify browser window is wide enough for breakpoints (md: 768px, lg: 1024px)
 - Inspect element in DevTools to see which breakpoint is active
 
 SYMPTOM: Hover effects don't work
 FIX:
+
 - Check className includes hover: prefix (hover:scale-[1.02])
 - For group hover, parent needs className="group"
 - Child needs group-hover: prefix
@@ -1282,6 +1316,7 @@ FIX:
 
 SYMPTOM: Screen reader content appears visually
 FIX:
+
 - Check className is exactly: sr-only (not screen-reader-only)
 - Verify Tailwind is loaded and sr-only class is defined
 

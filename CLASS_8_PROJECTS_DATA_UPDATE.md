@@ -1,7 +1,7 @@
 # Class 8: Expanding Projects Data for Detail Pages
 
-**File:** `src/data/projects.js`  
-**Type:** Data File Update  
+**File:** `src/data/projects.js`
+**Type:** Data File Update
 **Purpose:** Add detailed fields to projects for individual project pages
 
 ---
@@ -9,6 +9,7 @@
 ## Why Expand the Data?
 
 In **Class 4**, you created a `projects.js` file with basic information for project cards:
+
 - `id`, `title`, `blurb`, `image`, `href`
 
 These fields work great for **preview cards** on the Home and Portfolio pages. But when someone clicks a project card to see the full details, they need **more information**:
@@ -21,6 +22,7 @@ These fields work great for **preview cards** on the Home and Portfolio pages. B
 - Who was it for? (Client)
 
 Think of it like a book:
+
 - **Project card** = Book cover (title, image, short description)
 - **Project detail page** = Full book (complete story with all details)
 
@@ -29,6 +31,7 @@ Think of it like a book:
 ## Preview vs. Detail Data
 
 ### Current Data (Class 4)
+
 ```javascript
 {
   id: "p1",
@@ -44,6 +47,7 @@ Think of it like a book:
 ---
 
 ### Expanded Data (Class 8)
+
 ```javascript
 {
   id: "p1",
@@ -51,7 +55,7 @@ Think of it like a book:
   blurb: "Short description for the card",
   image: "https://picsum.photos/300?random=1",
   href: "/portfolio/p1",
-  
+
   // NEW FIELDS for detail page
   overview: "Detailed description of the project...",
   highlights: [
@@ -69,6 +73,7 @@ Think of it like a book:
 **Works for:** Both cards AND detail pages
 
 The beauty is: **the same data works everywhere!**
+
 - Cards only use the basic fields (title, blurb, image)
 - Detail pages use ALL fields (basic + expanded)
 
@@ -77,19 +82,23 @@ The beauty is: **the same data works everywhere!**
 ## New Fields Explained
 
 ### 1. overview (string)
+
 **Purpose:** A detailed, 2-4 sentence description of the project.
 
 **What to include:**
+
 - The problem or challenge addressed
 - Your approach or solution
 - The outcome or results
 
 **Example:**
+
 ```javascript
-overview: "This project addressed the challenge of improving user engagement through intuitive design and seamless functionality. As the lead UX Designer and Frontend Developer, I utilized modern design principles and cutting-edge technology to create a solution that exceeded client expectations and delivered measurable results."
+overview: "This project addressed the challenge of improving user engagement through intuitive design and seamless functionality. As the lead UX Designer and Frontend Developer, I utilized modern design principles and cutting-edge technology to create a solution that exceeded client expectations and delivered measurable results.";
 ```
 
 **Tips:**
+
 - Write in past tense (project is complete)
 - Focus on your contributions
 - Mention the impact
@@ -98,24 +107,28 @@ overview: "This project addressed the challenge of improving user engagement thr
 ---
 
 ### 2. highlights (array of strings)
+
 **Purpose:** A bullet list of key achievements, metrics, or results.
 
 **What to include:**
+
 - Quantifiable results (percentages, numbers)
 - Technical accomplishments
 - Business impact
 - Awards or recognition
 
 **Example:**
+
 ```javascript
 highlights: [
   "Increased user engagement by 45% through improved UX design",
   "Implemented responsive design system using React and TypeScript",
-  "Delivered project 2 weeks ahead of schedule within budget constraints"
-]
+  "Delivered project 2 weeks ahead of schedule within budget constraints",
+];
 ```
 
 **Tips:**
+
 - Start with action verbs (Increased, Implemented, Reduced, etc.)
 - Use numbers when possible (gives credibility)
 - Aim for 3-5 highlights (not too many, not too few)
@@ -124,20 +137,24 @@ highlights: [
 ---
 
 ### 3. role (string)
+
 **Purpose:** Your specific role or responsibilities on the project.
 
 **Example:**
+
 ```javascript
-role: "UX Designer & Frontend Developer"
+role: "UX Designer & Frontend Developer";
 ```
 
 **Other examples:**
+
 - "Lead Frontend Developer"
 - "UX/UI Designer"
 - "Full Stack Developer"
 - "Junior Developer (Team of 5)"
 
 **Tips:**
+
 - Be specific about your actual role
 - Include seniority level if relevant
 - Mention team context if helpful ("Solo Designer", "Team of 3")
@@ -145,14 +162,17 @@ role: "UX Designer & Frontend Developer"
 ---
 
 ### 4. tools (array of strings)
+
 **Purpose:** Technologies, frameworks, tools, or platforms used.
 
 **Example:**
+
 ```javascript
-tools: ["Figma", "React", "TypeScript", "Tailwind CSS"]
+tools: ["Figma", "React", "TypeScript", "Tailwind CSS"];
 ```
 
 **What to include:**
+
 - Design tools (Figma, Sketch, Adobe XD)
 - Programming languages (JavaScript, TypeScript, Python)
 - Frameworks (React, Vue, Angular)
@@ -160,6 +180,7 @@ tools: ["Figma", "React", "TypeScript", "Tailwind CSS"]
 - APIs or services (Stripe, Firebase, MongoDB)
 
 **Tips:**
+
 - List 3-6 main tools (not exhaustive)
 - Order by relevance or prominence
 - Use official names (React, not react)
@@ -167,20 +188,24 @@ tools: ["Figma", "React", "TypeScript", "Tailwind CSS"]
 ---
 
 ### 5. timeline (string)
+
 **Purpose:** How long the project took.
 
 **Example:**
+
 ```javascript
-timeline: "3 months"
+timeline: "3 months";
 ```
 
 **Other examples:**
+
 - "6 weeks"
 - "4 months"
 - "1 year"
 - "2 weeks (sprint project)"
 
 **Tips:**
+
 - Keep it simple and readable
 - Round to months or weeks
 - Add context if helpful (sprint, part-time, etc.)
@@ -188,14 +213,17 @@ timeline: "3 months"
 ---
 
 ### 6. client (string)
+
 **Purpose:** Who the project was for.
 
 **Example:**
+
 ```javascript
-client: "Tech Startup"
+client: "Tech Startup";
 ```
 
 **Other examples:**
+
 - "Retail Company"
 - "Healthcare Startup"
 - "Personal Project"
@@ -203,6 +231,7 @@ client: "Tech Startup"
 - "University Course"
 
 **Tips:**
+
 - Can be specific ("Nike") or general ("E-commerce Company")
 - Use "Personal Project" if no client
 - Respect NDA (use generic names if needed)
@@ -225,10 +254,12 @@ The remaining projects (p5-p10) will stay simple for now.
 ### What This Looks Like
 
 **After this class:**
+
 - ✅ Projects 1-4: Fully detailed (all fields)
 - ⚪ Projects 5-10: Basic only (card fields only)
 
 **Result:**
+
 - Clicking p1-p4 shows rich detail pages
 - Clicking p5-p10 shows basic detail pages (just title, blurb, image)
 - Both work fine! Detail page handles missing data gracefully
@@ -242,6 +273,7 @@ Let's update `projects.js` with detailed information for the first 4 projects.
 **📁 Open file:** `src/data/projects.js`
 
 **Current file structure:**
+
 ```javascript
 export const projects = [
   {
@@ -285,6 +317,7 @@ Let's start by updating the first project with ALL new fields.
 ```
 
 **What changed:**
+
 - ✅ Added `overview` (detailed description)
 - ✅ Added `highlights` (array with 3 achievements)
 - ✅ Added `role` (job title/position)
@@ -323,6 +356,7 @@ Now let's update the second project.
 ```
 
 **Notice:**
+
 - Different role ("Lead Frontend Developer" instead of "UX Designer")
 - Different tools (Next.js, Stripe, MongoDB)
 - Different timeline (4 months instead of 3)
@@ -358,6 +392,7 @@ This shows how projects can have different structures while using the same data 
 ```
 
 **Notice:**
+
 - Mobile-specific tools (React Native, HealthKit API)
 - Health-specific achievements (HIPAA compliance, patient no-shows)
 - Longer timeline (6 months for complex healthcare app)
@@ -391,6 +426,7 @@ This shows how projects can have different structures while using the same data 
 ```
 
 **Notice:**
+
 - Data visualization tools (D3.js, Storybook)
 - Different framework (Vue.js instead of React)
 - Dashboard-specific achievements (data comprehension, support tickets)
@@ -403,6 +439,7 @@ This shows how projects can have different structures while using the same data 
 **Leave the remaining projects (p5-p10) as they are** - with just the basic fields.
 
 **Example (don't change these):**
+
 ```javascript
 {
   id: "p5",
@@ -414,6 +451,7 @@ This shows how projects can have different structures while using the same data 
 ```
 
 **Why keep them simple?**
+
 - They still work! The detail page handles missing data gracefully
 - Saves time in class
 - Students can expand them as homework
@@ -565,23 +603,27 @@ For now, the data is ready and waiting to be used!
 ## What You've Learned
 
 ✅ **Data Structure Design:**
+
 - Difference between preview data and detail data
 - When to use strings vs. arrays
 - Making fields optional for flexibility
 
 ✅ **JavaScript Concepts:**
+
 - Object properties
 - Arrays within objects
 - Multi-line strings
 - Exporting data
 
 ✅ **Content Strategy:**
+
 - Writing project descriptions
 - Quantifying achievements
 - Presenting technical information
 - Professional tone and style
 
 ✅ **Development Workflow:**
+
 - Preparing data before building UI
 - Incremental updates (4 projects now, 6 later)
 - Working with realistic vs. placeholder content
@@ -611,6 +653,7 @@ For each of your real projects, write:
    - Client or context (can be generic for privacy)
 
 **Tips for writing content:**
+
 - Focus on YOUR contributions (not the team's)
 - Use action verbs (Designed, Developed, Implemented, etc.)
 - Include numbers when possible (gives credibility)
@@ -626,6 +669,7 @@ For each of your real projects, write:
 **Problem:** Red underlines or errors in terminal
 
 **Solution:**
+
 - Check that all strings are in quotes: `"text here"`
 - Check that arrays use square brackets: `["item1", "item2"]`
 - Check that array items are separated by commas
@@ -633,6 +677,7 @@ For each of your real projects, write:
 - Make sure you didn't accidentally delete a comma or brace
 
 **Common mistakes:**
+
 ```javascript
 // ❌ Missing comma between fields
 role: "Developer"
@@ -657,16 +702,16 @@ tools: ["React", "Vue"]
 
 **Solution:**
 Use JavaScript's template literal style (we're already using it!):
+
 ```javascript
-overview:
-  "This is a very long description that spans multiple lines. " +
+overview: "This is a very long description that spans multiple lines. " +
   "You can break it up like this for readability. " +
-  "It will still be one continuous string."
+  "It will still be one continuous string.";
 
 // Or use template literals (backticks)
 overview: `This is a very long description.
 It can span multiple lines naturally.
-But be careful with line breaks!`
+But be careful with line breaks!`;
 ```
 
 We're using the quote style for consistency, but both work!
@@ -679,27 +724,29 @@ We're using the quote style for consistency, but both work!
 
 **Solution:**
 Follow this template:
+
 ```javascript
-overview: "[Type of project] that [main purpose]. Focused on [key challenge or goal]. [Your role] involved [main responsibilities], resulting in [outcome]."
+overview: "[Type of project] that [main purpose]. Focused on [key challenge or goal]. [Your role] involved [main responsibilities], resulting in [outcome].";
 
 // Example:
-overview: "E-commerce website that helps small businesses sell online. Focused on ease of use and mobile shopping. As Frontend Developer, I built the product catalog and checkout flow, resulting in a 25% increase in mobile conversions."
+overview: "E-commerce website that helps small businesses sell online. Focused on ease of use and mobile shopping. As Frontend Developer, I built the product catalog and checkout flow, resulting in a 25% increase in mobile conversions.";
 ```
 
 **For highlights, use this pattern:**
+
 ```javascript
 highlights: [
   "[Action verb] [metric/outcome] by [number]% through [method]",
   "[Technical achievement] using [tools/technologies]",
-  "[Project management success] [timeline/budget detail]"
-]
+  "[Project management success] [timeline/budget detail]",
+];
 
 // Example:
 highlights: [
   "Increased conversion rate by 30% through improved checkout UX",
   "Built responsive design system using React and Tailwind CSS",
-  "Delivered MVP in 6 weeks, 2 weeks ahead of schedule"
-]
+  "Delivered MVP in 6 weeks, 2 weeks ahead of schedule",
+];
 ```
 
 ---

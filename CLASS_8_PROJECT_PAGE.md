@@ -1,7 +1,7 @@
 # Class 8: Building the Project Detail Page
 
-**Component:** `src/pages/Project.jsx`  
-**Type:** Dynamic Page Component  
+**Component:** `src/pages/Project.jsx`
+**Type:** Dynamic Page Component
 **Purpose:** Display full details for individual projects using dynamic routing
 
 ---
@@ -9,6 +9,7 @@
 ## What is Dynamic Routing?
 
 So far, every page you've built has had a **fixed URL**:
+
 - `/` always shows the Home page
 - `/portfolio` always shows the Portfolio page
 - `/about` always shows the About page
@@ -64,23 +65,28 @@ We have 10 projects (p1, p2, ..., p10). Instead of creating 10 separate componen
 Let's trace what happens when someone clicks a project card:
 
 **Step 1: User clicks a project card**
+
 - Card has: `<Link to="/portfolio/p1">`
 - URL changes to: `http://localhost:5173/portfolio/p1`
 
 **Step 2: React Router matches the route**
+
 - Looks at route config: `{ path: "portfolio/:slug", element: <Project /> }`
 - Matches! The `:slug` part captured "p1"
 - Renders the `Project` component
 
 **Step 3: Component gets the parameter**
+
 - `useParams()` hook reads the URL parameter
 - Returns: `{ slug: "p1" }`
 
 **Step 4: Component finds the project data**
+
 - Uses `Array.find()` to search projects array
 - Finds the project where `id === "p1"`
 
 **Step 5: Component renders the project**
+
 - Uses the project data to display title, overview, highlights, etc.
 - All dynamic based on the URL!
 
@@ -95,6 +101,7 @@ Let's trace what happens when someone clicks a project card:
 **What it does:** Returns an object containing URL parameters.
 
 **Example:**
+
 ```jsx
 import { useParams } from "react-router-dom";
 
@@ -105,6 +112,7 @@ function Project() {
 ```
 
 **Destructuring explained:**
+
 ```jsx
 // Route definition:
 { path: "portfolio/:slug", element: <Project /> }
@@ -124,24 +132,26 @@ const { category, slug } = useParams();
 **What it does:** Returns a function to navigate programmatically (without links).
 
 **Example:**
+
 ```jsx
 import { useNavigate } from "react-router-dom";
 
 function Project() {
   const navigate = useNavigate();
-  
+
   // Navigate to a specific route
-  navigate('/portfolio');
-  
+  navigate("/portfolio");
+
   // Go back one page (like browser back button)
   navigate(-1);
-  
+
   // Go forward one page
   navigate(1);
 }
 ```
 
 **Use cases:**
+
 - "Go Back" buttons
 - Redirects after form submission
 - Navigation after login/logout
@@ -169,9 +179,7 @@ import SEO from "../components/ui/SEO.jsx";
 import { projects } from "../data/projects.js";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function Project() {
-  
-}
+export default function Project() {}
 ```
 
 **What's happening:**
@@ -216,7 +224,7 @@ export default function Project() {
   const project = projects.find((p) => p.id === slug);
 
   return (
-    
+
   );
 }
 ```
@@ -240,6 +248,7 @@ export default function Project() {
    - Returns the matching project object, or `undefined` if not found
 
 **Array.find() explained:**
+
 ```jsx
 const projects = [
   { id: "p1", title: "Project 1" },
@@ -294,7 +303,7 @@ export default function Project() {
   }
 
   return (
-    
+
   );
 }
 ```
@@ -324,6 +333,7 @@ export default function Project() {
    - Arrow function: `() => navigate(-1)` prevents immediate execution
 
 **Why this matters:**
+
 - Better user experience (helpful error instead of blank page)
 - Prevents crashes from trying to access properties of `undefined`
 - Gives users a way to recover (Go Back button)
@@ -381,8 +391,6 @@ export default function Project() {
           <h1 className="heading-page">{project.title}</h1>
           <p className="mt-2 body-default">{project.blurb}</p>
         </header>
-
-        
       </Container>
     </Section>
   );
@@ -392,6 +400,7 @@ export default function Project() {
 **What's happening:**
 
 1. **SEO Component**
+
    ```jsx
    <SEO
      title={project.title}
@@ -400,38 +409,39 @@ export default function Project() {
      image={project.image}
    />
    ```
+
    - `title={project.title}` - Dynamic page title (e.g., "E-Commerce Platform")
    - `description={project.blurb || ...}` - Use blurb, or fallback template if missing
    - `url={`/portfolio/${project.id}`}` - Template literal for dynamic URL
    - `image={project.image}` - Project image for social sharing
 
 2. **Breadcrumb Navigation**
+
    ```jsx
    <Breadcrumb
      items={[
        { label: "Home", href: "/" },
        { label: "Portfolio", href: "/portfolio" },
-       { label: project.title }  // No href = current page
+       { label: project.title }, // No href = current page
      ]}
    />
    ```
+
    - Shows: Home > Portfolio > Project Name
    - First two items are clickable (have `href`)
    - Last item (current page) is not clickable
    - Uses the Breadcrumb component from Class 7!
 
 3. **Go Back Button**
+
    ```jsx
    <nav className="body-small subheading-muted">
-     <Button 
-       onClick={() => navigate(-1)} 
-       variant="link" 
-       leftIcon={<FaArrowLeft className="w-4 h-4" />}
-     >
+     <Button onClick={() => navigate(-1)} variant="link" leftIcon={<FaArrowLeft className="w-4 h-4" />}>
        Go Back
      </Button>
    </nav>
    ```
+
    - Wrapped in `<nav>` with styles for subtle appearance
    - `variant="link"` - Styled as a link (not a button)
    - `leftIcon` - Arrow icon to the left of text
@@ -444,6 +454,7 @@ export default function Project() {
      <p className="mt-2 body-default">{project.blurb}</p>
    </header>
    ```
+
    - `<header>` - Semantic HTML for page introduction
    - `max-w-3xl` - Limits width for readability
    - `heading-page` - Custom style from index.css
@@ -498,7 +509,7 @@ export default function Project() {
         }
         url={`/portfolio/${project.id}`}
         image={project.image}
-       />
+      />
       <Container>
         <Breadcrumb
           items={[{ label: "Home", href: "/" }, { label: "Portfolio", href: "/portfolio" }, { label: project.title }]}
@@ -578,25 +589,24 @@ export default function Project() {
 **What's happening in the grid:**
 
 1. **Two-column responsive grid**
+
    ```jsx
    <div className="mt-8 grid gap-6 md:grid-cols-2">
    ```
+
    - `mt-8` - Top margin (spacing from header)
    - `grid` - CSS Grid layout
    - `gap-6` - Space between grid items
    - `md:grid-cols-2` - Two columns on medium screens and up (stacks on mobile)
 
 2. **Left column: Project image**
+
    ```jsx
    <div className="card-base rounded-2xl overflow-hidden">
-     <img
-       src={project.image}
-       alt={`${project.title} hero`}
-       className="w-full h-auto object-cover"
-       loading="lazy"
-     />
+     <img src={project.image} alt={`${project.title} hero`} className="w-full h-auto object-cover" loading="lazy" />
    </div>
    ```
+
    - `card-base` - Custom style from index.css (card background)
    - `rounded-2xl` - Large rounded corners
    - `overflow-hidden` - Clips image to rounded corners
@@ -604,29 +614,35 @@ export default function Project() {
    - `loading="lazy"` - Lazy load image (performance optimization)
 
 3. **Right column: Overview section**
+
    ```jsx
    <h2 className="subheading-primary">Overview</h2>
    <p className="mt-2 body-default">
      {project.overview || "No overview available for this project."}
    </p>
    ```
+
    - Shows `project.overview` if it exists
    - `||` (OR operator) provides fallback text if overview is missing
    - Handles projects like p5-p10 that don't have detailed data
 
 4. **Highlights section (conditional)**
+
    ```jsx
-   {project.highlights && project.highlights.length > 0 && (
-     <>
-       <h3 className="mt-6 font-semibold">Highlights</h3>
-       <ul className="mt-2 list-disc pl-5 body-default space-y-1">
-         {project.highlights.map((highlight, index) => (
-           <li key={index}>{highlight}</li>
-         ))}
-       </ul>
-     </>
-   )}
+   {
+     project.highlights && project.highlights.length > 0 && (
+       <>
+         <h3 className="mt-6 font-semibold">Highlights</h3>
+         <ul className="mt-2 list-disc pl-5 body-default space-y-1">
+           {project.highlights.map((highlight, index) => (
+             <li key={index}>{highlight}</li>
+           ))}
+         </ul>
+       </>
+     );
+   }
    ```
+
    - **Double condition**: `project.highlights && project.highlights.length > 0`
      - First check: Does `highlights` exist?
      - Second check: Is the array not empty?
@@ -637,34 +653,37 @@ export default function Project() {
 
 5. **Project Details section (conditional)**
    ```jsx
-   {(project.role || project.tools || project.timeline || project.client) && (
-     <>
-       <h3 className="mt-6 font-semibold">Project Details</h3>
-       <div className="mt-2 body-default space-y-2">
-         {project.role && (
-           <div>
-             <span className="font-medium">Role:</span> {project.role}
-           </div>
-         )}
-         {project.tools && project.tools.length > 0 && (
-           <div>
-             <span className="font-medium">Tools:</span> {project.tools.join(", ")}
-           </div>
-         )}
-         {project.timeline && (
-           <div>
-             <span className="font-medium">Timeline:</span> {project.timeline}
-           </div>
-         )}
-         {project.client && (
-           <div>
-             <span className="font-medium">Client:</span> {project.client}
-           </div>
-         )}
-       </div>
-     </>
-   )}
+   {
+     (project.role || project.tools || project.timeline || project.client) && (
+       <>
+         <h3 className="mt-6 font-semibold">Project Details</h3>
+         <div className="mt-2 body-default space-y-2">
+           {project.role && (
+             <div>
+               <span className="font-medium">Role:</span> {project.role}
+             </div>
+           )}
+           {project.tools && project.tools.length > 0 && (
+             <div>
+               <span className="font-medium">Tools:</span> {project.tools.join(", ")}
+             </div>
+           )}
+           {project.timeline && (
+             <div>
+               <span className="font-medium">Timeline:</span> {project.timeline}
+             </div>
+           )}
+           {project.client && (
+             <div>
+               <span className="font-medium">Client:</span> {project.client}
+             </div>
+           )}
+         </div>
+       </>
+     );
+   }
    ```
+
    - **Outer condition**: Show section only if AT LEAST ONE detail exists
    - **Inner conditions**: Show each field only if it exists
    - `project.tools.join(", ")` - Converts array to comma-separated string
@@ -680,21 +699,28 @@ This component uses **conditional rendering** extensively. Let's break it down:
 ### Pattern 1: OR operator for fallback
 
 ```jsx
-{project.overview || "No overview available for this project."}
+{
+  project.overview || "No overview available for this project.";
+}
 ```
 
 **How it works:**
+
 - If `project.overview` exists and is truthy → use it
 - If `project.overview` is falsy (undefined, null, "") → use fallback text
 
 **Example:**
+
 ```jsx
 // Project has overview
-{ overview: "Detailed description" }
+{
+  overview: "Detailed description";
+}
 // Displays: "Detailed description"
 
 // Project has no overview
-{ }  // overview is undefined
+{
+} // overview is undefined
 // Displays: "No overview available for this project."
 ```
 
@@ -703,18 +729,20 @@ This component uses **conditional rendering** extensively. Let's break it down:
 ### Pattern 2: AND operator for conditional rendering
 
 ```jsx
-{project.highlights && project.highlights.length > 0 && (
-  <div>Highlights content</div>
-)}
+{
+  project.highlights && project.highlights.length > 0 && <div>Highlights content</div>;
+}
 ```
 
 **How it works:**
+
 - First check: `project.highlights` - Does it exist?
 - Second check: `project.highlights.length > 0` - Is array not empty?
 - If BOTH are true → render content
 - If EITHER is false → render nothing
 
 **Why two checks?**
+
 - If `project.highlights` is `undefined`, checking `.length` would cause an error
 - First check ensures the property exists before accessing `.length`
 
@@ -723,12 +751,13 @@ This component uses **conditional rendering** extensively. Let's break it down:
 ### Pattern 3: Multiple conditions with OR
 
 ```jsx
-{(project.role || project.tools || project.timeline || project.client) && (
-  <div>Project Details content</div>
-)}
+{
+  (project.role || project.tools || project.timeline || project.client) && <div>Project Details content</div>;
+}
 ```
 
 **How it works:**
+
 - Show section if ANY of these fields exist
 - If ALL are undefined → don't show section (no empty "Project Details" heading)
 
@@ -745,11 +774,13 @@ const project = projects.find((p) => p.id === slug);
 **What it does:** Returns the first element that matches the condition.
 
 **Parameters:**
+
 - Callback function that returns `true` or `false`
 - `p` is each project in the array (parameter name is arbitrary)
 - `p.id === slug` is the condition
 
 **Returns:**
+
 - The matching project object, or `undefined` if no match
 
 ---
@@ -757,19 +788,21 @@ const project = projects.find((p) => p.id === slug);
 ### Array.map()
 
 ```jsx
-{project.highlights.map((highlight, index) => (
-  <li key={index}>{highlight}</li>
-))}
+{
+  project.highlights.map((highlight, index) => <li key={index}>{highlight}</li>);
+}
 ```
 
 **What it does:** Transforms each array item into JSX.
 
 **Parameters:**
+
 - Callback function that returns JSX
 - `highlight` is each string in the highlights array
 - `index` is the position (0, 1, 2, ...)
 
 **Returns:**
+
 - Array of JSX elements (`<li>` tags in this case)
 
 ---
@@ -777,17 +810,21 @@ const project = projects.find((p) => p.id === slug);
 ### Array.join()
 
 ```jsx
-{project.tools.join(", ")}
+{
+  project.tools.join(", ");
+}
 ```
 
 **What it does:** Converts array to a string with separator.
 
 **Example:**
-```jsx
-["React", "Vue", "TypeScript"].join(", ")
-// Returns: "React, Vue, TypeScript"
 
-["Figma", "Sketch"].join(" • ")
+```jsx
+["React", "Vue", "TypeScript"].join(", ")[
+  // Returns: "React, Vue, TypeScript"
+
+  ("Figma", "Sketch")
+].join(" • ");
 // Returns: "Figma • Sketch"
 ```
 
@@ -833,6 +870,7 @@ Here's what the page structure looks like:
 ```
 
 **On mobile (smaller screens):**
+
 ```
 ┌──────────────────────┐
 │ Breadcrumb           │
@@ -855,38 +893,45 @@ Here's what the page structure looks like:
 ## What You've Learned
 
 ✅ **Dynamic Routing:**
+
 - How route parameters work (`:slug`)
 - One component handling multiple URLs
 - URL-driven content display
 
 ✅ **React Router Hooks:**
+
 - `useParams()` to access URL parameters
 - `useNavigate()` for programmatic navigation
 - When to use each hook
 
 ✅ **Data Manipulation:**
+
 - `Array.find()` to locate specific items
 - `Array.map()` to render lists
 - `Array.join()` to format arrays as strings
 
 ✅ **Conditional Rendering:**
+
 - OR operator (`||`) for fallbacks
 - AND operator (`&&`) for conditional display
 - Multiple conditions for complex logic
 - Handling missing or incomplete data
 
 ✅ **Error Handling:**
+
 - 404 pages for invalid routes
 - Graceful degradation (missing data)
 - User-friendly error messages
 - Recovery options (Go Back button)
 
 ✅ **Component Composition:**
+
 - Reusing components (Breadcrumb, Button, SEO)
 - Building complex layouts from simple parts
 - Consistent patterns across pages
 
 ✅ **SEO & Accessibility:**
+
 - Dynamic meta tags based on content
 - Semantic HTML (`<header>`, `<nav>`)
 - Alt text for images
@@ -899,12 +944,14 @@ Here's what the page structure looks like:
 ### "What's the difference between slug and id?"
 
 **Answer:**
+
 - **In our code**: We're using `id` in the data and `slug` in the URL parameter
 - **slug** is a common web term for URL-friendly identifiers
 - **id** can be anything (numbers, UUIDs, slugs)
 - We could rename `:slug` to `:id` if we wanted - it's just a parameter name!
 
 **Real-world example:**
+
 ```javascript
 // Using numeric IDs
 { id: 123, title: "My Project" }
@@ -942,6 +989,7 @@ JavaScript's `&&` operator **short-circuits**: if the first condition is false, 
 
 **Answer:**
 The page still works! It shows:
+
 - ✅ Title and blurb (all projects have these)
 - ✅ Image (all projects have this)
 - ✅ "No overview available" message (fallback text)
@@ -956,15 +1004,18 @@ This is **graceful degradation** - the page adapts to available data!
 
 **Answer:**
 Absolutely! Just:
+
 1. Add the field to the data (e.g., `github: "https://github.com/..."`)
 2. Add conditional rendering in the component:
    ```jsx
-   {project.github && (
-     <div>
-       <span className="font-medium">GitHub:</span>
-       <a href={project.github}>View Code</a>
-     </div>
-   )}
+   {
+     project.github && (
+       <div>
+         <span className="font-medium">GitHub:</span>
+         <a href={project.github}>View Code</a>
+       </div>
+     );
+   }
    ```
 
 The pattern is the same for any field!
@@ -976,6 +1027,7 @@ The pattern is the same for any field!
 ✨ **Project detail page component is complete!** ✨
 
 In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs to this component. Once that's done, you'll be able to:
+
 - Click any project card
 - See the full project details
 - Navigate with breadcrumbs
@@ -991,6 +1043,7 @@ In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs
 **Problem:** Trying to access `project.title` when project doesn't exist
 
 **Solution:**
+
 - Check that the `if (!project)` block comes BEFORE you use `project`
 - The early return prevents this error
 - Make sure you didn't accidentally delete the error handling
@@ -1002,6 +1055,7 @@ In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs
 **Problem:** Import error or typo
 
 **Solution:**
+
 - Check import: `import { useParams } from "react-router-dom"`
 - Make sure it's destructured with curly braces `{ }`
 - Verify React Router is installed (should be from Class 2)
@@ -1013,6 +1067,7 @@ In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs
 **Problem:** Conditional rendering logic issue
 
 **Solution:**
+
 - Check the condition: `project.highlights && project.highlights.length > 0`
 - Verify the data structure in projects.js (should be an array)
 - Check for typos: `highlights` (plural) not `highlight`
@@ -1025,6 +1080,7 @@ In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs
 **Problem:** Forgot to use `.join()`
 
 **Solution:**
+
 ```jsx
 // ❌ Wrong (displays array as object)
 <span>Tools: {project.tools}</span>
@@ -1040,6 +1096,7 @@ In the next guide, we'll **add the dynamic route** in `main.jsx` to connect URLs
 **Problem:** Arrow function syntax or navigate not defined
 
 **Solution:**
+
 - Check arrow function: `onClick={() => navigate(-1)}`
 - Must have arrow function! Not just `onClick={navigate(-1)}`
   - `onClick={() => navigate(-1)}` creates a function (correct)

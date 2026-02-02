@@ -26,6 +26,7 @@ WHAT STUDENTS HAVE ALREADY BUILT (PREREQUISITES)
 BY END OF CLASS 5, STUDENTS HAVE:
 
 **UI Components:**
+
 - Button.jsx (Class 1)
 - Section.jsx (Class 1)
 - Container.jsx (Class 1)
@@ -34,24 +35,29 @@ BY END OF CLASS 5, STUDENTS HAVE:
 - TestimonialCard.jsx (Class 5)
 
 **Layout Components:**
+
 - Navbar.jsx (Class 2)
 - Footer.jsx (Class 2)
 
 **Section Components:**
+
 - TechStack.jsx (Class 3)
 - Projects.jsx (Class 4)
 - Testimonials.jsx (Class 5)
 - FinalCTA.jsx (Class 5)
 
 **Data Files:**
+
 - techstack.js (Class 3)
 - projects.js (Class 4)
 - testimonials.js (Class 5)
 
 **Pages:**
+
 - Home.jsx - Complete homepage (Classes 1-5)
 
 **App Structure:**
+
 - App.jsx with routing (Class 2)
 - main.jsx (Class 1)
 
@@ -89,6 +95,7 @@ DETAILED COMPONENT BREAKDOWN
 Store all content for the About page in a structured, maintainable format
 
 **Data Structure:**
+
 ```javascript
 export const aboutData = {
   bio: { intro, background, current, personal },
@@ -101,6 +108,7 @@ export const aboutData = {
 ```
 
 **Key Teaching Points:**
+
 - Named export of a single object (export const aboutData)
 - Nested object structure (bio contains multiple properties)
 - Arrays of objects for repeating sections
@@ -108,6 +116,7 @@ export const aboutData = {
 - Customization points for students
 
 **Student Customization:**
+
 - Replace all bio text with their own story
 - Update values to reflect their principles
 - Add their actual experience and education
@@ -126,6 +135,7 @@ Display a comprehensive About page with multiple sections telling the
 student's professional and personal story
 
 **Sections Included:**
+
 1. Hero/Intro - Bio paragraphs
 2. Values - 4 value cards in a 2x2 grid
 3. Experience Timeline - Professional history with achievements
@@ -134,6 +144,7 @@ student's professional and personal story
 6. CTA - Final call-to-action with two buttons
 
 **Key Teaching Points:**
+
 - Building complete pages (not just sections)
 - Importing and using nested data structures
 - Multiple layout patterns on one page
@@ -144,6 +155,7 @@ student's professional and personal story
 - Using role="list" and role="listitem" for accessibility
 
 **Complexity Level:** Complex
+
 - Multiple distinct sections with different layouts
 - Timeline pattern (new)
 - Nested data mapping (experience with achievements)
@@ -153,6 +165,7 @@ student's professional and personal story
 **Visual Layouts:**
 
 **Bio Section:**
+
 ```
 +----------------------------------------+
 |         About Me (h1)                  |
@@ -164,6 +177,7 @@ student's professional and personal story
 ```
 
 **Values Section (2x2 Grid):**
+
 ```
 +------------------------------------------+
 |     What Drives My Work (h2)            |
@@ -180,6 +194,7 @@ student's professional and personal story
 ```
 
 **Experience Timeline:**
+
 ```
 +------------------------------------------+
 |     Professional Journey (h2)           |
@@ -197,6 +212,7 @@ student's professional and personal story
 ```
 
 **Education Grid (3 columns):**
+
 ```
 +------------------------------------------+
 |  Education & Certifications (h2)        |
@@ -210,6 +226,7 @@ student's professional and personal story
 ```
 
 **Interests Grid (3 columns with images):**
+
 ```
 +------------------------------------------+
 |       Beyond the Code (h2)              |
@@ -228,6 +245,7 @@ student's professional and personal story
 ```
 
 **Final CTA:**
+
 ```
 +------------------------------------------+
 |      Let's Work Together (h2)           |
@@ -269,6 +287,7 @@ KEY CONCEPTS TAUGHT IN CLASS 6
 ================================================================================
 
 **NEW CONCEPTS:**
+
 - Timeline components with semantic HTML
 - Nested data structures (object with arrays)
 - Multiple layout patterns on one page
@@ -281,6 +300,7 @@ KEY CONCEPTS TAUGHT IN CLASS 6
 - Focus states for accessibility (focus-within)
 
 **REINFORCED CONCEPTS:**
+
 - Data-driven rendering with .map()
 - Responsive grids (1 column → 2 columns → 3 columns)
 - SEO with SEO component
@@ -289,6 +309,7 @@ KEY CONCEPTS TAUGHT IN CLASS 6
 - Card styling patterns
 
 **LAYOUT PATTERNS:**
+
 - Single column centered content (max-w-4xl)
 - 2-column grid (md:grid-cols-2)
 - 3-column grid (lg:grid-cols-3)
@@ -296,6 +317,7 @@ KEY CONCEPTS TAUGHT IN CLASS 6
 - Image cards with overlays
 
 **ACCESSIBILITY PATTERNS:**
+
 - Semantic HTML for timelines
 - ARIA labels and descriptions
 - Focus states
@@ -321,6 +343,7 @@ By the end of Class 6, students will be able to:
 
 **COMPLETED PROJECT STATE:**
 Students will have a complete About page with:
+
 - Personal bio and introduction
 - Core values and principles
 - Professional experience timeline
@@ -335,22 +358,26 @@ COMPARISONS TO PREVIOUS CLASSES
 ================================================================================
 
 **DIFFERENT FROM HOME PAGE:**
+
 - Home: Multiple separate section components
 - About: One page component with inline sections
 
 **WHY THIS APPROACH:**
+
 - About page is unique (won't reuse sections elsewhere)
 - Content is tightly coupled (all about one person)
 - Simpler to maintain as one file
 - Shows different organizational approach
 
 **PATTERN RECOGNITION:**
+
 - Still uses Section + Container
 - Still maps over data arrays
 - Still uses responsive grids
 - Different approach, same principles
 
 **PEDAGOGICAL VALUE:**
+
 - Shows there's more than one way to structure pages
 - Reinforces that components should match use case
 - Reusable sections: separate components
@@ -394,6 +421,7 @@ CUSTOMIZATION OPPORTUNITIES FOR STUDENTS
    - Modify links
 
 **Advanced Customizations (future):**
+
 - Add skills section with progress bars
 - Add awards/recognition section
 - Add downloadable resume link
@@ -407,37 +435,39 @@ COMMON STUDENT QUESTIONS (ANTICIPATED)
 
 **Q: "Why is the About page one component instead of separate sections?"**
 A: The About page is unique to you. Unlike Projects or Testimonials (which
-   might appear on multiple pages), your bio and timeline are specific to
-   this page. It's simpler to keep it all together. If you wanted to reuse
-   a section (like your bio), you could extract it into a separate component.
+might appear on multiple pages), your bio and timeline are specific to
+this page. It's simpler to keep it all together. If you wanted to reuse
+a section (like your bio), you could extract it into a separate component.
 
 **Q: "Can I add my own photo instead of using a profile image?"**
 A: Absolutely! You can add an image to the bio section. We'll show you how
-   to handle images in a later class.
+to handle images in a later class.
 
 **Q: "What if I don't have much professional experience yet?"**
 A: That's completely fine! Include:
-   - School projects that showcase your skills
-   - Volunteer work or community involvement
-   - Personal projects or freelance work
-   - Part-time jobs (showing responsibility and work ethic)
-   - Focus on what you learned and accomplished
+
+- School projects that showcase your skills
+- Volunteer work or community involvement
+- Personal projects or freelance work
+- Part-time jobs (showing responsibility and work ethic)
+- Focus on what you learned and accomplished
 
 **Q: "The timeline looks different from the cards. Can I make it all cards?"**
 A: Yes! You could style the experience items as cards instead of a timeline.
-   The timeline is a nice visual pattern for chronological data, but there's
-   no requirement to use it.
+The timeline is a nice visual pattern for chronological data, but there's
+no requirement to use it.
 
 **Q: "Can I change the order of sections?"**
 A: Yes! The sections are independent. You could move education before
-   experience, or put interests at the top. Experiment with what tells
-   your story best.
+experience, or put interests at the top. Experiment with what tells
+your story best.
 
 **Q: "What if I don't have interests photos?"**
 A: We're using Unsplash URLs for placeholders. You can:
-   - Keep using Unsplash (free stock photos)
-   - Add your own photos later
-   - Remove the image part and just have icon cards
+
+- Keep using Unsplash (free stock photos)
+- Add your own photos later
+- Remove the image part and just have icon cards
 
 ================================================================================
 DEPENDENCIES AND FILE LOCATIONS
@@ -457,6 +487,7 @@ src/
 None! This is a standalone page.
 
 **DEPENDENCIES (already exist):**
+
 - Button.jsx (Class 1)
 - Section.jsx (Class 1)
 - Container.jsx (Class 1)
@@ -465,6 +496,7 @@ None! This is a standalone page.
 
 **ROUTE:**
 Already configured in App.jsx:
+
 ```jsx
 <Route path="/about" element={<About />} />
 ```
@@ -517,6 +549,7 @@ TESTING STRATEGY
    - Card styling applied
 
 **VISUAL TESTING:**
+
 - Mobile view (320px-640px)
 - Tablet view (768px-1024px)
 - Desktop view (1280px+)
@@ -553,31 +586,36 @@ ALIGNMENT WITH INSTRUCTIONAL RULES
 **FOLLOWING THE RULES:**
 
 ✓ **Progressive Enhancement:**
-  - Build page section by section (6 stages)
-  - Start with simple bio, add complexity gradually
-  - Each section builds on previous knowledge
+
+- Build page section by section (6 stages)
+- Start with simple bio, add complexity gradually
+- Each section builds on previous knowledge
 
 ✓ **No Wasteful Patterns:**
-  - Teaches semantic HTML for timelines from the start
-  - Uses proper accessibility patterns immediately
-  - No refactoring or rebuilding needed
+
+- Teaches semantic HTML for timelines from the start
+- Uses proper accessibility patterns immediately
+- No refactoring or rebuilding needed
 
 ✓ **Codebase Alignment:**
-  - Final code matches actual About.jsx exactly
-  - Data structure matches about.js
-  - All Tailwind classes are correct
-  - Imports are accurate
+
+- Final code matches actual About.jsx exactly
+- Data structure matches about.js
+- All Tailwind classes are correct
+- Imports are accurate
 
 ✓ **Pedagogical Sound:**
-  - New concepts (timeline, nested data) introduced with context
-  - Reinforces previous learning (mapping, grids, responsive design)
-  - Shows alternative page structure approach
-  - Builds complete, functional page
+
+- New concepts (timeline, nested data) introduced with context
+- Reinforces previous learning (mapping, grids, responsive design)
+- Shows alternative page structure approach
+- Builds complete, functional page
 
 ✓ **One Concept Per Stage:**
-  - Each stage focuses on one section
-  - Builds understanding incrementally
-  - Can test after each stage
+
+- Each stage focuses on one section
+- Builds understanding incrementally
+- Can test after each stage
 
 ================================================================================
 GUIDE CREATION CHECKLIST
@@ -621,12 +659,14 @@ Once instructor approves this plan, create guides in this order:
 2. CLASS_6_ABOUT.md
 
 **ESTIMATED CREATION TIME:**
+
 - Data guide: 30-45 minutes
 - About page guide: 60-90 minutes (it's complex!)
 - Total: 90-135 minutes for guide creation
 
 **AFTER CLASS 6:**
 Students will have:
+
 - Complete Homepage (Classes 1-5)
 - Complete About Page (Class 6)
 - Ready to build Portfolio page (Class 7)
