@@ -1,167 +1,186 @@
-# Class 11 Planning: Error Handling & Accessibility
+# Class 11 Planning: Accessibility Audit & Improvements
 
-**Last Updated:** February 1, 2026
+**Last Updated:** February 9, 2026
 
 ---
 
 ## Overview
 
-Class 11 focuses on **production readiness** by adding error handling and ensuring the portfolio is accessible to all users. These are critical professional skills that separate student projects from production-quality applications. Students will learn defensive programming techniques and accessibility best practices.
+Class 11 focuses on **accessibility** to ensure the portfolio is usable by all users, including those with disabilities. This is a critical professional skill that separates student projects from production-quality applications. Students will learn how to audit their site for accessibility issues and implement improvements following WCAG 2.1 Level AA guidelines.
 
-### What Students Will Build
+**Note:** ErrorBoundary was moved to Class 2 to provide error handling and debugging support from the beginning of the course.
 
-1. **`components/ui/ErrorBoundary.jsx`** - React error boundary component that:
-   - Catches JavaScript errors anywhere in the component tree
-   - Displays a fallback UI instead of crashing the entire app
-   - Provides helpful error information in development
-   - Offers recovery options (refresh, try again)
+### What Students Will Do
 
-2. **Update `App.jsx`** - Wrap application with ErrorBoundary for global error handling
+1. **Accessibility Audit** - Use browser tools to identify issues:
+   - Run Lighthouse accessibility audit
+   - Test keyboard navigation
+   - Review semantic HTML structure
+   - Check ARIA attributes
+   - Test color contrast
+   - Identify missing labels
 
-3. **Accessibility Review & Improvements** - Audit and enhance:
-   - ARIA labels and attributes
-   - Semantic HTML structure
-   - Keyboard navigation and focus management
-   - Screen reader support
-   - Color contrast and visual hierarchy
-   - Focus indicators on interactive elements
+2. **Accessibility Improvements** - Fix identified issues:
+   - Add missing ARIA labels and attributes
+   - Improve focus indicators on interactive elements
+   - Enhance semantic HTML structure
+   - Add sr-only (screen reader only) helper text
+   - Ensure proper heading hierarchy
+   - Verify color contrast meets WCAG AA standards
 
 ### Key Learning Outcomes
 
 By the end of this class, students will:
 
-- Understand **error boundaries** and their role in React applications
-- Learn **class components** (vs functional components)
-- Implement **defensive programming** patterns
 - Conduct **accessibility audits** using browser tools
 - Apply **WCAG 2.1 Level AA** guidelines
-- Test with **keyboard navigation** and screen readers
-- Understand **semantic HTML** best practices
-- Add **ARIA attributes** appropriately
+- Test with **keyboard navigation**
+- Understand **screen reader** basics
+- Use **semantic HTML** appropriately
+- Add **ARIA attributes** when needed (and when not to)
 - Create **accessible forms and interactive elements**
-- Prepare applications for **production deployment**
+- Understand **focus management** best practices
+- Prepare applications for **inclusive deployment**
 
 ---
 
 ## Pedagogical Approach
 
-### Why Error Handling and Accessibility?
+### Why Accessibility Matters
 
-These topics are often overlooked in tutorials but are **essential for professional work**:
+Accessibility is often overlooked in tutorials but is **essential for professional work**:
 
-1. **Error Handling**:
-   - Real applications need graceful failure
-   - Better user experience (vs blank screen)
-   - Easier debugging in production
-   - Professional best practice
-
-2. **Accessibility**:
-   - Legal requirement in many contexts (ADA, Section 508)
-   - Ethical responsibility (inclusive design)
-   - Better UX for everyone (not just users with disabilities)
-   - SEO benefits (semantic HTML)
-   - Professional skill employers expect
+1. **Legal requirement** in many contexts (ADA, Section 508, AODA)
+2. **Ethical responsibility** - inclusive design benefits everyone
+3. **Better UX for all users** (not just users with disabilities)
+4. **SEO benefits** - semantic HTML improves search rankings
+5. **Professional skill** employers expect and value
 
 ### Teaching Sequence
 
-This class follows a **build + audit + improve** approach:
+This class follows an **audit + learn + improve** approach:
 
-1. **Build ErrorBoundary Component** (20-25 min)
-   - Introduce class components (vs functional)
-   - Implement error catching logic
-   - Create fallback UI
-   - Test error scenarios
-
-2. **Integrate ErrorBoundary** (5 min)
-   - Update App.jsx to wrap with ErrorBoundary
-   - Verify error handling works
-
-3. **Accessibility Theory** (10 min)
+1. **Accessibility Introduction** (10-15 min)
    - What is accessibility and why it matters
    - WCAG guidelines overview
-   - Common accessibility issues
-   - Tools for testing
+   - Common accessibility barriers
+   - Tools for testing accessibility
 
-4. **Accessibility Audit** (15-20 min)
-   - Use browser DevTools to audit site
-   - Test keyboard navigation
-   - Review semantic HTML
-   - Check ARIA attributes
-   - Test color contrast
+2. **Accessibility Audit** (20-25 min)
+   - Use Lighthouse to audit the site
+   - Test keyboard navigation through all pages
+   - Review semantic HTML usage
+   - Check existing ARIA attributes
+   - Test color contrast ratios
+   - Identify specific issues to fix
 
-5. **Accessibility Improvements** (15-20 min)
-   - Add missing ARIA labels
-   - Improve focus indicators
-   - Enhance semantic structure
-   - Add sr-only helper text
-   - Verify fixes
+3. **Accessibility Improvements** (25-30 min)
+   - Add missing ARIA labels to interactive elements
+   - Improve focus indicators (visible focus states)
+   - Enhance semantic structure (proper heading hierarchy)
+   - Add sr-only helper text where needed
+   - Fix any color contrast issues
+   - Test and verify all improvements
+
+4. **Final Accessibility Check** (10 min)
+   - Re-run Lighthouse audit
+   - Verify all issues are resolved
+   - Document accessibility features
+   - Celebrate achieving high accessibility score!
 
 ### Why This Order?
 
-1. **Error handling first**: Protects the work we're about to audit
-2. **Theory before practice**: Context for why we're making changes
-3. **Audit before fixing**: Identify specific issues to address
-4. **Targeted improvements**: Fix real problems, not hypothetical ones
+1. **Theory first**: Context for why accessibility matters
+2. **Audit before fixing**: Identify real issues in the actual site
+3. **Targeted improvements**: Fix specific problems found in audit
+4. **Verify fixes**: Confirm improvements actually work
 
 ---
 
-## Component Breakdown
+## Accessibility Concepts
 
-### 1. ErrorBoundary Component
+### What is Web Accessibility?
 
-**File:** `src/components/ui/ErrorBoundary.jsx`
+**Web accessibility** means ensuring websites, tools, and technologies are designed and developed so that people with disabilities can use them.
 
-**Purpose:** Catch JavaScript errors in child components and display a fallback UI instead of crashing the app.
+**People with disabilities can:**
 
-**Key Concepts:**
+- Perceive, understand, navigate, and interact with the web
+- Contribute to the web
 
-#### Class Components
+**Types of disabilities that affect web use:**
 
-- **Why class?** Error boundaries must be class components (React limitation)
-- **Constructor**: Initialize state
-- **Lifecycle methods**: `getDerivedStateFromError`, `componentDidCatch`
-- **render()**: Return UI based on state
+- **Visual**: Blindness, low vision, color blindness
+- **Auditory**: Deafness, hard of hearing
+- **Motor**: Difficulty using mouse, tremors, paralysis
+- **Cognitive**: Learning disabilities, memory issues, attention disorders
 
-#### Error Boundary Lifecycle
+### WCAG 2.1 Guidelines
 
-```
-Error occurs in child component
-        ↓
-getDerivedStateFromError(error) called
-        ↓
-State updated: { hasError: true, error }
-        ↓
-componentDidCatch(error, errorInfo) called (logging)
-        ↓
-render() called with hasError: true
-        ↓
-Fallback UI displayed
-```
+**WCAG** = Web Content Accessibility Guidelines
 
-**Structure:**
+**Four Principles (POUR):**
 
-```jsx
-class ErrorBoundary extends Component {
-  constructor(props) {
-    // Initialize state: hasError, error
-  }
+1. **Perceivable** - Information must be presentable to users
+   - Text alternatives for images
+   - Captions for videos
+   - Adequate color contrast
+   - Content adaptable to different presentations
 
-  static getDerivedStateFromError(error) {
-    // Update state when error occurs
-  }
+2. **Operable** - UI components must be operable
+   - Keyboard accessible
+   - Enough time to read/use content
+   - No seizure-inducing content
+   - Navigable and findable
 
-  componentDidCatch(error, errorInfo) {
-    // Log error for debugging
-  }
+3. **Understandable** - Information and UI must be understandable
+   - Readable text
+   - Predictable behavior
+   - Input assistance (error messages, labels)
 
-  render() {
-    if (this.state.hasError) {
-      // Return fallback UI
-    }
-    return this.props.children; // Normal rendering
-  }
+4. **Robust** - Content must work with assistive technologies
+   - Compatible with current and future tools
+   - Valid HTML
+   - Proper ARIA usage
+
+**Conformance Levels:**
+
+- **Level A**: Basic accessibility (minimum)
+- **Level AA**: Removes major barriers (target for this class)
+- **Level AAA**: Highest level (ideal but not always achievable)
+
+---
+
+## Component Review (No New Components)
+
+### No New Components in Class 11
+
+Unlike previous classes, **Class 11 doesn't build new components**. Instead, students will:
+
+1. **Audit existing components** for accessibility issues
+2. **Update existing components** with accessibility improvements
+3. **Learn best practices** for future component development
+
+### Components to Review and Improve
+
+Students will review all components built in Classes 1-10:
+
+**UI Components:**
 }
-```
+
+componentDidCatch(error, errorInfo) {
+// Log error for debugging
+}
+
+render() {
+if (this.state.hasError) {
+// Return fallback UI
+}
+return this.props.children; // Normal rendering
+}
+}
+
+````
 
 **Features:**
 
@@ -192,7 +211,7 @@ class ErrorBoundary extends Component {
   </main>
   <Footer />
 </ErrorBoundary>
-```
+````
 
 **Why at App level?**
 

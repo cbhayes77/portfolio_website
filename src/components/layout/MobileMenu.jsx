@@ -17,7 +17,7 @@ export default function MobileMenu({ open, onClose, links }) {
       // Simple focus trap - if tab reaches end, wrap to beginning
       if (e.key === "Tab") {
         const focusableElements = panelRef.current?.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
         );
         const firstElement = focusableElements?.[0];
         const lastElement = focusableElements?.[focusableElements.length - 1];
@@ -76,7 +76,7 @@ export default function MobileMenu({ open, onClose, links }) {
           />
         </div>
 
-        <nav className="p-4">
+        <nav className="p-4 bg-black/90">
           <ul className="space-y-2" role="list">
             {links.map((l) => (
               <li key={l.to}>
@@ -95,7 +95,6 @@ export default function MobileMenu({ open, onClose, links }) {
               </li>
             ))}
           </ul>
-
           {/* Contact CTA */}
           <Button as="a" href="/contact" onClick={onClose} variant="primary" className="mt-4 w-full justify-center">
             Contact Me

@@ -231,20 +231,23 @@ Goal: Recreate the portfolio website
 
 ================================================================================
 
-### Class 2: Navigation & First Page
+### Class 2: Navigation, Layout & Error Handling
 
 **What Students Will Build:**
 
 1. `components/layout/Navbar.jsx` - Desktop navigation (no mobile yet)
 2. `components/layout/Footer.jsx` - Basic footer with links
-3. Update `App.jsx` - Add Navbar, Footer, and main content area
-4. `components/ui/SEO.jsx` - SEO component for meta tags
-5. `pages/Home.jsx` - Basic hero section only
+3. `components/ui/ErrorBoundary.jsx` - Error boundary component for debugging
+4. Update `App.jsx` - Add Navbar, Footer, wrap with ErrorBoundary
+5. `components/ui/SEO.jsx` - SEO component for meta tags
+6. `pages/Home.jsx` - Basic hero section only
 
 **Concepts Taught:**
 
 - Layout components
 - Navigation patterns
+- Error boundaries and error handling
+- Debugging React applications
 - SEO best practices
 - Helmet/meta tags
 
@@ -426,28 +429,28 @@ Goal: Recreate the portfolio website
 
 ## Week 6: Polish & Customization
 
-### Class 11: Error Handling & Accessibility
+### Class 11: Accessibility Audit & Improvements
 
-**What Students Will Build:**
+**What Students Will Work On:**
 
-1. `components/ui/ErrorBoundary.jsx` - Error boundary component
-2. Update `App.jsx` - Wrap with ErrorBoundary
-3. Accessibility review and improvements:
+1. Accessibility review and improvements:
    - Add ARIA labels where needed
    - Ensure semantic HTML throughout
    - Add focus states to interactive elements
    - Test keyboard navigation
    - Add sr-only classes for screen readers
+   - Run Lighthouse accessibility audit
+   - Fix any accessibility issues found
 
 **Concepts Taught:**
 
-- Error boundaries
-- Error handling patterns
 - Accessibility (WCAG 2.1 Level AA)
 - ARIA attributes
 - Semantic HTML
 - Keyboard navigation
 - Screen reader support
+- Focus management
+- Color contrast requirements
 
 **Homework:** Begin replacing placeholder content with their own
 
