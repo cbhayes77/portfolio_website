@@ -18,28 +18,28 @@ export const aboutData = {
       title: "User-Centered Design",
       description:
         "Every design decision starts with understanding user needs. I believe in validating assumptions through research and testing, ensuring solutions truly serve the people who use them.",
-      icon: "👤",
+      icon: "user",
     },
     {
       id: 2,
       title: "Clean, Maintainable Code",
       description:
         "Beautiful interfaces deserve beautiful code. I prioritize writing clean, well-documented code that's easy for teams to understand, maintain, and scale as projects grow.",
-      icon: "💻",
+      icon: "laptop-code",
     },
     {
       id: 3,
       title: "Accessibility First",
       description:
         "Great design is inclusive design. I'm committed to creating experiences that work for everyone, regardless of their abilities or the devices they use.",
-      icon: "♿",
+      icon: "universal-access",
     },
     {
       id: 4,
       title: "Continuous Learning",
       description:
         "The web evolves constantly, and so do I. I'm always exploring new tools, techniques, and best practices to deliver better solutions and stay at the forefront of the industry.",
-      icon: "📚",
+      icon: "book",
     },
   ],
 
@@ -117,35 +117,35 @@ export const aboutData = {
       id: 1,
       name: "Open Source Contribution",
       description: "Contributing to UI component libraries and accessibility tools",
-      icon: "🌐",
+      icon: "globe",
       image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=300&fit=crop",
     },
     {
       id: 2,
       name: "Photography",
       description: "Exploring composition and visual storytelling through digital photography",
-      icon: "📸",
+      icon: "camera",
       image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop",
     },
     {
       id: 3,
       name: "Coffee Enthusiast",
       description: "Always searching for the perfect pour-over and new brewing techniques",
-      icon: "☕",
+      icon: "coffee",
       image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop",
     },
     {
       id: 4,
       name: "Hiking & Nature",
       description: "Finding inspiration and balance through outdoor adventures",
-      icon: "🥾",
+      icon: "hiking",
       image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
     },
     {
       id: 5,
       name: "Tech Podcasts",
       description: "Staying current with industry trends and emerging technologies",
-      icon: "🎧",
+      icon: "headphones",
       image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=300&fit=crop",
     },
   ],

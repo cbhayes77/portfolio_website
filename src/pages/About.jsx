@@ -3,6 +3,30 @@ import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
 import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
+import {
+  FaUser,
+  FaLaptopCode,
+  FaUniversalAccess,
+  FaBook,
+  FaGlobe,
+  FaCamera,
+  FaCoffee,
+  FaHiking,
+  FaHeadphones,
+} from "react-icons/fa";
+
+// Icon mapping for clean lookup
+const iconMap = {
+  user: FaUser,
+  "laptop-code": FaLaptopCode,
+  "universal-access": FaUniversalAccess,
+  book: FaBook,
+  globe: FaGlobe,
+  camera: FaCamera,
+  coffee: FaCoffee,
+  hiking: FaHiking,
+  headphones: FaHeadphones,
+};
 
 export default function About() {
   return (
@@ -33,19 +57,22 @@ export default function About() {
           <div className="max-w-6xl mx-auto">
             <h2 className="heading-section text-center mb-12">What Drives My Work</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
-              {aboutData.values.map((value) => (
-                <article
-                  key={value.id}
-                  className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
-                  role="listitem"
-                >
-                  <div className="text-4xl mb-4" aria-hidden="true">
-                    {value.icon}
-                  </div>
-                  <h3 className="subheading-primary mb-2">{value.title}</h3>
-                  <p className="body-default text-white/70">{value.description}</p>
-                </article>
-              ))}
+              {aboutData.values.map((value) => {
+                const IconComponent = iconMap[value.icon];
+                return (
+                  <article
+                    key={value.id}
+                    className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
+                    role="listitem"
+                  >
+                    <div className="text-4xl mb-4" aria-hidden="true">
+                      {IconComponent && <IconComponent className="w-10 h-10" />}
+                    </div>
+                    <h3 className="subheading-primary mb-2">{value.title}</h3>
+                    <p className="body-default text-white/70">{value.description}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </Container>
@@ -127,41 +154,44 @@ export default function About() {
             <p className="body-default text-white/70 max-w-2xl mx-auto text-center mb-12">{aboutData.bio.personal}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
-              {aboutData.interests.map((interest) => (
-                <article
-                  key={interest.id}
-                  className="group card-base rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
-                  role="listitem"
-                >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={interest.image}
-                      alt=""
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-                      aria-hidden="true"
-                    ></div>
-                    <div
-                      className="absolute bottom-4 left-4 text-4xl"
-                      aria-hidden="true"
-                      role="img"
-                      aria-label={interest.name}
-                    >
-                      {interest.icon}
+              {aboutData.interests.map((interest) => {
+                const IconComponent = iconMap[interest.icon];
+                return (
+                  <article
+                    key={interest.id}
+                    className="group card-base rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
+                    role="listitem"
+                  >
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={interest.image}
+                        alt=""
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+                        aria-hidden="true"
+                      ></div>
+                      <div
+                        className="absolute bottom-4 left-4 text-4xl"
+                        aria-hidden="true"
+                        role="img"
+                        aria-label={interest.name}
+                      >
+                        {IconComponent && <IconComponent className="w-10 h-10" />}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5">
-                    <h3 className="font-semibold mb-2">{interest.name}</h3>
-                    <p className="body-small text-white/70">{interest.description}</p>
-                  </div>
-                </article>
-              ))}
+                    {/* Content */}
+                    <div className="p-5">
+                      <h3 className="font-semibold mb-2">{interest.name}</h3>
+                      <p className="body-small text-white/70">{interest.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </Container>

@@ -68,9 +68,34 @@ import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
 import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
+import {
+FaUser,
+FaLaptopCode,
+FaUniversalAccess,
+FaBook,
+FaGlobe,
+FaCamera,
+FaCoffee,
+FaHiking,
+FaHeadphones,
+} from "react-icons/fa";
+
+// Icon mapping for clean lookup
+const iconMap = {
+user: FaUser,
+"laptop-code": FaLaptopCode,
+"universal-access": FaUniversalAccess,
+book: FaBook,
+globe: FaGlobe,
+camera: FaCamera,
+coffee: FaCoffee,
+hiking: FaHiking,
+headphones: FaHeadphones,
+};
 
 export default function About() {
 return (
+
 <div>
 {/_ About page sections will go here _/}
 </div>
@@ -81,6 +106,10 @@ return (
 
 - Import Section, Container, SEO, Button - All UI components we've already built
 - Import { aboutData } - Named import from our data file
+- Import react-icons from "react-icons/fa" - Font Awesome icons library
+- iconMap object - Maps string IDs from data to actual icon components
+- This pattern keeps data clean (no React components in data files)
+- Same approach used in TechStack component
 - Path: ../data/ (up one level from pages, then into data)
 - Using <div> wrapper (will change to <> fragment soon)
 - This will be a longer file than usual - one page with multiple sections!
@@ -92,9 +121,34 @@ import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
 import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
+import {
+FaUser,
+FaLaptopCode,
+FaUniversalAccess,
+FaBook,
+FaGlobe,
+FaCamera,
+FaCoffee,
+FaHiking,
+FaHeadphones,
+} from "react-icons/fa";
+
+// Icon mapping for clean lookup
+const iconMap = {
+user: FaUser,
+"laptop-code": FaLaptopCode,
+"universal-access": FaUniversalAccess,
+book: FaBook,
+globe: FaGlobe,
+camera: FaCamera,
+coffee: FaCoffee,
+hiking: FaHiking,
+headphones: FaHeadphones,
+};
 
 export default function About() {
 return (
+
 <div>
 {/_ About page sections will go here _/}
 </div>
@@ -349,19 +403,22 @@ hover effect - cards scale up slightly when you hover over them!"
 Replace the {/_ Values grid will go here _/} comment:
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
-              {aboutData.values.map((value) => (
-                <article
-                  key={value.id}
-                  className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
-                  role="listitem"
-                >
-                  <div className="text-4xl mb-4" aria-hidden="true">
-                    {value.icon}
-                  </div>
-                  <h3 className="subheading-primary mb-2">{value.title}</h3>
-                  <p className="body-default text-white/70">{value.description}</p>
-                </article>
-              ))}
+              {aboutData.values.map((value) => {
+                const IconComponent = iconMap[value.icon];
+                return (
+                  <article
+                    key={value.id}
+                    className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
+                    role="listitem"
+                  >
+                    <div className="text-4xl mb-4" aria-hidden="true">
+                      {IconComponent && <IconComponent className="w-10 h-10" />}
+                    </div>
+                    <h3 className="subheading-primary mb-2">{value.title}</h3>
+                    <p className="body-default text-white/70">{value.description}</p>
+                  </article>
+                );
+              })}
             </div>
 
 ## EXPLAIN:
@@ -369,9 +426,15 @@ Replace the {/_ Values grid will go here _/} comment:
 - grid grid-cols-1 md:grid-cols-2 - 1 column mobile, 2 columns tablet+
 - gap-6 - Spacing between grid items
 - role="list" - Tells screen readers this is a list (even though styled as grid)
-- aboutData.values.map((value) => ...) - Loop through values array
+- aboutData.values.map((value) => {...}) - Loop through values array with function body
+- const IconComponent = iconMap[value.icon] - Look up icon component from map
+- value.icon is a string like "user", maps to FaUser component
+- return ( ... ) - Return JSX for each value card
 - <article key={value.id}> - Semantic HTML for self-contained content
 - role="listitem" - Pairs with role="list" for accessibility
+- {IconComponent && <IconComponent className="w-10 h-10" />} - Conditional render icon
+- Check if IconComponent exists, then render it as a component
+- className="w-10 h-10" - Icon size (40px × 40px)
 - card-base - Custom class from index.css
 - rounded-2xl - Extra rounded corners
 - p-6 - Padding inside card
@@ -379,15 +442,14 @@ Replace the {/_ Values grid will go here _/} comment:
 - transition-transform duration-200 - Smooth 200ms transition
 - focus-within - Styles when anything inside has focus (keyboard navigation)
 - ring-2 ring-white/60 - Focus ring for accessibility
-- text-4xl - Large icon size
-- aria-hidden="true" - Hides decorative icon from screen readers
+- aria-hidden="true" - Hides decorative icon container from screen readers
 - subheading-primary - Custom class for subheadings
 - text-white/70 - White text at 70% opacity
 
 ASK STUDENTS:
-"Why do we add aria-hidden='true' to the icon?"
-(Answer: The icon is decorative - the title and description provide all the
-meaning. Screen readers don't need to announce the emoji.)
+"Why do we use an iconMap instead of putting React components directly in the data file?"
+(Answer: Keeps data files clean and portable. Data should be data, not code. The
+component handles the rendering logic, data just stores strings.)
 
 ## CURRENT CODE SHOULD LOOK LIKE:
 
@@ -877,46 +939,53 @@ This is one of the most visually rich components we've built!"
 Replace {/_ Interests grid will go here _/}:
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
-              {aboutData.interests.map((interest) => (
-                <article
-                  key={interest.id}
-                  className="group card-base rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
-                  role="listitem"
-                >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={interest.image}
-                      alt=""
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-                      aria-hidden="true"
-                    ></div>
-                    <div
-                      className="absolute bottom-4 left-4 text-4xl"
-                      aria-hidden="true"
-                      role="img"
-                      aria-label={interest.name}
-                    >
-                      {interest.icon}
+              {aboutData.interests.map((interest) => {
+                const IconComponent = iconMap[interest.icon];
+                return (
+                  <article
+                    key={interest.id}
+                    className="group card-base rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
+                    role="listitem"
+                  >
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={interest.image}
+                        alt=""
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+                        aria-hidden="true"
+                      ></div>
+                      <div
+                        className="absolute bottom-4 left-4 text-4xl"
+                        aria-hidden="true"
+                        role="img"
+                        aria-label={interest.name}
+                      >
+                        {IconComponent && <IconComponent className="w-10 h-10" />}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5">
-                    <h3 className="font-semibold mb-2">{interest.name}</h3>
-                    <p className="body-small text-white/70">{interest.description}</p>
-                  </div>
-                </article>
-              ))}
+                    {/* Content */}
+                    <div className="p-5">
+                      <h3 className="font-semibold mb-2">{interest.name}</h3>
+                      <p className="body-small text-white/70">{interest.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
 ## EXPLAIN:
 
 - grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 - Responsive 3-column grid
+- aboutData.interests.map((interest) => {...}) - Loop with function body
+- const IconComponent = iconMap[interest.icon] - Look up icon component
+- interest.icon is a string like "globe", maps to FaGlobe component
+- return ( ... ) - Return JSX for each interest card
 - className="group" - Group class for group-hover effects
 - overflow-hidden - Clips the zoomed image on hover
 - relative h-48 overflow-hidden - Container for image (fixed height, clips overflow)
@@ -931,6 +1000,7 @@ Replace {/_ Interests grid will go here _/}:
   - via-black/20 - Black at 20% in middle
   - to-transparent - Transparent at top
 - absolute bottom-4 left-4 - Position icon at bottom-left
+- {IconComponent && <IconComponent className="w-10 h-10" />} - Render icon component
 - role="img" aria-label={interest.name} - Makes icon accessible
 
 ASK STUDENTS:
@@ -1405,6 +1475,30 @@ import Container from "../components/ui/Container.jsx";
 import SEO from "../components/ui/SEO.jsx";
 import Button from "../components/ui/Button.jsx";
 import { aboutData } from "../data/about.js";
+import {
+  FaUser,
+  FaLaptopCode,
+  FaUniversalAccess,
+  FaBook,
+  FaGlobe,
+  FaCamera,
+  FaCoffee,
+  FaHiking,
+  FaHeadphones,
+} from "react-icons/fa";
+
+// Icon mapping for clean lookup
+const iconMap = {
+  user: FaUser,
+  "laptop-code": FaLaptopCode,
+  "universal-access": FaUniversalAccess,
+  book: FaBook,
+  globe: FaGlobe,
+  camera: FaCamera,
+  coffee: FaCoffee,
+  hiking: FaHiking,
+  headphones: FaHeadphones,
+};
 
 export default function About() {
   return (
@@ -1435,19 +1529,22 @@ export default function About() {
           <div className="max-w-6xl mx-auto">
             <h2 className="heading-section text-center mb-12">What Drives My Work</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
-              {aboutData.values.map((value) => (
-                <article
-                  key={value.id}
-                  className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
-                  role="listitem"
-                >
-                  <div className="text-4xl mb-4" aria-hidden="true">
-                    {value.icon}
-                  </div>
-                  <h3 className="subheading-primary mb-2">{value.title}</h3>
-                  <p className="body-default text-white/70">{value.description}</p>
-                </article>
-              ))}
+              {aboutData.values.map((value) => {
+                const IconComponent = iconMap[value.icon];
+                return (
+                  <article
+                    key={value.id}
+                    className="card-base rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-200 focus-within:ring-2 focus-within:ring-white/60 focus-within:ring-offset-2 focus-within:ring-offset-black"
+                    role="listitem"
+                  >
+                    <div className="text-4xl mb-4" aria-hidden="true">
+                      {IconComponent && <IconComponent className="w-10 h-10" />}
+                    </div>
+                    <h3 className="subheading-primary mb-2">{value.title}</h3>
+                    <p className="body-default text-white/70">{value.description}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </Container>
