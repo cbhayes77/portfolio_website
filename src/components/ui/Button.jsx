@@ -14,7 +14,7 @@ const Button = forwardRef(
       as = "button",
       ...props
     },
-    ref
+    ref,
   ) => {
     // Base styles that apply to all buttons
     const baseStyles =
@@ -22,7 +22,7 @@ const Button = forwardRef(
 
     // Variant styles
     const variants = {
-      primary: "bg-white text-black hover:opacity-90 active:opacity-80",
+      primary: "bg-[var(--color-background-action-primary)] text-white hover:opacity-90 active:opacity-80",
       secondary: "ring-1 ring-white/30 text-white hover:bg-white/10 active:bg-white/20",
       link: "text-white underline underline-offset-4 hover:opacity-80 active:opacity-60 rounded-none",
     };
@@ -87,7 +87,7 @@ const Button = forwardRef(
         {iconOnly && renderIcon(iconOnly)}
       </Component>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";
